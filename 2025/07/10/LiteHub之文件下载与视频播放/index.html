@@ -1,108 +1,785 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>LiteHub之文件下载与视频播放.md | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="文件下载前端请求箭头函数1234567891011&#x2F;&#x2F;这个箭头函数可以形象理解为，x流入（&#x3D;&gt;）x*x,&#x2F;&#x2F;自然而然&#x3D;&gt;前面的就是传入参数,&#x3D;&gt;表示函数体x &#x3D;&gt; x * x&#x2F;&#x2F;相当于function (x) &#123;    return x * x;&#125;&#x2F;&#x2F;如果参数不是一个，就需要用括号()括起来：(x, y) &#x3D;&gt; x * x + y * y  本项目">
-<meta property="og:type" content="article">
-<meta property="og:title" content="LiteHub之文件下载与视频播放.md">
-<meta property="og:url" content="http://example.com/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="文件下载前端请求箭头函数1234567891011&#x2F;&#x2F;这个箭头函数可以形象理解为，x流入（&#x3D;&gt;）x*x,&#x2F;&#x2F;自然而然&#x3D;&gt;前面的就是传入参数,&#x3D;&gt;表示函数体x &#x3D;&gt; x * x&#x2F;&#x2F;相当于function (x) &#123;    return x * x;&#125;&#x2F;&#x2F;如果参数不是一个，就需要用括号()括起来：(x, y) &#x3D;&gt; x * x + y * y  本项目">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/ee7976fbdf5f41038547b48512e08171.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/7df5f3d2072d4f6aa8130d09a8d2e533.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/83a40f17377044c5a56c3d1d9dbcaaf4.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/4f0a75336d8b4506af21d2252f8401e1.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/15b86b0e768f43098a4f93fe16619642.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/57982f440f6c48c88d496051ce9a7004.png">
-<meta property="article:published_time" content="2025-07-10T02:25:32.000Z">
-<meta property="article:modified_time" content="2025-07-11T02:43:12.169Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/ee7976fbdf5f41038547b48512e08171.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Qingyh">
+    
+    <title>
+        
+            LiteHub之文件下载与视频播放 |
+        
+        阿寒的学习屋
+    </title>
+    
 <link rel="stylesheet" href="/css/style.css">
 
-  
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
 
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"阿寒的学习屋","author":"Qingyh","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/归档","links":"/links","about":"/LiteHub"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
+.progress-bar-container {
+  position fixed
+  top 0
+  left 0
+  z-index $z-index-9
+  width 100%
 
-      <div class="outer">
-        <section id="main"><article id="litehub/_posts-LiteHub之文件下载与视频播放" class="h-entry article article-type-litehub/_posts" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/" class="article-date">
-  <time class="dt-published" datetime="2025-07-10T02:25:32.000Z" itemprop="datePublished">2025-07-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      LiteHub之文件下载与视频播放.md
-    </h1>
-  
+  if (hexo-config('pjax') && hexo-config('pjax.enable') == true) {
 
-      </header>
+    .pjax-progress-bar {
+      position absolute
+      top 0
+      left 0
+      z-index $z-index-8
+      width 0
+      height 2px
+      background var(--pjax-progress-bar-color)
+      visibility hidden
+      opacity 0
+      transition-t("width, opacity", "0, 0", "0.1, 0.1", "linear")
+
+
+      &.show {
+        visibility visible
+        opacity 1
+      }
+    }
+
+
+    .pjax-progress-icon {
+      position absolute
+      top 0.4rem
+      right 0.3rem
+      z-index $z-index-8
+      color var(--text-color-3)
+      font-size 1.1rem
+      visibility hidden
+
+      +keep-tablet() {
+        top 0.3rem
+        right 0.2rem
+        font-size 1rem
+      }
+
+      &.show {
+        visibility visible
+      }
+    }
+  }
+
+  if (hexo-config('scroll') && hexo-config('scroll.progress_bar') == true) {
+    .scroll-progress-bar {
+      position absolute
+      top 0
+      left 0
+      z-index $z-index-7
+      width 0
+      height var(--header-scroll-progress-bar-height)
+      background var(--primary-color)
+      visibility hidden
+      transition-t("width", "0", "0.1", "linear")
+
+      &.hide {
+        display none !important
+      }
+    }
+  }
+}
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><h2 id="前端请求"><a href="#前端请求" class="headerlink" title="前端请求"></a>前端请求</h2><h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个箭头函数可以形象理解为，x流入（=&gt;）x*x,</span></span><br><span class="line"><span class="comment">//自然而然=&gt;前面的就是传入参数,=&gt;表示函数体</span></span><br><span class="line">x =&gt; x * x</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="keyword">function</span> (<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果参数不是一个，就需要用括号()括起来：</span></span><br><span class="line">(x, y) =&gt; x * x + y * y</span><br></pre></td></tr></table></figure>
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            $pc-search-icon-font-size = 1.5rem
+$menu-bar-line-height = 2.5px
+$menu-icon-gap = 0.1rem
+$pc-menu-item-gap = 1.8rem
+$mobile-menu-item-gap = 1.2rem
+$logo-image-box-width = 2.68rem
+$mobile-menu-icon-wrap-width = 1.6rem
+$mobile-menu-icon-wrap-margin = 0.4rem
+
+
+.header-wrapper {
+  display flex
+  align-items center
+  justify-content center
+  box-sizing border-box
+  width 100%
+  height 100%
+  padding-top var(--header-scroll-progress-bar-height)
+  background var(--background-color-1)
+  box-shadow 1px 2px 6px var(--shadow-color)
+
+  &:hover {
+    box-shadow 1px 2px 10px var(--shadow-hover-color)
+  }
+
+
+  .header-content {
+    z-index $z-index-5
+    display flex
+    flex-direction row
+    align-items center
+    justify-content space-between
+    width var(--page-content-width)
+    max-width var(--page-content-max-width)
+    height 100%
+    transition-t("max-width, width", "0, 0", "0.1, 0.1", "ease, ease")
+
+    &.has-first-screen {
+      max-width var(--page-content-max-width-2)
+    }
+
+
+    .has-toc & {
+      max-width var(--page-content-max-width-2)
+    }
+
+
+    +keep-tablet() {
+      width var(--page-content-width-tablet)
+    }
+
+
+    +keep-mobile() {
+      width var(--page-content-width-mobile)
+    }
+
+
+    .left {
+      height 100%
+      font-size 2rem
+
+      transition-t("transform, transform-origin", "0, 0", "0.2, 0.2", "linear, linear")
+
+      .header-shrink & {
+        transform scale(0.78)
+        transform-origin left
+      }
+
+
+      if (hexo-config('base_info') && hexo-config('base_info.logo')) {
+        .logo-image {
+          flex-shrink 0
+          width $logo-image-box-width
+          height $logo-image-box-width
+          margin-right 0.5rem
+
+
+          +keep-tablet() {
+            width $logo-image-box-width * 0.9
+            height $logo-image-box-width * 0.9
+          }
+
+
+          +keep-mobile() {
+            width $logo-image-box-width * 0.8
+            height $logo-image-box-width * 0.8
+          }
+
+
+          img {
+            width 100%
+            border-radius 0.4rem
+          }
+        }
+      }
+
+
+      .site-name {
+        color var(--text-color-1)
+        font-weight 600
+        font-size var(--header-title-font-size)
+        font-family var(--header-title-font-family)
+        line-height 1
+        letter-spacing 1px
+
+        +keep-tablet() {
+          font-size calc(var(--header-title-font-size) * 0.9)
+        }
+
+
+        +keep-mobile() {
+          font-size calc(var(--header-title-font-size) * 0.8)
+        }
+
+
+        .is-home & {
+          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
+            color var(--first-screen-header-font-color-light)
+            filter brightness(92%)
+
+            .dark-mode & {
+              color var(--first-screen-header-font-color-dark)
+              filter brightness(106%)
+            }
+          }
+        }
+
+
+        .show-header-drawer & {
+          color var(--text-color-1) !important
+        }
+      }
+    }
+
+
+    .right {
+      .pc {
+        .menu-list {
+          display flex
+          gap $pc-menu-item-gap
+          align-items center
+
+          +keep-tablet() {
+            display none
+          }
+
+
+          .menu-item {
+            font-size 1rem
+            cursor pointer
+
+            &.search {
+              font-size $pc-search-icon-font-size
+              &::before {
+                display none !important
+              }
+            }
+
+
+            .menu-text-color {
+              color var(--text-color-3)
+            }
+
+
+            &::before {
+              position absolute
+              bottom -10px
+              left 50%
+              box-sizing border-box
+              width 0
+              height 2.6px
+              background var(--primary-color)
+              border-radius 3px
+              transform translateX(-50%)
+              content ''
+              transition-t("transform, bottom, width", "0, 0, 0", "0.2, 0.2, 0.2", "linear, linear, ease")
+
+              .header-shrink & {
+                bottom calc(-1 * calc(var(--header-shrink-height) * 0.5 - 12px))
+              }
+            }
+
+
+            &:hover
+            &.active {
+              &::before {
+                width 100%
+              }
+            }
+
+
+            .menu-icon {
+              display var(--header-menu-icon)
+              margin-right $menu-icon-gap
+            }
+
+
+            .is-home & {
+              if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
+                .menu-text-color {
+                  color var(--first-screen-header-font-color-light)
+                }
+
+
+                .dark-mode & {
+                  .menu-text-color {
+                    color var(--first-screen-header-font-color-dark)
+                  }
+                }
+              }
+            }
+
+
+            &.has-sub-menu {
+              &::after {
+                position absolute
+                bottom 0
+                left 0
+                box-sizing border-box
+                width 100%
+                height 100%
+                content ''
+              }
+
+              &:hover {
+                &::after {
+                  bottom -100%
+                }
+
+                .collapse-icon {
+                  transform rotate(180deg)
+                }
+
+                .sub-menu-list {
+                  display flex
+                }
+              }
+            }
+
+
+            .collapse-icon {
+              margin-left $menu-icon-gap
+              transition-t("transform", "0", "0.3", "ease")
+            }
+          }
+
+
+          .sub-menu-list {
+            position absolute
+            bottom -280%
+            left 50%
+            display none
+            gap $pc-menu-item-gap
+            justify-content flex-start
+            box-sizing border-box
+            padding 0.8rem 1.6rem
+            background var(--background-color-1)
+            border-radius 0.6rem
+            box-shadow 0 0 8px var(--shadow-color)
+            transform translateX(-50%)
+
+            .sub-menu-item {
+              white-space nowrap
+
+              .menu-text-color {
+                color var(--text-color-3) !important
+              }
+
+              &:hover
+              &.active {
+                .menu-text-color {
+                  color var(--primary-color) !important
+                }
+              }
+
+              .sub-menu-icon {
+                display var(--header-menu-icon)
+                margin-right $menu-icon-gap * 4
+              }
+            }
+          }
+        }
+      }
+
+
+      .mobile {
+        gap 1rem
+
+        .icon-item {
+          position relative
+          display none
+          width 20px
+          height 20px
+          color var(--text-color-3)
+          font-size 1.2rem
+          cursor pointer
+
+          i {
+            color var(--text-color-3)
+
+            .show-header-drawer & {
+              color var(--text-color-3) !important
+            }
+
+            .reset-color & {
+              color var(--text-color-3) !important
+            }
+          }
+
+
+          +keep-tablet() {
+            display flex
+            align-items center
+            justify-content center
+          }
+        }
+
+
+        .menu-bar {
+          .menu-bar-middle {
+            position relative
+            width 18px
+            height $menu-bar-line-height
+            background var(--text-color-3)
+
+            &::before
+            &::after {
+              position absolute
+              left 0
+              width 100%
+              height $menu-bar-line-height
+              background var(--text-color-3)
+              content ''
+              transition-t("transform", "0", "0.38", "ease")
+            }
+
+
+            &::before {
+              top -6px
+
+              .show-header-drawer & {
+                transform translateY(6px) rotate(45deg)
+              }
+            }
+
+
+            &::after {
+              bottom -6px
+
+              .show-header-drawer & {
+                transform translateY(-6px) rotate(-45deg)
+              }
+            }
+
+
+            .reset-color & {
+              background var(--text-color-3) !important
+
+              &::before
+              &::after {
+                background var(--text-color-3) !important
+              }
+            }
+
+
+            .show-header-drawer & {
+              background transparent !important
+
+              &::before
+              &::after {
+                background var(--text-color-3) !important
+              }
+            }
+          }
+        }
+
+
+        .is-home & {
+          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
+            .icon-item i {
+              color var(--first-screen-header-font-color-light)
+            }
+
+            .menu-bar .menu-bar-middle {
+              background var(--first-screen-header-font-color-light)
+
+              &::before
+              &::after {
+                background var(--first-screen-header-font-color-light)
+              }
+            }
+
+            .dark-mode & {
+              .icon-item i {
+                color var(--first-screen-header-font-color-dark)
+              }
+
+              .menu-bar .menu-bar-middle {
+                background var(--first-screen-header-font-color-dark)
+
+                &::before
+                &::after {
+                  background var(--first-screen-header-font-color-dark)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .header-drawer {
+    position absolute
+    top 0
+    left 0
+    z-index $z-index-2
+    display none
+    justify-content center
+    box-sizing border-box
+    width 100%
+    padding var(--header-height) 0 2rem 0
+    background var(--background-color-1)
+    transform scaleY(0)
+    transform-origin top
+    transition-t("transform", "0", "0.38", "ease")
+
+    +keep-tablet() {
+      display flex
+    }
+
+
+    .show-header-drawer & {
+      transform scaleY(1)
+    }
+
+
+    .drawer-menu-list {
+      display flex
+      flex-direction column
+      gap 1.2rem
+      align-items flex-start
+      justify-content flex-start
+      width var(--page-content-width)
+      max-width var(--page-content-max-width)
+      height 100%
+      margin-top 1rem
+
+      +keep-tablet() {
+        width var(--page-content-width-tablet)
+      }
+
+
+      +keep-mobile() {
+        width var(--page-content-width-mobile)
+      }
+
+
+      .drawer-menu-item {
+        width 100%
+        padding 0.6rem 0
+        font-size 1.06rem
+        border-bottom 0.1rem solid var(--background-color-3)
+
+        &.active {
+          .drawer-menu-label {
+            .drawer-menu-text-color {
+              color var(--primary-color)
+            }
+          }
+        }
+
+
+        &.show-sub-menu {
+          .collapse-icon {
+            transform rotate(-90deg)
+          }
+
+
+          .drawer-sub-menu-list {
+            display flex
+            height auto
+          }
+        }
+
+
+        .drawer-menu-label {
+          display flex
+          align-items center
+          justify-content space-between
+          width 100%
+
+          .left-side {
+            width 100%
+
+            .menu-icon-wrap {
+              display var(--header-menu-icon)
+              width $mobile-menu-icon-wrap-width
+              margin-right $mobile-menu-icon-wrap-margin
+            }
+          }
+
+
+          .right-side {
+            margin-left 0.4rem
+            cursor pointer
+            transition-t("transform", "0", "0.2", "ease")
+          }
+        }
+      }
+
+
+      .drawer-sub-menu-list {
+        position relative
+        display none
+        flex-direction column
+        justify-content flex-start
+        box-sizing border-box
+        width 100%
+        height 0
+        padding-top 0.6rem
+        padding-bottom 0.6rem
+        padding-left $mobile-menu-icon-wrap-width
+        transition-t("display, height", "0, 0", "0.2, 0.2", "linear, linear")
+        disable-user-select()
+
+        .sub-menu-item {
+          margin-top 1rem
+          padding 0.6rem 0
+
+          &.active {
+            a
+            a i {
+              color var(--primary-color)
+            }
+          }
+
+
+          .sub-menu-icon-wrap {
+            display var(--header-menu-icon)
+            width $mobile-menu-icon-wrap-width
+            margin-right $mobile-menu-icon-wrap-margin
+          }
+        }
+      }
+    }
+  }
+
+
+  .window-mask {
+    position absolute
+    top 0
+    left 0
+    z-index $z-index-1
+    display none
+    box-sizing border-box
+    width 100%
+    height 100vh
+    background rgba(0, 0, 0, 0.4)
+    visibility hidden
+    opacity 0
+    transition-t("transform, opacity", "0, 0", "0.38, 0.38", "ease, ease")
+
+    +keep-tablet() {
+      display block
+    }
+
+
+    .show-header-drawer & {
+      visibility visible
+      opacity 1
+    }
+  }
+}
+
+
+.show-header-drawer {
+  overflow hidden
+}
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        LiteHub之文件下载与视频播放
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Qingyh</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-07-10 10:25:32</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Jul 11 2025 11:22:23 GMT+0800">2025-07-11 11:22:23</span>
+                </span>
+            
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><h2 id="前端请求"><a href="#前端请求" class="headerlink" title="前端请求"></a>前端请求</h2><h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个箭头函数可以形象理解为，x流入（=&gt;）x*x,</span></span><br><span class="line"><span class="comment">//自然而然=&gt;前面的就是传入参数,=&gt;表示函数体</span></span><br><span class="line">x =&gt; x * x</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="keyword">function</span> (<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果参数不是一个，就需要用括号()括起来：</span></span><br><span class="line">(x, y) =&gt; x * x + y * y</span><br></pre></td></tr></table></figure>
 
 <p>本项目的请求下载前端代码为：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">resourceId, filename, progressBar, statusText</span>) &#123;</span><br><span class="line">        <span class="title function_">fetch</span>(<span class="string">&#x27;/resource/download&#x27;</span>, &#123;</span><br><span class="line">            <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">            <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span> &#125;,</span><br><span class="line">            <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; resourceId &#125;) <span class="comment">//通过post方式将要下载的文件路径发送给后端</span></span><br><span class="line">        &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!response.<span class="property">ok</span>) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;下载失败&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">const</span> contentLength = response.<span class="property">headers</span>.<span class="title function_">get</span>(<span class="string">&#x27;Content-Length&#x27;</span>);</span><br><span class="line">            <span class="keyword">const</span> total = contentLength ? <span class="built_in">parseInt</span>(contentLength, <span class="number">10</span>) : <span class="number">0</span>;<span class="comment">//返回内容长度</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> reader = response.<span class="property">body</span>.<span class="title function_">getReader</span>(); <span class="comment">//这个可以逐块提供body</span></span><br><span class="line">            <span class="keyword">const</span> chunks = [];</span><br><span class="line">            <span class="keyword">let</span> received = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> <span class="title function_">pump</span> = (<span class="params"></span>) =&gt; reader.<span class="title function_">read</span>()</span><br><span class="line">              .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; done, value &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (done) &#123;<span class="comment">//如果读取完成，整个文件已下载</span></span><br><span class="line">                <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>(chunks);<span class="comment">//将所有小段chunks转换成一个完成的blob(binary large object)</span></span><br><span class="line">                <span class="keyword">const</span> url = <span class="variable language_">window</span>.<span class="property">URL</span>.<span class="title function_">createObjectURL</span>(blob);<span class="comment">//浏览器创建一个临时的URL地址来获取这个数据</span></span><br><span class="line">                <span class="comment">//如blob:http://localhost/17dfc4b1-df34-4a93-a6a7-6df9f1e85e0c</span></span><br><span class="line">                <span class="keyword">const</span> a = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">                a.<span class="property">href</span> = url;</span><br><span class="line">                a.<span class="property">download</span> = filename;</span><br><span class="line">                <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(a);</span><br><span class="line">                a.<span class="title function_">click</span>();<span class="comment">//模拟点击浏览器的下载行为</span></span><br><span class="line">                <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeChild</span>(a);</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">URL</span>.<span class="title function_">revokeObjectURL</span>(url);<span class="comment">//避免内存泄露</span></span><br><span class="line"></span><br><span class="line">                progressBar.<span class="property">style</span>.<span class="property">width</span> = <span class="string">&#x27;100%&#x27;</span>;</span><br><span class="line">                statusText.<span class="property">textContent</span> = <span class="string">&#x27;下载完成&#x27;</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                chunks.<span class="title function_">push</span>(value);</span><br><span class="line">                received += value.<span class="property">length</span>;</span><br><span class="line">                <span class="comment">//更新下载进度</span></span><br><span class="line">                <span class="keyword">if</span> (total &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">const</span> percent = <span class="title class_">Math</span>.<span class="title function_">floor</span>((received / total) * <span class="number">100</span>);</span><br><span class="line">                progressBar.<span class="property">style</span>.<span class="property">width</span> = percent + <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">                progressBar.<span class="property">textContent</span> = percent + <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">                statusText.<span class="property">textContent</span> = <span class="string">`下载中 <span class="subst">$&#123;percent&#125;</span>%`</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                statusText.<span class="property">textContent</span> = <span class="string">`下载中（未知大小）`</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//递归调用 pump（继续读取下一段）</span></span><br><span class="line">                <span class="keyword">return</span> <span class="title function_">pump</span>();</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">pump</span>();</span><br><span class="line">            &#125;)</span><br><span class="line">            .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;下载出错：&#x27;</span>, error);</span><br><span class="line">            progressBar.<span class="property">style</span>.<span class="property">backgroundColor</span> = <span class="string">&#x27;red&#x27;</span>;</span><br><span class="line">            statusText.<span class="property">textContent</span> = <span class="string">&#x27;下载失败&#x27;</span>;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//类比</span></span><br><span class="line"><span class="comment">// 后端：用水龙头一点点把水流出来</span></span><br><span class="line"><span class="comment">// 前端：接水并灌到瓶子里（Blob）</span></span><br><span class="line"><span class="comment">// createObjectURL：给这瓶水贴个标签（blob URL）</span></span><br><span class="line"><span class="comment">// 点击下载：把瓶子交给你下载</span></span><br><span class="line"><span class="comment">// revokeObjectURL：把标签撕掉，清理内存</span></span><br></pre></td></tr></table></figure>
@@ -119,138 +796,626 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给response设置一个成员，判断是否请求的是文件，如果是文件设置为true，并且存在文件位置在这里send出去。</span></span><br><span class="line"><span class="keyword">if</span> (!response.<span class="built_in">isFileResponse</span>())</span><br><span class="line">&#123;	</span><br><span class="line">    <span class="comment">//不是文件类型</span></span><br><span class="line">    muduo::net::Buffer buf;</span><br><span class="line">    response.<span class="built_in">appendToBuffer</span>(&amp;buf);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    conn-&gt;<span class="built_in">send</span>(&amp;buf);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">     <span class="comment">// 1. 构造响应头</span></span><br><span class="line">    muduo::net::Buffer headerBuf;</span><br><span class="line">    response.<span class="built_in">appendToBuffer</span>(&amp;headerBuf);  <span class="comment">// 只添加状态行和头部，不包含 body</span></span><br><span class="line">    conn-&gt;<span class="built_in">send</span>(&amp;headerBuf);  <span class="comment">// 先发 header</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 发送文件内容（分块）</span></span><br><span class="line">    <span class="type">const</span> std::string filePath = response.<span class="built_in">getFilePath</span>();</span><br><span class="line">    <span class="function">std::ifstream <span class="title">file</span><span class="params">(filePath, std::ios::binary)</span></span>;<span class="comment">// 以二进制模式打开文件</span></span><br><span class="line">    <span class="keyword">if</span> (file) &#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">size_t</span> bufferSize = <span class="number">8192</span>; 			<span class="comment">// 8KB 缓冲区</span></span><br><span class="line">        <span class="type">char</span> buffer[bufferSize];                  <span class="comment">// 栈上分配缓冲区</span></span><br><span class="line">        <span class="keyword">while</span> (file) &#123;                            <span class="comment">// 循环直到文件读取结束或出错</span></span><br><span class="line">            file.<span class="built_in">read</span>(buffer, bufferSize);        <span class="comment">// 读取最多 bufferSize 字节到 buffer</span></span><br><span class="line">            std::streamsize bytesRead = file.<span class="built_in">gcount</span>(); <span class="comment">// 实际读取的字节数</span></span><br><span class="line">            <span class="keyword">if</span> (bytesRead &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                conn-&gt;<span class="built_in">send</span>(muduo::<span class="built_in">StringPiece</span>(buffer, bytesRead));<span class="comment">// 发送数据块</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 文件打不开，补偿错误提示</span></span><br><span class="line">        muduo::net::Buffer errBuf;</span><br><span class="line">        errBuf.<span class="built_in">append</span>(<span class="string">&quot;HTTP/1.1 500 Internal Server Error\r\n\r\nFile open failed&quot;</span>);</span><br><span class="line">        conn-&gt;<span class="built_in">send</span>(&amp;errBuf);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>之所以是在httpserver上分块发送数据流，是为了保证代码较好的层次性，httpserver负责管理多个tcp连接，包括发送消息和接收消息等。</p>
 <h1 id="视频播放"><a href="#视频播放" class="headerlink" title="视频播放"></a>视频播放</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 从请求中获取 Range 头，例如 &quot;bytes=1000-2000&quot;</span></span><br><span class="line">    std::string rangeHeader = req.<span class="built_in">getHeader</span>(<span class="string">&quot;Range&quot;</span>);</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">&quot;Range Header: &quot;</span> &lt;&lt; rangeHeader;</span><br><span class="line">    <span class="comment">// 默认起始字节 start=0，结束字节 end=文件大小-1，表示完整文件</span></span><br><span class="line">    std::streamsize start = <span class="number">0</span>, end = fileSize - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 标记是否是分块响应</span></span><br><span class="line">    <span class="type">bool</span> isPartial = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!rangeHeader.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="comment">// 如果客户端带了 Range，则标记为分块传输</span></span><br><span class="line">        isPartial = <span class="literal">true</span>;</span><br><span class="line">        <span class="type">long</span> s = <span class="number">0</span>, e = <span class="number">-1</span>;</span><br><span class="line">         <span class="comment">// 使用 sscanf 解析格式 bytes=&lt;start&gt;-&lt;end&gt;</span></span><br><span class="line">        <span class="comment">// 注意：用户可能只写了起始，没有写结束，所以要判断 sscanf 返回值</span></span><br><span class="line">        <span class="type">int</span> n = <span class="built_in">sscanf</span>(rangeHeader.<span class="built_in">c_str</span>(), <span class="string">&quot;bytes=%ld-%ld&quot;</span>, &amp;s, &amp;e);</span><br><span class="line">        start = s;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span> || e == <span class="number">-1</span>) &#123;<span class="comment">// 如果只解析到 1 个数，或者结束为 -1，则表示读到文件末尾</span></span><br><span class="line">            end = fileSize - <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 解析到两个数，且结束不能超过文件大小</span></span><br><span class="line">            end = std::<span class="built_in">min</span>((std::streamsize)e, fileSize - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">         <span class="comment">// 合法性检查：start 必须小于等于 end 且小于文件大小</span></span><br><span class="line">        <span class="keyword">if</span> (start &gt; end || start &gt;= fileSize) &#123;</span><br><span class="line">            <span class="comment">// 如果不合法，返回 416 状态码（Requested Range Not Satisfiable）</span></span><br><span class="line">            resp-&gt;<span class="built_in">setStatusLine</span>(req.<span class="built_in">getVersion</span>(), http::HttpResponse::k416RequestedRangeNotSatisfiable, <span class="string">&quot;Requested Range Not Satisfiable&quot;</span>);</span><br><span class="line">            <span class="type">char</span> rangeValue[<span class="number">64</span>];</span><br><span class="line">            <span class="comment">// Content-Range 必须带 &quot;*/总大小&quot;</span></span><br><span class="line">            <span class="built_in">snprintf</span>(rangeValue, <span class="built_in">sizeof</span>(rangeValue), <span class="string">&quot;bytes */%ld&quot;</span>, fileSize);</span><br><span class="line">            resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Content-Range&quot;</span>, rangeValue);</span><br><span class="line">            resp-&gt;<span class="built_in">setCloseConnection</span>(<span class="literal">true</span>);</span><br><span class="line">            resp-&gt;<span class="built_in">setContentType</span>(<span class="string">&quot;text/plain&quot;</span>);</span><br><span class="line">            resp-&gt;<span class="built_in">setBody</span>(<span class="string">&quot;Invalid Range&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算需要读取的 chunkSize</span></span><br><span class="line">    std::streamsize chunkSize = end - start + <span class="number">1</span>;</span><br><span class="line">    <span class="function">std::vector&lt;<span class="type">char</span>&gt; <span class="title">buffer</span><span class="params">(chunkSize)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果需要分块，最好这里限制一下 chunkSize，防止内存过大</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定位到要读的起始位置</span></span><br><span class="line">    file.<span class="built_in">seekg</span>(start, std::ios::beg);</span><br><span class="line">    <span class="comment">// 从文件读出 chunkSize 大小的数据到 buffer</span></span><br><span class="line">    file.<span class="built_in">read</span>(buffer.<span class="built_in">data</span>(), chunkSize);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// === 构造响应 ===</span></span><br><span class="line">    <span class="keyword">if</span> (isPartial) &#123;</span><br><span class="line">        resp-&gt;<span class="built_in">setStatusLine</span>(req.<span class="built_in">getVersion</span>(), http::HttpResponse::k206PartialContent, <span class="string">&quot;Partial Content&quot;</span>);</span><br><span class="line">        <span class="type">char</span> rangeHeaderValue[<span class="number">128</span>];</span><br><span class="line">        <span class="built_in">snprintf</span>(rangeHeaderValue, <span class="built_in">sizeof</span>(rangeHeaderValue),</span><br><span class="line">                <span class="string">&quot;bytes %ld-%ld/%ld&quot;</span>, start, end, fileSize);</span><br><span class="line">        resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Content-Range&quot;</span>, rangeHeaderValue);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        resp-&gt;<span class="built_in">setStatusLine</span>(req.<span class="built_in">getVersion</span>(), http::HttpResponse::k200Ok, <span class="string">&quot;OK&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Accept-Ranges&quot;</span>, <span class="string">&quot;bytes&quot;</span>);<span class="comment">// 无论是否分块，都要告知支持分块</span></span><br><span class="line">    resp-&gt;<span class="built_in">setContentType</span>(<span class="string">&quot;video/mp4&quot;</span>);         <span class="comment">// 设置内容类型为 mp4 视频</span></span><br><span class="line">    resp-&gt;<span class="built_in">setContentLength</span>(buffer.<span class="built_in">size</span>());     <span class="comment">// 设置 Content-Length</span></span><br><span class="line">    resp-&gt;<span class="built_in">setBody</span>(std::<span class="built_in">string</span>(buffer.<span class="built_in">begin</span>(), buffer.<span class="built_in">end</span>()));  <span class="comment">// 把读取的文件块设置到响应体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>后端涉及对请求体中的range字段进行解析，判断range字段的合法性，随后根据range字段请求内容决定是返回部分内容还是全部内容。<br><strong>请求所有内容：</strong><br><img src="https://i-blog.csdnimg.cn/direct/ee7976fbdf5f41038547b48512e08171.png" alt="在这里插入图片描述"><br><img src="https://i-blog.csdnimg.cn/direct/7df5f3d2072d4f6aa8130d09a8d2e533.png" alt="在这里插入图片描述"><br><img src="https://i-blog.csdnimg.cn/direct/83a40f17377044c5a56c3d1d9dbcaaf4.png" alt="在这里插入图片描述"><br>依次拖动播放进度条，range字段发生改变，格式为<start>–<end>字段，这里是请求从某一时刻到视频结束。<br><strong>请求部分内容：</strong><br><img src="https://i-blog.csdnimg.cn/direct/4f0a75336d8b4506af21d2252f8401e1.png" alt="在这里插入图片描述"><br>这里请求的是从字节6000-18000大小的数据，返回的响应为<br><img src="https://i-blog.csdnimg.cn/direct/15b86b0e768f43098a4f93fe16619642.png" alt="在这里插入图片描述"><br>这里的响应头字段为<code>206 partial content</code>,表示响应返回的只是视频的一部分数据。</p>
+<p>后端涉及对请求体中的range字段进行解析，判断range字段的合法性，随后根据range字段请求内容决定是返回部分内容还是全部内容。<br><strong>请求所有内容：</strong><br><img   src="/source/_posts/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/ee7976fbdf5f41038547b48512e08171.png"  alt="在这里插入图片描述"><br><img   src="/source/_posts/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/direct/7df5f3d2072d4f6aa8130d09a8d2e533.png"  alt="在这里插入图片描述"><br><img   src="/source/_posts/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/83a40f17377044c5a56c3d1d9dbcaaf4.png"  alt="在这里插入图片描述"><br>依次拖动播放进度条，range字段发生改变，格式为<start>–<end>字段，这里是请求从某一时刻到视频结束。<br><strong>请求部分内容：</strong><br><img   src="/source/_posts/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/4f0a75336d8b4506af21d2252f8401e1.png"  alt="在这里插入图片描述"><br>这里请求的是从字节6000-18000大小的数据，返回的响应为<br><img   src="/source/_posts/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/15b86b0e768f43098a4f93fe16619642.png"  alt="在这里插入图片描述"><br>这里的响应头字段为<code>206 partial content</code>,表示响应返回的只是视频的一部分数据。</p>
 <hr>
-<p><strong>range的合法性校验</strong><br>这里我手动指定range的范围为<code>6000-18000000000000</code>，实际是超出了请求视频的最大范围，看看最后返回的什么。使用curl（这里因为是测试，所以去掉了权限的判定，实际上运行的时候使用curl是不可行的）<br><img src="https://i-blog.csdnimg.cn/direct/57982f440f6c48c88d496051ce9a7004.png" alt="在这里插入图片描述"><br>可以看到这里返回的是文件的最大大小。</p>
+<p><strong>range的合法性校验</strong><br>这里我手动指定range的范围为<code>6000-18000000000000</code>，实际是超出了请求视频的最大范围，看看最后返回的什么。使用curl（这里因为是测试，所以去掉了权限的判定，实际上运行的时候使用curl是不可行的）<br><img   src="/source/_posts/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/57982f440f6c48c88d496051ce9a7004.png"  alt="在这里插入图片描述"><br>可以看到这里返回的是文件的最大大小。</p>
 
-      
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/07/11/hello-world/"
+                                   title="Hello World"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Hello World</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/07/09/LiteHub%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/"
+                                   title="LiteHub之数据库连接池"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LiteHub之数据库连接池</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    if (hexo-config('comment') && hexo-config('comment.enable') == true && hexo-config('comment.use')) {
+  if (hexo-config('comment.use') == "valine") {
+    @import "./valine.styl"
+  }
+  else if (hexo-config('comment.use') == "gitalk") {
+    @import "./gitalk.styl"
+  }
+  else if (hexo-config('comment.use') == "twikoo") {
+    @import "./twikoo.styl"
+  }
+  else if (hexo-config('comment.use') == "waline") {
+    @import "./waline.styl"
+  }
+}
+
+.comments-container {
+  display inline-block
+  width 100%
+  margin-top var(--component-gap)
+
+  .comment-area-title {
+    width 100%
+    color var(--text-color-3)
+    font-size 1.38rem
+    line-height 2
+
+    i {
+      color var(--text-color-3)
+    }
+
+    +keep-tablet() {
+      font-size 1.2rem
+    }
+  }
+
+
+  .configuration-items-error-tip {
+    display flex
+    align-items center
+    margin-top 1rem
+    color var(--text-color-3)
+    font-size 1rem
+
+    i {
+      margin-right 0.3rem
+      color var(--text-color-3)
+      font-size 1.2rem
+    }
+  }
+
+  .comment-plugin-fail {
+    display none
+    flex-direction column
+    align-items center
+    justify-content space-around
+    width 100%
+    padding 2rem
+
+    .fail-tip {
+      color var(--text-color-3)
+      font-size 1.1rem
+    }
+
+    .reload {
+      margin-top 1rem
+    }
+  }
+
+  .comment-plugin-loading {
+    flex-direction column
+    padding 1rem
+    color var(--text-color-3)
+
+    .loading-icon {
+      color var(--text-color-4)
+      font-size 2rem
+    }
+
+    .load-tip {
+      margin-top 1rem
+      color var(--text-color-4)
+      font-size 1.1rem
+    }
+  }
+}
+
+                
+            </div>
+        </div>
+
+        
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/" data-id="cmcy7r5uj0003ysvbaf0zex4e" data-title="LiteHub之文件下载与视频播放.md" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2025/07/11/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2025/07/09/LiteHub%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">LiteHub之数据库连接池</div>
-    </a>
-  
-</nav>
-
-  
-</article>
+</div>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
+                
+            </div>
+        </div>
 
-  
-    
+        <div class="page-main-content-bottom border-box">
+            .footer {
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  padding 1rem 0
+  color var(--text-color-4)
+  font-size 1rem
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li></ul>
+  a {
+    color var(--text-color-4)
+
+    &:hover {
+      color var(--primary-color)
+    }
+
+    &.no-pointer {
+      pointer-events none
+    }
+  }
+
+
+  .info-item {
+    position relative
+    display flex
+    flex-wrap wrap
+    align-items center
+    justify-content center
+    box-sizing border-box
+    margin 0.2rem 0
+    color var(--text-color-4)
+
+    &.count-info {
+      display flex
+
+      .count-item {
+        &.uv
+        &.pv {
+          display none
+        }
+      }
+    }
+
+
+    &.deploy-info {
+
+      display flex
+
+      a
+      .tooltip {
+        display flex
+        align-items center
+      }
+
+      img {
+        height 1.08rem
+        margin 0 0.4rem
+      }
+    }
+
+
+    &.count-info
+    &.record-info {
+
+      .count-item
+      .record-item {
+        margin-right 15px
+
+        &::before {
+          position absolute
+          top 50%
+          left -10px
+          box-sizing border-box
+          transform translateY(-56%)
+          content '|'
+        }
+
+
+        &:first-child {
+          &::before {
+            display none
+          }
+        }
+
+
+        &:last-child {
+          margin-right 0
+        }
+
+
+        .item-type {
+          margin-right 4px
+        }
+      }
+    }
+  }
+
+
+  .icon-animate {
+    animation heartbeat-animate 1.2s ease-in-out infinite
+  }
+}
+
+        </div>
     </div>
-  </div>
 
-
-  
+    <!-- post tools -->
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/07/11/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/">LiteHub之文件下载与视频播放.md</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/09/LiteHub%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">LiteHub之数据库连接池</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/05/LiteHub%E4%B9%8Bgzip%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/">LiteHub之gzip压缩算法</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/04/LiteHub%E4%B9%8B%E4%B8%AD%E9%97%B4%E4%BB%B6%E9%99%90%E6%B5%81%E5%AE%9E%E7%8E%B0/">LiteHub之中间件限流实现</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+        <div class="post-tools right-toc">
+            $li-margin-bottom = 0.8rem
+$post-tool-button-width = 2.5rem
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+.post-tools-container {
+  padding-top var(--component-gap)
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+  .post-tools-list {
+    li {
+      margin-bottom $li-margin-bottom
+
+      &:last-child {
+        margin-bottom 0
+      }
+    }
+
+
+    li.tools-item {
+      position relative
+      box-sizing border-box
+      width $post-tool-button-width
+      height $post-tool-button-width
+      color var(--text-color-3)
+      font-size 1.2rem
+      background var(--background-color-1)
+      border-radius 50%
+      box-shadow 2px 2px 5px var(--shadow-color)
+      cursor pointer
+
+      &:hover {
+        box-shadow 2px 2px 8px var(--shadow-hover-color)
+      }
+
+      i {
+        color var(--text-color-3)
+      }
+
+
+      &:hover {
+        color var(--background-color-1)
+        background var(--primary-color)
+
+        i {
+          color var(--background-color-1) !important
+        }
+      }
+
+
+      &.toggle-show-toc {
+        display none
+      }
+
+
+      &.go-to-comments {
+        .post-comments-count {
+          position absolute
+          top 0
+          right -1rem
+          display none
+          align-items center
+          justify-content center
+          box-sizing border-box
+          min-width 1.1rem
+          height 1.1rem
+          padding 0 0.2rem
+          color var(--badge-color)
+          font-size 12px
+          background var(--badge-background-color)
+          border-radius 0.4rem
+
+          +keep-tablet() {
+            display none !important
+          }
+        }
+      }
+    }
+
+
+    li.status-item {
+      width $post-tool-button-width
+      height $post-tool-button-width
+      color var(--text-color-3)
+      font-size 1.6rem
+      cursor pointer
+
+
+      &.post-lock {
+        cursor default
+
+        .fa-lock-open {
+          display none
+          color var(--keep-success-color)
+        }
+
+        &.decrypt {
+          cursor pointer
+
+          .fa-lock-open {
+            display block
+          }
+
+          .fa-lock {
+            display none
+          }
+        }
+      }
+    }
+  }
+}
+
+        </div>
     
 
+    <!-- side tools -->
+    <div class="side-tools">
+        $tools-item-width = 2.2rem
+$tools-item-font-size = 1.1rem
+$tools-item-border-radius = 0.2rem
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+.side-tools-show-handle {
+  transform translateX(100%)
+  opacity 0
+  transition-t("transform, opacity", "0, 0", "0.26, 0.26", "linear, linear")
+
+  &.show {
+    transform translateX(0)
+    opacity 1
+  }
+}
+
+.side-tools-container {
+  .tools-item {
+    width $tools-item-width
+    height $tools-item-width
+    margin-bottom 0.25rem
+    color var(--text-color-3)
+    font-size $tools-item-font-size
+    background var(--background-color-1)
+    border-right none
+    border-radius $tools-item-border-radius
+    box-shadow 0.1rem 0.1rem 0.2rem var(--shadow-color)
+    cursor pointer
+
+    i {
+      color var(--text-color-3)
+    }
+
+    &:hover {
+      color var(--background-color-1)
+      background var(--primary-color)
+      box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
+
+      i {
+        color var(--background-color-1)
+      }
+    }
+
+
+    +keep-tablet() {
+      width $tools-item-width * 0.9
+      height $tools-item-width * 0.9
+      font-size $tools-item-font-size * 0.9
+
+      &.toggle-show-toc-tablet
+      &.go-to-comments-tablet {
+        display flex !important
+      }
+    }
+
+    &.rss {
+
+      a {
+        width 100%
+        height 100%
+        border-radius $tools-item-border-radius
+
+        &:hover {
+          color var(--background-color-1)
+          background var(--primary-color)
+          box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
+        }
+      }
+    }
+
+    &.toggle-show-toc-tablet
+    &.go-to-comments-tablet {
+      display none
+    }
+  }
+
+
+  .exposed-tools-list {
+
+    .tool-scroll-to-top {
+      display none
+
+      &.show {
+        display flex
+      }
+
+
+      &.show-arrow {
+        .percent {
+          display none
+        }
+
+        .arrow {
+          display flex
+        }
+      }
+
+
+      &.show-percent {
+        .percent {
+          display flex
+        }
+
+        .arrow {
+          display none
+        }
+      }
+
+
+      &:hover {
+        .percent {
+          display none
+        }
+
+        .arrow {
+          display flex
+        }
+      }
+
+
+      .percent {
+        font-size 1rem
+      }
+    }
+  }
+}
+
+    </div>
+
+    <!-- image mask -->
+    .zoom-in-image-mask {
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index $z-index-8
+  display flex
+  align-items center
+  justify-content center
+  box-sizing border-box
+  background rgba(0, 0, 0, 0)
+  visibility hidden
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "linear, linear")
+
+  &.show {
+    background rgba(0, 0, 0, 0.5)
+    visibility visible
+
+    .zoom-in-image {
+      cursor zoom-out
+    }
+  }
+
+  .zoom-in-image {
+    position absolute
+    z-index $z-index-9
+    transform-origin center center
+    will-change transform
+    transition-t("transform", "0", "0.3", "linear")
+  }
+}
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
 
 
 
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
 
 
 
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
 </body>
 </html>

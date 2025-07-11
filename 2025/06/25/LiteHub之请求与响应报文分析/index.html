@@ -1,115 +1,789 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>LiteHub之请求与响应报文分析 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="@TOC 这一篇文章是基于项目LITEHUB分析的关于HTTP的请求和响应篇章，后续将仔细分析这个项目所涉及到的知识点。上图是使用wireshark抓包分析的HTTP刷新网页的请求以及返回的响应报文格式。接下来我们就详细分析： 请求报文理论部分请求报文主要由请求行、请求头、空行、请求头构成。  请求行包括一下字段：常见的方法包括GET（请求信息）、POST（提交数据，表单）方法等，资源路径（请求资">
-<meta property="og:type" content="article">
-<meta property="og:title" content="LiteHub之请求与响应报文分析">
-<meta property="og:url" content="http://example.com/2025/06/25/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="@TOC 这一篇文章是基于项目LITEHUB分析的关于HTTP的请求和响应篇章，后续将仔细分析这个项目所涉及到的知识点。上图是使用wireshark抓包分析的HTTP刷新网页的请求以及返回的响应报文格式。接下来我们就详细分析： 请求报文理论部分请求报文主要由请求行、请求头、空行、请求头构成。  请求行包括一下字段：常见的方法包括GET（请求信息）、POST（提交数据，表单）方法等，资源路径（请求资">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/49c726370aa54794af9a8023297f7a72.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/29d71662fbe745d689994e83ac0a9858.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/54936fec86004e329ee8fb88432d460b.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/6b502683b4b6436988f5ddc1b2a7af64.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/a0cc64898b4e4e03bddfd2d99992ea22.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/1313fde68bcd4e3a81d1965c957cf539.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/deb4587859e6471ab9b0383ef7d2d985.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/3fde8e82358c45669324345c88902475.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/47ddc71bd9864f408025ab5973071fcb.png">
-<meta property="article:published_time" content="2025-06-25T02:30:38.000Z">
-<meta property="article:modified_time" content="2025-07-11T02:42:47.553Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/49c726370aa54794af9a8023297f7a72.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Qingyh">
+    
+    <title>
+        
+            LiteHub之请求与响应报文分析 |
+        
+        阿寒的学习屋
+    </title>
+    
 <link rel="stylesheet" href="/css/style.css">
 
-  
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
 
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"阿寒的学习屋","author":"Qingyh","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/归档","links":"/links","about":"/LiteHub"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
+.progress-bar-container {
+  position fixed
+  top 0
+  left 0
+  z-index $z-index-9
+  width 100%
 
-      <div class="outer">
-        <section id="main"><article id="litehub/_posts-LiteHub之请求与响应报文分析" class="h-entry article article-type-litehub/_posts" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/06/25/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/" class="article-date">
-  <time class="dt-published" datetime="2025-06-25T02:30:38.000Z" itemprop="datePublished">2025-06-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      LiteHub之请求与响应报文分析
-    </h1>
-  
+  if (hexo-config('pjax') && hexo-config('pjax.enable') == true) {
 
-      </header>
+    .pjax-progress-bar {
+      position absolute
+      top 0
+      left 0
+      z-index $z-index-8
+      width 0
+      height 2px
+      background var(--pjax-progress-bar-color)
+      visibility hidden
+      opacity 0
+      transition-t("width, opacity", "0, 0", "0.1, 0.1", "linear")
+
+
+      &.show {
+        visibility visible
+        opacity 1
+      }
+    }
+
+
+    .pjax-progress-icon {
+      position absolute
+      top 0.4rem
+      right 0.3rem
+      z-index $z-index-8
+      color var(--text-color-3)
+      font-size 1.1rem
+      visibility hidden
+
+      +keep-tablet() {
+        top 0.3rem
+        right 0.2rem
+        font-size 1rem
+      }
+
+      &.show {
+        visibility visible
+      }
+    }
+  }
+
+  if (hexo-config('scroll') && hexo-config('scroll.progress_bar') == true) {
+    .scroll-progress-bar {
+      position absolute
+      top 0
+      left 0
+      z-index $z-index-7
+      width 0
+      height var(--header-scroll-progress-bar-height)
+      background var(--primary-color)
+      visibility hidden
+      transition-t("width", "0", "0.1", "linear")
+
+      &.hide {
+        display none !important
+      }
+    }
+  }
+}
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>@<a href="LiteHub%E4%B9%8BHTTP%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90">TOC</a></p>
-<p>这一篇文章是基于项目LITEHUB分析的关于HTTP的请求和响应篇章，后续将仔细分析这个项目所涉及到的知识点。<br><img src="https://i-blog.csdnimg.cn/direct/49c726370aa54794af9a8023297f7a72.png" alt="在这里插入图片描述"><br>上图是使用wireshark抓包分析的HTTP刷新网页的请求以及返回的响应报文格式。接下来我们就详细分析：</p>
-<h1 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h1><h2 id="理论部分"><a href="#理论部分" class="headerlink" title="理论部分"></a>理论部分</h2><p>请求报文主要由请求行、请求头、空行、请求头构成。<br>  <img src="https://i-blog.csdnimg.cn/direct/29d71662fbe745d689994e83ac0a9858.png" alt="在这里插入图片描述"><br>请求行包括一下字段：常见的方法包括GET（请求信息）、POST（提交数据，表单）方法等，资源路径（请求资源的URI路径）、HTTP的版本（HTTP1.1&#x2F;HTTP2.0）<br>请求头的字段较多，常使用的包含以下几个：<br>● Host：请求的服务器的域名。<br>● Accept：客户端能够处理的媒体类型。<br>● Accept-Encoding：客户端能够解码的内容编码。<br>● Authorization：用于认证的凭证信息，比如token数据。<br>● Content-Length：请求体的长度。<br>● Content-Type：请求体的媒体类型。<br>● Cookie：存储在客户端的cookie数据，在我的项目中，也是通过存在cookie字段来区别不同用户。</p>
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            $pc-search-icon-font-size = 1.5rem
+$menu-bar-line-height = 2.5px
+$menu-icon-gap = 0.1rem
+$pc-menu-item-gap = 1.8rem
+$mobile-menu-item-gap = 1.2rem
+$logo-image-box-width = 2.68rem
+$mobile-menu-icon-wrap-width = 1.6rem
+$mobile-menu-icon-wrap-margin = 0.4rem
+
+
+.header-wrapper {
+  display flex
+  align-items center
+  justify-content center
+  box-sizing border-box
+  width 100%
+  height 100%
+  padding-top var(--header-scroll-progress-bar-height)
+  background var(--background-color-1)
+  box-shadow 1px 2px 6px var(--shadow-color)
+
+  &:hover {
+    box-shadow 1px 2px 10px var(--shadow-hover-color)
+  }
+
+
+  .header-content {
+    z-index $z-index-5
+    display flex
+    flex-direction row
+    align-items center
+    justify-content space-between
+    width var(--page-content-width)
+    max-width var(--page-content-max-width)
+    height 100%
+    transition-t("max-width, width", "0, 0", "0.1, 0.1", "ease, ease")
+
+    &.has-first-screen {
+      max-width var(--page-content-max-width-2)
+    }
+
+
+    .has-toc & {
+      max-width var(--page-content-max-width-2)
+    }
+
+
+    +keep-tablet() {
+      width var(--page-content-width-tablet)
+    }
+
+
+    +keep-mobile() {
+      width var(--page-content-width-mobile)
+    }
+
+
+    .left {
+      height 100%
+      font-size 2rem
+
+      transition-t("transform, transform-origin", "0, 0", "0.2, 0.2", "linear, linear")
+
+      .header-shrink & {
+        transform scale(0.78)
+        transform-origin left
+      }
+
+
+      if (hexo-config('base_info') && hexo-config('base_info.logo')) {
+        .logo-image {
+          flex-shrink 0
+          width $logo-image-box-width
+          height $logo-image-box-width
+          margin-right 0.5rem
+
+
+          +keep-tablet() {
+            width $logo-image-box-width * 0.9
+            height $logo-image-box-width * 0.9
+          }
+
+
+          +keep-mobile() {
+            width $logo-image-box-width * 0.8
+            height $logo-image-box-width * 0.8
+          }
+
+
+          img {
+            width 100%
+            border-radius 0.4rem
+          }
+        }
+      }
+
+
+      .site-name {
+        color var(--text-color-1)
+        font-weight 600
+        font-size var(--header-title-font-size)
+        font-family var(--header-title-font-family)
+        line-height 1
+        letter-spacing 1px
+
+        +keep-tablet() {
+          font-size calc(var(--header-title-font-size) * 0.9)
+        }
+
+
+        +keep-mobile() {
+          font-size calc(var(--header-title-font-size) * 0.8)
+        }
+
+
+        .is-home & {
+          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
+            color var(--first-screen-header-font-color-light)
+            filter brightness(92%)
+
+            .dark-mode & {
+              color var(--first-screen-header-font-color-dark)
+              filter brightness(106%)
+            }
+          }
+        }
+
+
+        .show-header-drawer & {
+          color var(--text-color-1) !important
+        }
+      }
+    }
+
+
+    .right {
+      .pc {
+        .menu-list {
+          display flex
+          gap $pc-menu-item-gap
+          align-items center
+
+          +keep-tablet() {
+            display none
+          }
+
+
+          .menu-item {
+            font-size 1rem
+            cursor pointer
+
+            &.search {
+              font-size $pc-search-icon-font-size
+              &::before {
+                display none !important
+              }
+            }
+
+
+            .menu-text-color {
+              color var(--text-color-3)
+            }
+
+
+            &::before {
+              position absolute
+              bottom -10px
+              left 50%
+              box-sizing border-box
+              width 0
+              height 2.6px
+              background var(--primary-color)
+              border-radius 3px
+              transform translateX(-50%)
+              content ''
+              transition-t("transform, bottom, width", "0, 0, 0", "0.2, 0.2, 0.2", "linear, linear, ease")
+
+              .header-shrink & {
+                bottom calc(-1 * calc(var(--header-shrink-height) * 0.5 - 12px))
+              }
+            }
+
+
+            &:hover
+            &.active {
+              &::before {
+                width 100%
+              }
+            }
+
+
+            .menu-icon {
+              display var(--header-menu-icon)
+              margin-right $menu-icon-gap
+            }
+
+
+            .is-home & {
+              if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
+                .menu-text-color {
+                  color var(--first-screen-header-font-color-light)
+                }
+
+
+                .dark-mode & {
+                  .menu-text-color {
+                    color var(--first-screen-header-font-color-dark)
+                  }
+                }
+              }
+            }
+
+
+            &.has-sub-menu {
+              &::after {
+                position absolute
+                bottom 0
+                left 0
+                box-sizing border-box
+                width 100%
+                height 100%
+                content ''
+              }
+
+              &:hover {
+                &::after {
+                  bottom -100%
+                }
+
+                .collapse-icon {
+                  transform rotate(180deg)
+                }
+
+                .sub-menu-list {
+                  display flex
+                }
+              }
+            }
+
+
+            .collapse-icon {
+              margin-left $menu-icon-gap
+              transition-t("transform", "0", "0.3", "ease")
+            }
+          }
+
+
+          .sub-menu-list {
+            position absolute
+            bottom -280%
+            left 50%
+            display none
+            gap $pc-menu-item-gap
+            justify-content flex-start
+            box-sizing border-box
+            padding 0.8rem 1.6rem
+            background var(--background-color-1)
+            border-radius 0.6rem
+            box-shadow 0 0 8px var(--shadow-color)
+            transform translateX(-50%)
+
+            .sub-menu-item {
+              white-space nowrap
+
+              .menu-text-color {
+                color var(--text-color-3) !important
+              }
+
+              &:hover
+              &.active {
+                .menu-text-color {
+                  color var(--primary-color) !important
+                }
+              }
+
+              .sub-menu-icon {
+                display var(--header-menu-icon)
+                margin-right $menu-icon-gap * 4
+              }
+            }
+          }
+        }
+      }
+
+
+      .mobile {
+        gap 1rem
+
+        .icon-item {
+          position relative
+          display none
+          width 20px
+          height 20px
+          color var(--text-color-3)
+          font-size 1.2rem
+          cursor pointer
+
+          i {
+            color var(--text-color-3)
+
+            .show-header-drawer & {
+              color var(--text-color-3) !important
+            }
+
+            .reset-color & {
+              color var(--text-color-3) !important
+            }
+          }
+
+
+          +keep-tablet() {
+            display flex
+            align-items center
+            justify-content center
+          }
+        }
+
+
+        .menu-bar {
+          .menu-bar-middle {
+            position relative
+            width 18px
+            height $menu-bar-line-height
+            background var(--text-color-3)
+
+            &::before
+            &::after {
+              position absolute
+              left 0
+              width 100%
+              height $menu-bar-line-height
+              background var(--text-color-3)
+              content ''
+              transition-t("transform", "0", "0.38", "ease")
+            }
+
+
+            &::before {
+              top -6px
+
+              .show-header-drawer & {
+                transform translateY(6px) rotate(45deg)
+              }
+            }
+
+
+            &::after {
+              bottom -6px
+
+              .show-header-drawer & {
+                transform translateY(-6px) rotate(-45deg)
+              }
+            }
+
+
+            .reset-color & {
+              background var(--text-color-3) !important
+
+              &::before
+              &::after {
+                background var(--text-color-3) !important
+              }
+            }
+
+
+            .show-header-drawer & {
+              background transparent !important
+
+              &::before
+              &::after {
+                background var(--text-color-3) !important
+              }
+            }
+          }
+        }
+
+
+        .is-home & {
+          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
+            .icon-item i {
+              color var(--first-screen-header-font-color-light)
+            }
+
+            .menu-bar .menu-bar-middle {
+              background var(--first-screen-header-font-color-light)
+
+              &::before
+              &::after {
+                background var(--first-screen-header-font-color-light)
+              }
+            }
+
+            .dark-mode & {
+              .icon-item i {
+                color var(--first-screen-header-font-color-dark)
+              }
+
+              .menu-bar .menu-bar-middle {
+                background var(--first-screen-header-font-color-dark)
+
+                &::before
+                &::after {
+                  background var(--first-screen-header-font-color-dark)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .header-drawer {
+    position absolute
+    top 0
+    left 0
+    z-index $z-index-2
+    display none
+    justify-content center
+    box-sizing border-box
+    width 100%
+    padding var(--header-height) 0 2rem 0
+    background var(--background-color-1)
+    transform scaleY(0)
+    transform-origin top
+    transition-t("transform", "0", "0.38", "ease")
+
+    +keep-tablet() {
+      display flex
+    }
+
+
+    .show-header-drawer & {
+      transform scaleY(1)
+    }
+
+
+    .drawer-menu-list {
+      display flex
+      flex-direction column
+      gap 1.2rem
+      align-items flex-start
+      justify-content flex-start
+      width var(--page-content-width)
+      max-width var(--page-content-max-width)
+      height 100%
+      margin-top 1rem
+
+      +keep-tablet() {
+        width var(--page-content-width-tablet)
+      }
+
+
+      +keep-mobile() {
+        width var(--page-content-width-mobile)
+      }
+
+
+      .drawer-menu-item {
+        width 100%
+        padding 0.6rem 0
+        font-size 1.06rem
+        border-bottom 0.1rem solid var(--background-color-3)
+
+        &.active {
+          .drawer-menu-label {
+            .drawer-menu-text-color {
+              color var(--primary-color)
+            }
+          }
+        }
+
+
+        &.show-sub-menu {
+          .collapse-icon {
+            transform rotate(-90deg)
+          }
+
+
+          .drawer-sub-menu-list {
+            display flex
+            height auto
+          }
+        }
+
+
+        .drawer-menu-label {
+          display flex
+          align-items center
+          justify-content space-between
+          width 100%
+
+          .left-side {
+            width 100%
+
+            .menu-icon-wrap {
+              display var(--header-menu-icon)
+              width $mobile-menu-icon-wrap-width
+              margin-right $mobile-menu-icon-wrap-margin
+            }
+          }
+
+
+          .right-side {
+            margin-left 0.4rem
+            cursor pointer
+            transition-t("transform", "0", "0.2", "ease")
+          }
+        }
+      }
+
+
+      .drawer-sub-menu-list {
+        position relative
+        display none
+        flex-direction column
+        justify-content flex-start
+        box-sizing border-box
+        width 100%
+        height 0
+        padding-top 0.6rem
+        padding-bottom 0.6rem
+        padding-left $mobile-menu-icon-wrap-width
+        transition-t("display, height", "0, 0", "0.2, 0.2", "linear, linear")
+        disable-user-select()
+
+        .sub-menu-item {
+          margin-top 1rem
+          padding 0.6rem 0
+
+          &.active {
+            a
+            a i {
+              color var(--primary-color)
+            }
+          }
+
+
+          .sub-menu-icon-wrap {
+            display var(--header-menu-icon)
+            width $mobile-menu-icon-wrap-width
+            margin-right $mobile-menu-icon-wrap-margin
+          }
+        }
+      }
+    }
+  }
+
+
+  .window-mask {
+    position absolute
+    top 0
+    left 0
+    z-index $z-index-1
+    display none
+    box-sizing border-box
+    width 100%
+    height 100vh
+    background rgba(0, 0, 0, 0.4)
+    visibility hidden
+    opacity 0
+    transition-t("transform, opacity", "0, 0", "0.38, 0.38", "ease, ease")
+
+    +keep-tablet() {
+      display block
+    }
+
+
+    .show-header-drawer & {
+      visibility visible
+      opacity 1
+    }
+  }
+}
+
+
+.show-header-drawer {
+  overflow hidden
+}
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        LiteHub之请求与响应报文分析
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Qingyh</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-06-25 10:30:38</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Jul 11 2025 11:33:28 GMT+0800">2025-07-11 11:33:28</span>
+                </span>
+            
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>@<a href="LiteHub%E4%B9%8BHTTP%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90">TOC</a></p>
+<p>这一篇文章是基于项目LITEHUB分析的关于HTTP的请求和响应篇章，后续将仔细分析这个项目所涉及到的知识点。<br><img   src="/source/_posts/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/49c726370aa54794af9a8023297f7a72.png"  alt="在这里插入图片描述"><br>上图是使用wireshark抓包分析的HTTP刷新网页的请求以及返回的响应报文格式。接下来我们就详细分析：</p>
+<h1 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h1><h2 id="理论部分"><a href="#理论部分" class="headerlink" title="理论部分"></a>理论部分</h2><p>请求报文主要由请求行、请求头、空行、请求头构成。<br>  <img   src="/source/_posts/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/29d71662fbe745d689994e83ac0a9858.png"  alt="在这里插入图片描述"><br>请求行包括一下字段：常见的方法包括GET（请求信息）、POST（提交数据，表单）方法等，资源路径（请求资源的URI路径）、HTTP的版本（HTTP1.1&#x2F;HTTP2.0）<br>请求头的字段较多，常使用的包含以下几个：<br>● Host：请求的服务器的域名。<br>● Accept：客户端能够处理的媒体类型。<br>● Accept-Encoding：客户端能够解码的内容编码。<br>● Authorization：用于认证的凭证信息，比如token数据。<br>● Content-Length：请求体的长度。<br>● Content-Type：请求体的媒体类型。<br>● Cookie：存储在客户端的cookie数据，在我的项目中，也是通过存在cookie字段来区别不同用户。</p>
 <p>空行是请求头部和请求主体之间的空行，用于分隔请求头部和请求主体。<br>而请求体通常用于 POST 和 PUT 请求，包含发送给服务器的数据。</p>
-<h2 id="wireshark抓包分析"><a href="#wireshark抓包分析" class="headerlink" title="wireshark抓包分析"></a>wireshark抓包分析</h2><p><img src="https://i-blog.csdnimg.cn/direct/54936fec86004e329ee8fb88432d460b.png" alt="在这里插入图片描述"></p>
+<h2 id="wireshark抓包分析"><a href="#wireshark抓包分析" class="headerlink" title="wireshark抓包分析"></a>wireshark抓包分析</h2><p><img   src="/source/_posts/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/54936fec86004e329ee8fb88432d460b.png"  alt="在这里插入图片描述"></p>
 <ul>
 <li>请求行：这里使用请求方法为<code>GET</code>,请求的路径为<code>/resource/list</code>（服务器通过路由转发确定其实际请求的路径资源，后面会分析），并且使用的版本号是<code>HTTP/1.1</code>.</li>
 <li>请求头：是以一系列的键值对组成的。如上图包括<code>Host:192.168.83.128</code>(表示请求的服务器的域名，这个字段是为了区分在一个服务器上存在多个地址的问题，如百度和edge都在一台服务器的不同网卡上服务，通过这个字段可以区分)；<code>Cookie: sessionId=ef4130be9ef3c2b7264455b2a201a1b1</code>（保持访问的一个状态），其余字段感兴趣的话可以自己去了解</li>
@@ -130,20 +804,20 @@
 <p>在找到空行后，需要根据请求方法(判断是否是POST或者PUT方法)和Content-Length判断是否需要继续读取body；如果不需要，则直接退出解析；如果请求体有数据，开始解析请求体。</p>
 <h3 id="3-请求体的解析"><a href="#3-请求体的解析" class="headerlink" title="3.请求体的解析"></a>3.请求体的解析</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (state_ == kExpectBody)</span><br><span class="line">        &#123;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">// 检查缓冲区中是否有足够的数据</span></span><br><span class="line">            <span class="keyword">if</span> (buf-&gt;readableBytes() &lt; request_.contentLength())</span><br><span class="line">            &#123;</span><br><span class="line">                hasMore = <span class="literal">false</span>; <span class="comment">// 数据不完整，等待更多数据</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">const</span> std::<span class="built_in">string</span> &amp;contentType = request_.getHeader(<span class="string">&quot;Content-Type&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (contentType.find(<span class="string">&quot;multipart/form-data&quot;</span>) != std::<span class="built_in">string</span>::npos) <span class="comment">//multipart/form-data表示支持多种复制格式的数据上传，如txt文件，mp4,rar等；这也是实现各种数据格式上传文件的解析</span></span><br><span class="line">            &#123;</span><br><span class="line">               </span><br><span class="line">                ok=parseMultipartData(buf);</span><br><span class="line">                request_.set_parseMultipartData_state(ok);</span><br><span class="line">                LOG_INFO&lt;&lt;<span class="string">&quot;multipart/form-data解析&quot;</span>&lt;&lt;((ok)?<span class="string">&quot;成功&quot;</span>:<span class="string">&quot;失败&quot;</span>);</span><br><span class="line"></span><br><span class="line">                state_ = kGotAll;</span><br><span class="line">                hasMore = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">            	<span class="comment">//如果只是普通的数据，直接根据contentLength读入到body中即可。</span></span><br><span class="line">                <span class="comment">// 只读取 Content-Length 指定的长度</span></span><br><span class="line">                std::<span class="function"><span class="built_in">string</span> <span class="title">body</span>(<span class="params">buf-&gt;peek(</span>), buf-&gt;<span class="title">peek</span>() + request_.<span class="title">contentLength</span>())</span>;</span><br><span class="line">                request_.setBody(body);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 准确移动读指针</span></span><br><span class="line">                buf-&gt;retrieve(request_.contentLength());</span><br><span class="line"></span><br><span class="line">                state_ = kGotAll;</span><br><span class="line">                hasMore = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> HttpContext::parseMultipartData(Buffer *buf)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 1. 找到并跳过第一个 boundary（如 ------WebKitFormBoundaryxxxx）</span></span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">char</span>* crlf = buf-&gt;findCRLF();</span><br><span class="line">    <span class="keyword">if</span> (!crlf) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 不完整</span></span><br><span class="line">    std::<span class="function"><span class="built_in">string</span> <span class="title">boundary</span>(<span class="params">buf-&gt;peek(</span>),crlf)</span>;</span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;boundary:&quot;</span>&lt;&lt;boundary;</span><br><span class="line">    buf-&gt;retrieveUntil(crlf + <span class="number">2</span>); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// // 2. 解析 Content-Disposition 行</span></span><br><span class="line">    crlf = buf-&gt;findCRLF();</span><br><span class="line">    <span class="keyword">if</span> (!crlf) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 不完整</span></span><br><span class="line">    std::<span class="function"><span class="built_in">string</span> <span class="title">dispositionLine</span>(<span class="params">buf-&gt;peek(</span>), crlf)</span>;</span><br><span class="line">    buf-&gt;retrieveUntil(crlf + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    std::<span class="built_in">string</span> Content_Disposition;</span><br><span class="line">    std::<span class="built_in">string</span> name;</span><br><span class="line">    std::<span class="built_in">string</span> filename;</span><br><span class="line">     </span><br><span class="line">    size_t Content_Pos = dispositionLine.find(<span class="string">&quot;Content-Disposition:&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (Content_Pos != std::<span class="built_in">string</span>::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        Content_Pos += <span class="number">20</span>;</span><br><span class="line">        size_t ContentEnd = dispositionLine.find(<span class="string">&#x27;&quot;&#x27;</span>, Content_Pos);</span><br><span class="line">        <span class="keyword">if</span> (ContentEnd != std::<span class="built_in">string</span>::npos)</span><br><span class="line">            Content_Disposition.assign(dispositionLine.data() + Content_Pos, ContentEnd - Content_Pos);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;Content_Disposition:&quot;</span>&lt;&lt;Content_Disposition;</span><br><span class="line">    size_t namePos = dispositionLine.find(<span class="string">&quot;name=\&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (namePos != std::<span class="built_in">string</span>::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        namePos += <span class="number">6</span>;</span><br><span class="line">        size_t nameEnd = dispositionLine.find(<span class="string">&#x27;&quot;&#x27;</span>, namePos);</span><br><span class="line">        <span class="keyword">if</span> (nameEnd != std::<span class="built_in">string</span>::npos)</span><br><span class="line">            name.assign(dispositionLine.data() + namePos, nameEnd - namePos);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name;</span><br><span class="line">    size_t filePos = dispositionLine.find(<span class="string">&quot;filename=\&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (filePos != std::<span class="built_in">string</span>::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        filePos += <span class="number">10</span>;</span><br><span class="line">        size_t fileEnd = dispositionLine.find(<span class="string">&#x27;&quot;&#x27;</span>, filePos);</span><br><span class="line">        <span class="keyword">if</span> (fileEnd != std::<span class="built_in">string</span>::npos)</span><br><span class="line">            filename.assign(dispositionLine.data() + filePos, fileEnd - filePos);</span><br><span class="line">    &#125;</span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;filename:&quot;</span>&lt;&lt;filename;</span><br><span class="line">     <span class="comment">// 3. 跳过 Content-Type 行</span></span><br><span class="line">    crlf = buf-&gt;findCRLF();</span><br><span class="line">    <span class="keyword">if</span> (!crlf) <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">    buf-&gt;retrieveUntil(crlf + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. 跳过空行（说明下一个就是正文）</span></span><br><span class="line">    crlf = buf-&gt;findCRLF();</span><br><span class="line">    <span class="keyword">if</span> (!crlf) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    buf-&gt;retrieveUntil(crlf + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 5. 写入文件，直到遇到下一次 boundary</span></span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">char</span>* fileStart = buf-&gt;peek(); <span class="comment">// 文件内容起点</span></span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">char</span>* fileEnd = std::search(</span><br><span class="line">        fileStart, buf-&gt;peek()+ buf-&gt;readableBytes(),</span><br><span class="line">        boundary.c_str(), boundary.c_str() + boundary.size()</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fileEnd == buf-&gt;beginWrite()) &#123;</span><br><span class="line">    <span class="comment">// 未找到结束 boundary，暂时数据不足</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;开始创建文件咯&quot;</span>; </span><br><span class="line">    request_.set_filename(filename);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (filename.find(<span class="string">&quot;.avi&quot;</span>)!= std::<span class="built_in">string</span>::npos ||filename.find(<span class="string">&quot;.mp4&quot;</span>)!= std::<span class="built_in">string</span>::npos||filename.find(<span class="string">&quot;.mkv&quot;</span>)!= std::<span class="built_in">string</span>::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">FileUtil <span class="title">writer</span>(<span class="params"><span class="string">&quot;/root/uploads/videos/&quot;</span> + filename</span>)</span>;</span><br><span class="line">        writer.writeBinary(fileStart, fileEnd - fileStart);</span><br><span class="line">        LOG_INFO&lt;&lt;<span class="string">&quot;这是一个视频&quot;</span>&lt;&lt;filename;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">FileUtil <span class="title">writer</span>(<span class="params"><span class="string">&quot;/root/uploads/&quot;</span> + filename</span>)</span>;</span><br><span class="line">        writer.writeBinary(fileStart, fileEnd - fileStart);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;创建完成&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 6. 移动 buffer 指针，跳过文件数据和 boundary和\r\n</span></span><br><span class="line">    buf-&gt;retrieveUntil(fileEnd+<span class="number">2</span>); <span class="comment">// 跳过文件数据</span></span><br><span class="line">    <span class="comment">//这里移动了，但是貌似还剩下一点东西，我测试了并没有发现问题，就不管啦！！！</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>上面的抓包过程中没有文件上传的解析，这里我上传了一个txt文件，并抓包分析。</p>
-<p><img src="https://i-blog.csdnimg.cn/direct/6b502683b4b6436988f5ddc1b2a7af64.png" alt="在这里插入图片描述"><br>上图的红框部分就是我此次上传的txt文件的请求体部分的抓包。以下是分析：</p>
+<p><img   src="/source/_posts/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/6b502683b4b6436988f5ddc1b2a7af64.png"  alt="在这里插入图片描述"><br>上图的红框部分就是我此次上传的txt文件的请求体部分的抓包。以下是分析：</p>
 <ol>
 <li>边界值：——WebKitFormBoundaryLkDgzlyaqa0LgduN（细心的同学看到了，在请求体中的最开始部分和结尾部分都是以这个值作为分界线的，而在这直接的就是具体的内容）</li>
 <li>Content-Disposition: form-data; name&#x3D;”file”; filename&#x3D;”test.txt”；form-data表示是一个表单数据；name字段对应表单中的字段名；filename是客户端上传的一个原始文件名。这个字段是用于告知服务器如何处理这部分数据。</li>
-<li>Content-Type: text&#x2F;plain\r\n\r\n。这个是声明这部分数据的媒体类型。（text&#x2F;plain表示内容是无格式的纯文本）<br><img src="https://i-blog.csdnimg.cn/direct/a0cc64898b4e4e03bddfd2d99992ea22.png" alt="在这里插入图片描述"><br>这部分就是实际的传输内容。<br>传输如视频或者压缩文件为01二进制流。所以对于上传不同媒体数据的思想是，通过Content-Disposition中的filename字段，获取原数据的文件名，保存为相应的文件类型，并将实际的内容放到对应的文件中。</li>
+<li>Content-Type: text&#x2F;plain\r\n\r\n。这个是声明这部分数据的媒体类型。（text&#x2F;plain表示内容是无格式的纯文本）<br><img   src="/source/_posts/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/a0cc64898b4e4e03bddfd2d99992ea22.png"  alt="在这里插入图片描述"><br>这部分就是实际的传输内容。<br>传输如视频或者压缩文件为01二进制流。所以对于上传不同媒体数据的思想是，通过Content-Disposition中的filename字段，获取原数据的文件名，保存为相应的文件类型，并将实际的内容放到对应的文件中。</li>
 </ol>
-<p>视频上传的抓包截图：<br><img src="https://i-blog.csdnimg.cn/direct/1313fde68bcd4e3a81d1965c957cf539.png" alt="在这里插入图片描述"></p>
-<h1 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h1><h2 id="理论部分-1"><a href="#理论部分-1" class="headerlink" title="理论部分"></a>理论部分</h2><p><img src="https://i-blog.csdnimg.cn/direct/deb4587859e6471ab9b0383ef7d2d985.png" alt="在这里插入图片描述"><br>HTTP响应报文是服务器向客户端返回的数据格式，用于传达服务器对客户端请求的处理结果以及相关的数据。一个标准的HTTP响应报文通常包含状态行、响应头、空行、响应体。<br>状态行包含HTTP版本、状态码和状态消息。例如：HTTP&#x2F;1.1 200 OK，404表示没有找到，429表示请求连接过多，我的羡慕中使用令牌桶进行限流的时候，如果某一时候请求连接过多，就返回429状态码<br>响应头部也是以键值对的形式提供的额外信息，类似于请求头部，用于告知客户端有关响应的详细信息。一些常见的响应头部字段包括：<br>● Content-Type：指定响应主体的媒体类型。<br>● Access-Control-Allow-Origin: 跨源资源共享（CORS）策略，指示哪些域可以访问资源。<br>● Content-Length：指定响应主体的长度（字节数）。<br>● Expires: 响应的过期时间。<br>● ETag: 响应体的实体标签，用于缓存和条件请求。<br>● Last-Modified： 资源最后被修改的日期和时间。<br>● Location：在重定向时指定新的资源位置。<br>● Set-Cookie：在响应中设置Cookie。</p>
+<p>视频上传的抓包截图：<br><img   src="/source/_posts/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/1313fde68bcd4e3a81d1965c957cf539.png"  alt="在这里插入图片描述"></p>
+<h1 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h1><h2 id="理论部分-1"><a href="#理论部分-1" class="headerlink" title="理论部分"></a>理论部分</h2><p><img   src="/source/_posts/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/deb4587859e6471ab9b0383ef7d2d985.png"  alt="在这里插入图片描述"><br>HTTP响应报文是服务器向客户端返回的数据格式，用于传达服务器对客户端请求的处理结果以及相关的数据。一个标准的HTTP响应报文通常包含状态行、响应头、空行、响应体。<br>状态行包含HTTP版本、状态码和状态消息。例如：HTTP&#x2F;1.1 200 OK，404表示没有找到，429表示请求连接过多，我的羡慕中使用令牌桶进行限流的时候，如果某一时候请求连接过多，就返回429状态码<br>响应头部也是以键值对的形式提供的额外信息，类似于请求头部，用于告知客户端有关响应的详细信息。一些常见的响应头部字段包括：<br>● Content-Type：指定响应主体的媒体类型。<br>● Access-Control-Allow-Origin: 跨源资源共享（CORS）策略，指示哪些域可以访问资源。<br>● Content-Length：指定响应主体的长度（字节数）。<br>● Expires: 响应的过期时间。<br>● ETag: 响应体的实体标签，用于缓存和条件请求。<br>● Last-Modified： 资源最后被修改的日期和时间。<br>● Location：在重定向时指定新的资源位置。<br>● Set-Cookie：在响应中设置Cookie。</p>
 <p>空行（Empty Line）在响应头和响应体之间，表示响应头的结束。而响应体是服务端实际传输的数据，可以是文本、HTML页面、图片、视频等，也可能为空。</p>
-<h2 id="wireshark抓包分析-1"><a href="#wireshark抓包分析-1" class="headerlink" title="wireshark抓包分析"></a>wireshark抓包分析</h2><p><img src="https://i-blog.csdnimg.cn/direct/3fde8e82358c45669324345c88902475.png" alt="在这里插入图片描述"></p>
+<h2 id="wireshark抓包分析-1"><a href="#wireshark抓包分析-1" class="headerlink" title="wireshark抓包分析"></a>wireshark抓包分析</h2><p><img   src="/source/_posts/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/3fde8e82358c45669324345c88902475.png"  alt="在这里插入图片描述"></p>
 <ol>
 <li>状态行返回 HTTP&#x2F;1.1(协议版本)，200（状态码），ok(状态码对于的短语)</li>
 <li>响应头部，也是以键值对形式保存值的。<code>Connection: Keep-Alive</code>（表示这是一个长连接，即可以在这个连接上多次请求与响应）；<code>Access-Control-Allow-Origin: *</code>（支持跨域访问源，这里的‘*’表示所有源都可访问）；<code>Content-Encoding: gzip</code>（表示使用了gzip编码）；Content-Length: 325（这个字段表示响应体的数据大小为325字节）；Content-Type: application&#x2F;json（表示响应体的格式为json）</li>
-<li>响应体可以是多种格式，在这里是json格式，见下图<br><img src="https://i-blog.csdnimg.cn/direct/47ddc71bd9864f408025ab5973071fcb.png" alt="在这里插入图片描述"><br>这里的一个json文件中有3个值，filename,uploadtime,username；多个json文件构成了一个Array。</li>
+<li>响应体可以是多种格式，在这里是json格式，见下图<br><img   src="/source/_posts/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/47ddc71bd9864f408025ab5973071fcb.png"  alt="在这里插入图片描述"><br>这里的一个json文件中有3个值，filename,uploadtime,username；多个json文件构成了一个Array。</li>
 </ol>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>响应字段是由浏览器解析的，这里我们不需要实现解析的部分。响应是由服务器生成并返回的，所以在这里需要实现HTTP响应报文的生成。<br>请看代码：</p>
 <h3 id="1-设置状态行"><a href="#1-设置状态行" class="headerlink" title="1.设置状态行"></a>1.设置状态行</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> HttpResponse::setStatusLine(<span class="keyword">const</span> std::<span class="built_in">string</span>&amp; version,</span><br><span class="line">                                 HttpStatusCode statusCode,</span><br><span class="line">                                 <span class="keyword">const</span> std::<span class="built_in">string</span>&amp; statusMessage)</span><br><span class="line">&#123;</span><br><span class="line">    httpVersion_ = version; <span class="comment">//设置HTTP的版本号</span></span><br><span class="line">    statusCode_ = statusCode;<span class="comment">//设置响应状态码</span></span><br><span class="line">    statusMessage_ = statusMessage;<span class="comment">//设置响应消息</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -151,134 +825,622 @@
 <h3 id="2-生成响应体"><a href="#2-生成响应体" class="headerlink" title="2.生成响应体"></a>2.生成响应体</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> HttpResponse::appendToBuffer(muduo::net::Buffer* outputBuf) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// HttpResponse封装的信息格式化输出</span></span><br><span class="line">    <span class="built_in">char</span> buf[<span class="number">32</span>]; </span><br><span class="line">    <span class="comment">// 为什么不把状态信息放入格式化字符串中，因为状态信息有长有短，不方便定义一个固定大小的内存存储</span></span><br><span class="line">    snprintf(buf, <span class="keyword">sizeof</span> buf, <span class="string">&quot;%s %d &quot;</span>, httpVersion_.c_str(), statusCode_);</span><br><span class="line">    </span><br><span class="line">    outputBuf-&gt;append(buf);</span><br><span class="line">    outputBuf-&gt;append(statusMessage_);</span><br><span class="line">    outputBuf-&gt;append(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//是否设置长连接</span></span><br><span class="line">    <span class="keyword">if</span> (closeConnection_) </span><br><span class="line">    &#123;</span><br><span class="line">        outputBuf-&gt;append(<span class="string">&quot;Connection: close\r\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        outputBuf-&gt;append(<span class="string">&quot;Connection: Keep-Alive\r\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> auto&amp; header : headers_)</span><br><span class="line">    &#123; <span class="comment">// 为什么这里不用格式化字符串？因为key和value的长度不定</span></span><br><span class="line">        outputBuf-&gt;append(header.first);</span><br><span class="line">        outputBuf-&gt;append(<span class="string">&quot;: &quot;</span>); </span><br><span class="line">        outputBuf-&gt;append(header.second);</span><br><span class="line">        outputBuf-&gt;append(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    outputBuf-&gt;append(<span class="string">&quot;\r\n&quot;</span>); <span class="comment">//添加空行</span></span><br><span class="line">    </span><br><span class="line">    outputBuf-&gt;append(body_); <span class="comment">//添加响应体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>格式化响应之后，通过网络发送响应消息，浏览器解析响应并渲染，一次HTTP请求就完成了。</p>
 
-      
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/06/26/LiteHub%E4%B9%8B%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/"
+                                   title="LiteHub之会话管理"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LiteHub之会话管理</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/05/28/LiteHub%E4%B9%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"
+                                   title="LiteHub之环境配置"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LiteHub之环境配置</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    if (hexo-config('comment') && hexo-config('comment.enable') == true && hexo-config('comment.use')) {
+  if (hexo-config('comment.use') == "valine") {
+    @import "./valine.styl"
+  }
+  else if (hexo-config('comment.use') == "gitalk") {
+    @import "./gitalk.styl"
+  }
+  else if (hexo-config('comment.use') == "twikoo") {
+    @import "./twikoo.styl"
+  }
+  else if (hexo-config('comment.use') == "waline") {
+    @import "./waline.styl"
+  }
+}
+
+.comments-container {
+  display inline-block
+  width 100%
+  margin-top var(--component-gap)
+
+  .comment-area-title {
+    width 100%
+    color var(--text-color-3)
+    font-size 1.38rem
+    line-height 2
+
+    i {
+      color var(--text-color-3)
+    }
+
+    +keep-tablet() {
+      font-size 1.2rem
+    }
+  }
+
+
+  .configuration-items-error-tip {
+    display flex
+    align-items center
+    margin-top 1rem
+    color var(--text-color-3)
+    font-size 1rem
+
+    i {
+      margin-right 0.3rem
+      color var(--text-color-3)
+      font-size 1.2rem
+    }
+  }
+
+  .comment-plugin-fail {
+    display none
+    flex-direction column
+    align-items center
+    justify-content space-around
+    width 100%
+    padding 2rem
+
+    .fail-tip {
+      color var(--text-color-3)
+      font-size 1.1rem
+    }
+
+    .reload {
+      margin-top 1rem
+    }
+  }
+
+  .comment-plugin-loading {
+    flex-direction column
+    padding 1rem
+    color var(--text-color-3)
+
+    .loading-icon {
+      color var(--text-color-4)
+      font-size 2rem
+    }
+
+    .load-tip {
+      margin-top 1rem
+      color var(--text-color-4)
+      font-size 1.1rem
+    }
+  }
+}
+
+                
+            </div>
+        </div>
+
+        
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/25/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/" data-id="cmcy7r5ul0007ysvba1uz0vov" data-title="LiteHub之请求与响应报文分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2025/06/26/LiteHub%E4%B9%8B%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          LiteHub之会话管理
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2025/05/28/LiteHub%E4%B9%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">LiteHub之环境配置</div>
-    </a>
-  
-</nav>
-
-  
-</article>
+</div>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
+                
+            </div>
+        </div>
 
-  
-    
+        <div class="page-main-content-bottom border-box">
+            .footer {
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  padding 1rem 0
+  color var(--text-color-4)
+  font-size 1rem
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li></ul>
+  a {
+    color var(--text-color-4)
+
+    &:hover {
+      color var(--primary-color)
+    }
+
+    &.no-pointer {
+      pointer-events none
+    }
+  }
+
+
+  .info-item {
+    position relative
+    display flex
+    flex-wrap wrap
+    align-items center
+    justify-content center
+    box-sizing border-box
+    margin 0.2rem 0
+    color var(--text-color-4)
+
+    &.count-info {
+      display flex
+
+      .count-item {
+        &.uv
+        &.pv {
+          display none
+        }
+      }
+    }
+
+
+    &.deploy-info {
+
+      display flex
+
+      a
+      .tooltip {
+        display flex
+        align-items center
+      }
+
+      img {
+        height 1.08rem
+        margin 0 0.4rem
+      }
+    }
+
+
+    &.count-info
+    &.record-info {
+
+      .count-item
+      .record-item {
+        margin-right 15px
+
+        &::before {
+          position absolute
+          top 50%
+          left -10px
+          box-sizing border-box
+          transform translateY(-56%)
+          content '|'
+        }
+
+
+        &:first-child {
+          &::before {
+            display none
+          }
+        }
+
+
+        &:last-child {
+          margin-right 0
+        }
+
+
+        .item-type {
+          margin-right 4px
+        }
+      }
+    }
+  }
+
+
+  .icon-animate {
+    animation heartbeat-animate 1.2s ease-in-out infinite
+  }
+}
+
+        </div>
     </div>
-  </div>
 
-
-  
+    <!-- post tools -->
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/07/11/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/">LiteHub之文件下载与视频播放.md</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/09/LiteHub%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">LiteHub之数据库连接池</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/05/LiteHub%E4%B9%8Bgzip%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/">LiteHub之gzip压缩算法</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/04/LiteHub%E4%B9%8B%E4%B8%AD%E9%97%B4%E4%BB%B6%E9%99%90%E6%B5%81%E5%AE%9E%E7%8E%B0/">LiteHub之中间件限流实现</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+        <div class="post-tools right-toc">
+            $li-margin-bottom = 0.8rem
+$post-tool-button-width = 2.5rem
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+.post-tools-container {
+  padding-top var(--component-gap)
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+  .post-tools-list {
+    li {
+      margin-bottom $li-margin-bottom
+
+      &:last-child {
+        margin-bottom 0
+      }
+    }
+
+
+    li.tools-item {
+      position relative
+      box-sizing border-box
+      width $post-tool-button-width
+      height $post-tool-button-width
+      color var(--text-color-3)
+      font-size 1.2rem
+      background var(--background-color-1)
+      border-radius 50%
+      box-shadow 2px 2px 5px var(--shadow-color)
+      cursor pointer
+
+      &:hover {
+        box-shadow 2px 2px 8px var(--shadow-hover-color)
+      }
+
+      i {
+        color var(--text-color-3)
+      }
+
+
+      &:hover {
+        color var(--background-color-1)
+        background var(--primary-color)
+
+        i {
+          color var(--background-color-1) !important
+        }
+      }
+
+
+      &.toggle-show-toc {
+        display none
+      }
+
+
+      &.go-to-comments {
+        .post-comments-count {
+          position absolute
+          top 0
+          right -1rem
+          display none
+          align-items center
+          justify-content center
+          box-sizing border-box
+          min-width 1.1rem
+          height 1.1rem
+          padding 0 0.2rem
+          color var(--badge-color)
+          font-size 12px
+          background var(--badge-background-color)
+          border-radius 0.4rem
+
+          +keep-tablet() {
+            display none !important
+          }
+        }
+      }
+    }
+
+
+    li.status-item {
+      width $post-tool-button-width
+      height $post-tool-button-width
+      color var(--text-color-3)
+      font-size 1.6rem
+      cursor pointer
+
+
+      &.post-lock {
+        cursor default
+
+        .fa-lock-open {
+          display none
+          color var(--keep-success-color)
+        }
+
+        &.decrypt {
+          cursor pointer
+
+          .fa-lock-open {
+            display block
+          }
+
+          .fa-lock {
+            display none
+          }
+        }
+      }
+    }
+  }
+}
+
+        </div>
     
 
+    <!-- side tools -->
+    <div class="side-tools">
+        $tools-item-width = 2.2rem
+$tools-item-font-size = 1.1rem
+$tools-item-border-radius = 0.2rem
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+.side-tools-show-handle {
+  transform translateX(100%)
+  opacity 0
+  transition-t("transform, opacity", "0, 0", "0.26, 0.26", "linear, linear")
+
+  &.show {
+    transform translateX(0)
+    opacity 1
+  }
+}
+
+.side-tools-container {
+  .tools-item {
+    width $tools-item-width
+    height $tools-item-width
+    margin-bottom 0.25rem
+    color var(--text-color-3)
+    font-size $tools-item-font-size
+    background var(--background-color-1)
+    border-right none
+    border-radius $tools-item-border-radius
+    box-shadow 0.1rem 0.1rem 0.2rem var(--shadow-color)
+    cursor pointer
+
+    i {
+      color var(--text-color-3)
+    }
+
+    &:hover {
+      color var(--background-color-1)
+      background var(--primary-color)
+      box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
+
+      i {
+        color var(--background-color-1)
+      }
+    }
+
+
+    +keep-tablet() {
+      width $tools-item-width * 0.9
+      height $tools-item-width * 0.9
+      font-size $tools-item-font-size * 0.9
+
+      &.toggle-show-toc-tablet
+      &.go-to-comments-tablet {
+        display flex !important
+      }
+    }
+
+    &.rss {
+
+      a {
+        width 100%
+        height 100%
+        border-radius $tools-item-border-radius
+
+        &:hover {
+          color var(--background-color-1)
+          background var(--primary-color)
+          box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
+        }
+      }
+    }
+
+    &.toggle-show-toc-tablet
+    &.go-to-comments-tablet {
+      display none
+    }
+  }
+
+
+  .exposed-tools-list {
+
+    .tool-scroll-to-top {
+      display none
+
+      &.show {
+        display flex
+      }
+
+
+      &.show-arrow {
+        .percent {
+          display none
+        }
+
+        .arrow {
+          display flex
+        }
+      }
+
+
+      &.show-percent {
+        .percent {
+          display flex
+        }
+
+        .arrow {
+          display none
+        }
+      }
+
+
+      &:hover {
+        .percent {
+          display none
+        }
+
+        .arrow {
+          display flex
+        }
+      }
+
+
+      .percent {
+        font-size 1rem
+      }
+    }
+  }
+}
+
+    </div>
+
+    <!-- image mask -->
+    .zoom-in-image-mask {
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index $z-index-8
+  display flex
+  align-items center
+  justify-content center
+  box-sizing border-box
+  background rgba(0, 0, 0, 0)
+  visibility hidden
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "linear, linear")
+
+  &.show {
+    background rgba(0, 0, 0, 0.5)
+    visibility visible
+
+    .zoom-in-image {
+      cursor zoom-out
+    }
+  }
+
+  .zoom-in-image {
+    position absolute
+    z-index $z-index-9
+    transform-origin center center
+    will-change transform
+    transition-t("transform", "0", "0.3", "linear")
+  }
+}
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
 
 
 
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
 
 
 
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
 </body>
 </html>
