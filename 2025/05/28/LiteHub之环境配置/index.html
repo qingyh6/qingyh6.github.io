@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>LiteHub之环境配置 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="仓库地址演示地址 禁用自动更新1234sudo systemctl stop apt-daily.timersudo systemctl stop apt-daily-upgrade.timersudo systemctl disable apt-daily.timersudo systemctl disable apt-daily-upgrade.timer 安装boost12345678910">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LiteHub之环境配置">
+<meta property="og:url" content="http://example.com/2025/05/28/LiteHub%E4%B9%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="仓库地址演示地址 禁用自动更新1234sudo systemctl stop apt-daily.timersudo systemctl stop apt-daily-upgrade.timersudo systemctl disable apt-daily.timersudo systemctl disable apt-daily-upgrade.timer 安装boost12345678910">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/d695fdabfde14d0491be5af325344ea8.png">
+<meta property="article:published_time" content="2025-05-28T06:13:21.000Z">
+<meta property="article:modified_time" content="2025-07-11T02:42:05.993Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/d695fdabfde14d0491be5af325344ea8.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="litehub/_posts-LiteHub之环境配置" class="h-entry article article-type-litehub/_posts" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/05/28/LiteHub%E4%B9%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2025-05-28T06:13:21.000Z" itemprop="datePublished">2025-05-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      LiteHub之环境配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://github.com/qingyh6/HttpsWebServer.git">仓库地址</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1WVjozZEpt/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=bf00238027d3802fdec7c73822b31dde">演示地址</a></p>
+<h2 id="禁用自动更新"><a href="#禁用自动更新" class="headerlink" title="禁用自动更新"></a>禁用自动更新</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop apt-daily.timer</span><br><span class="line"><span class="built_in">sudo</span> systemctl stop apt-daily-upgrade.timer</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> apt-daily.timer</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> apt-daily-upgrade.timer</span><br></pre></td></tr></table></figure>
+<h2 id="安装boost"><a href="#安装boost" class="headerlink" title="安装boost"></a>安装boost</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install libbz2-dev</span><br><span class="line"><span class="built_in">sudo</span> apt-get install libicu-dev</span><br><span class="line">//下载地址</span><br><span class="line">https://sourceforge.net/projects/boost/files/boost/1.69.0/</span><br><span class="line">tar -xvf 压缩包</span><br><span class="line">./bootstrap.sh</span><br><span class="line">./b2</span><br><span class="line"><span class="built_in">sudo</span> ./b2 --prefix=/usr/local/boost install</span><br><span class="line">//添加环境变量</span><br><span class="line">vim /etc/environment</span><br><span class="line"></span><br><span class="line">CPLUS_INCLUDE_PATH=/usr/local/boost/include</span><br><span class="line">LIBRARY_PATH=/usr/local/boost/lib</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014389734/article/details/88963578">Linux：编译安装boost 1.69库</a></p>
+<h2 id="安装muduo库"><a href="#安装muduo库" class="headerlink" title="安装muduo库"></a>安装muduo库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install g++ cmake make libboost-dev</span><br><span class="line">//下载并解压文件</span><br><span class="line">./build.sh</span><br><span class="line">./build.sh install</span><br><span class="line"><span class="built_in">cd</span> ../build/</span><br><span class="line"><span class="built_in">cd</span> release-install-cpp11</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> include/</span><br><span class="line"><span class="built_in">mv</span> muduo/ /usr/include/</span><br><span class="line"><span class="built_in">cd</span> ../lib</span><br><span class="line"><span class="built_in">mv</span> * /usr/local/lib/</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_55882840/article/details/145346115">muduo网络库下载安装教程</a></p>
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_5.7.29-1ubuntu18.04_amd64.deb-bundle.tar</span><br><span class="line"><span class="built_in">sudo</span> tar -xvf mysql-server_5.7.29-1ubuntu18.04_amd64.deb-bundle.tar</span><br><span class="line">//更新依赖源</span><br><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line">//安装依赖包</span><br><span class="line"><span class="built_in">sudo</span> apt-get install ./libmysql*</span><br><span class="line"><span class="built_in">sudo</span> apt-get install libtinfo5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> apt-get install ./mysql-community-client_5.7.29-1ubuntu18.04_amd64.deb</span><br><span class="line"><span class="built_in">sudo</span> apt-get install ./mysql-client_5.7.29-1ubuntu18.04_amd64.deb</span><br><span class="line"><span class="built_in">sudo</span> apt-get install ./mysql-community-server_5.7.29-1ubuntu18.04_amd64.deb </span><br><span class="line"><span class="built_in">sudo</span> apt-get install ./mysql-server_5.7.29-1ubuntu18.04_amd64.deb</span><br><span class="line"></span><br><span class="line">//连接数据库</span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">//开启远程访问</span><br><span class="line">use mysql;</span><br><span class="line"><span class="keyword">select</span> User,Host from user;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED BY <span class="string">&#x27;root&#x27;</span> WITH GRANT OPTION;</span><br><span class="line">flush privileges;</span><br><span class="line"></span><br><span class="line">vim /etc/mysql/mysql.conf.d/mysqld.cnf </span><br><span class="line">将Bindaddres 从127.0.0.1 改为0.0.0.0</span><br><span class="line">systemctl restart mysql</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44842318/article/details/136200647">Ubuntu22部署MySQL5.7详细教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/93513aa6d71f">Ubuntu22部署MySQL5.7详细教程</a></p>
+<h2 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//安装nlohmann/json</span><br><span class="line"><span class="built_in">sudo</span> apt upgrade</span><br><span class="line"><span class="built_in">sudo</span> apt install nlohmann-json3-dev</span><br><span class="line"></span><br><span class="line">//c++ mysql 库</span><br><span class="line"><span class="built_in">sudo</span> apt install libmysqlcppconn-dev</span><br><span class="line"></span><br><span class="line">//安装openssl开发库</span><br><span class="line"><span class="built_in">sudo</span> apt install libssl-dev</span><br><span class="line"></span><br><span class="line">//安装ffmpeg库</span><br><span class="line"><span class="built_in">sudo</span> apt-get install ffmpeg</span><br><span class="line">ffmpeg -version</span><br><span class="line"></span><br><span class="line">//安装gzip</span><br><span class="line"><span class="built_in">sudo</span> apt-get install gzip</span><br><span class="line">gzip --version</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> apt install zlib</span><br><span class="line"><span class="built_in">sudo</span> apt install zlib1g-dev</span><br></pre></td></tr></table></figure>
+<h2 id="创建表操作"><a href="#创建表操作" class="headerlink" title="创建表操作"></a>创建表操作</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>创建web数据库</span><br><span class="line"><span class="keyword">create</span> database webdb;</span><br><span class="line">use webdb;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>创建用户表</span><br><span class="line"><span class="keyword">create table</span> users (</span><br><span class="line">id <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">not null</span> auto_increment,</span><br><span class="line">username <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">not null</span>,</span><br><span class="line">password <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">not null</span>,</span><br><span class="line"><span class="keyword">primary key</span>(id));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>创建文件信息表</span><br><span class="line"><span class="keyword">CREATE TABLE</span> fileinfo (</span><br><span class="line">    id <span class="type">INT</span> AUTO_INCREMENT <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    filename <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci <span class="keyword">NOT NULL</span>,</span><br><span class="line">    username <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    uploadtime DATETIME <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>,</span><br><span class="line">    duration <span class="type">FLOAT</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    isvideo   TINYINT(<span class="number">1</span>) <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span></span><br><span class="line">) <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>创建评论表</span><br><span class="line"><span class="keyword">CREATE TABLE</span> comments (</span><br><span class="line">  id <span class="type">INT</span> AUTO_INCREMENT <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  video_name <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">  user_id <span class="type">INT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">  parent_id <span class="type">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">  content TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">  created_at DATETIME <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">) <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> video_likes (</span><br><span class="line">    user_id <span class="type">INT</span>(<span class="number">11</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    video_name <span class="type">VARCHAR</span>(<span class="number">255</span>)  <span class="keyword">NOT NULL</span>,</span><br><span class="line">    <span class="keyword">PRIMARY KEY</span> (user_id, video_name)</span><br><span class="line">)<span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> video_stats (</span><br><span class="line">    video_name <span class="type">VARCHAR</span>(<span class="number">255</span>)  <span class="keyword">NOT NULL</span>,</span><br><span class="line">    view_count <span class="type">INT</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    like_count <span class="type">INT</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    <span class="keyword">PRIMARY KEY</span> (video_name)</span><br><span class="line">) <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>或者直接设置整个数据库使用这个字符集</span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydatabase <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
+<p>共创建如下几个表<br><img src="https://i-blog.csdnimg.cn/direct/d695fdabfde14d0491be5af325344ea8.png" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/05/28/LiteHub%E4%B9%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" data-id="cmcy7r5uk0006ysvb4ndmh6kz" data-title="LiteHub之环境配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/25/LiteHub%E4%B9%8B%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E5%88%86%E6%9E%90/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LiteHub之请求与响应报文分析
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/">LiteHub之文件下载与视频播放.md</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/09/LiteHub%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">LiteHub之数据库连接池</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/05/LiteHub%E4%B9%8Bgzip%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/">LiteHub之gzip压缩算法</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/04/LiteHub%E4%B9%8B%E4%B8%AD%E9%97%B4%E4%BB%B6%E9%99%90%E6%B5%81%E5%AE%9E%E7%8E%B0/">LiteHub之中间件限流实现</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

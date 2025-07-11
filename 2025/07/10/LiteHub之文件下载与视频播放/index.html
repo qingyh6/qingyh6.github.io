@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>LiteHub之文件下载与视频播放.md | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="文件下载前端请求箭头函数1234567891011&#x2F;&#x2F;这个箭头函数可以形象理解为，x流入（&#x3D;&gt;）x*x,&#x2F;&#x2F;自然而然&#x3D;&gt;前面的就是传入参数,&#x3D;&gt;表示函数体x &#x3D;&gt; x * x&#x2F;&#x2F;相当于function (x) &#123;    return x * x;&#125;&#x2F;&#x2F;如果参数不是一个，就需要用括号()括起来：(x, y) &#x3D;&gt; x * x + y * y  本项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LiteHub之文件下载与视频播放.md">
+<meta property="og:url" content="http://example.com/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="文件下载前端请求箭头函数1234567891011&#x2F;&#x2F;这个箭头函数可以形象理解为，x流入（&#x3D;&gt;）x*x,&#x2F;&#x2F;自然而然&#x3D;&gt;前面的就是传入参数,&#x3D;&gt;表示函数体x &#x3D;&gt; x * x&#x2F;&#x2F;相当于function (x) &#123;    return x * x;&#125;&#x2F;&#x2F;如果参数不是一个，就需要用括号()括起来：(x, y) &#x3D;&gt; x * x + y * y  本项目">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/ee7976fbdf5f41038547b48512e08171.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/7df5f3d2072d4f6aa8130d09a8d2e533.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/83a40f17377044c5a56c3d1d9dbcaaf4.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/4f0a75336d8b4506af21d2252f8401e1.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/15b86b0e768f43098a4f93fe16619642.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/57982f440f6c48c88d496051ce9a7004.png">
+<meta property="article:published_time" content="2025-07-10T02:25:32.000Z">
+<meta property="article:modified_time" content="2025-07-11T02:43:12.169Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/ee7976fbdf5f41038547b48512e08171.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="litehub/_posts-LiteHub之文件下载与视频播放" class="h-entry article article-type-litehub/_posts" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/" class="article-date">
+  <time class="dt-published" datetime="2025-07-10T02:25:32.000Z" itemprop="datePublished">2025-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      LiteHub之文件下载与视频播放.md
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><h2 id="前端请求"><a href="#前端请求" class="headerlink" title="前端请求"></a>前端请求</h2><h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个箭头函数可以形象理解为，x流入（=&gt;）x*x,</span></span><br><span class="line"><span class="comment">//自然而然=&gt;前面的就是传入参数,=&gt;表示函数体</span></span><br><span class="line">x =&gt; x * x</span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="keyword">function</span> (<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果参数不是一个，就需要用括号()括起来：</span></span><br><span class="line">(x, y) =&gt; x * x + y * y</span><br></pre></td></tr></table></figure>
+
+<p>本项目的请求下载前端代码为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">resourceId, filename, progressBar, statusText</span>) &#123;</span><br><span class="line">        <span class="title function_">fetch</span>(<span class="string">&#x27;/resource/download&#x27;</span>, &#123;</span><br><span class="line">            <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">            <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span> &#125;,</span><br><span class="line">            <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; resourceId &#125;) <span class="comment">//通过post方式将要下载的文件路径发送给后端</span></span><br><span class="line">        &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!response.<span class="property">ok</span>) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;下载失败&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">const</span> contentLength = response.<span class="property">headers</span>.<span class="title function_">get</span>(<span class="string">&#x27;Content-Length&#x27;</span>);</span><br><span class="line">            <span class="keyword">const</span> total = contentLength ? <span class="built_in">parseInt</span>(contentLength, <span class="number">10</span>) : <span class="number">0</span>;<span class="comment">//返回内容长度</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> reader = response.<span class="property">body</span>.<span class="title function_">getReader</span>(); <span class="comment">//这个可以逐块提供body</span></span><br><span class="line">            <span class="keyword">const</span> chunks = [];</span><br><span class="line">            <span class="keyword">let</span> received = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> <span class="title function_">pump</span> = (<span class="params"></span>) =&gt; reader.<span class="title function_">read</span>()</span><br><span class="line">              .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; done, value &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (done) &#123;<span class="comment">//如果读取完成，整个文件已下载</span></span><br><span class="line">                <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>(chunks);<span class="comment">//将所有小段chunks转换成一个完成的blob(binary large object)</span></span><br><span class="line">                <span class="keyword">const</span> url = <span class="variable language_">window</span>.<span class="property">URL</span>.<span class="title function_">createObjectURL</span>(blob);<span class="comment">//浏览器创建一个临时的URL地址来获取这个数据</span></span><br><span class="line">                <span class="comment">//如blob:http://localhost/17dfc4b1-df34-4a93-a6a7-6df9f1e85e0c</span></span><br><span class="line">                <span class="keyword">const</span> a = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">                a.<span class="property">href</span> = url;</span><br><span class="line">                a.<span class="property">download</span> = filename;</span><br><span class="line">                <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(a);</span><br><span class="line">                a.<span class="title function_">click</span>();<span class="comment">//模拟点击浏览器的下载行为</span></span><br><span class="line">                <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeChild</span>(a);</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">URL</span>.<span class="title function_">revokeObjectURL</span>(url);<span class="comment">//避免内存泄露</span></span><br><span class="line"></span><br><span class="line">                progressBar.<span class="property">style</span>.<span class="property">width</span> = <span class="string">&#x27;100%&#x27;</span>;</span><br><span class="line">                statusText.<span class="property">textContent</span> = <span class="string">&#x27;下载完成&#x27;</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                chunks.<span class="title function_">push</span>(value);</span><br><span class="line">                received += value.<span class="property">length</span>;</span><br><span class="line">                <span class="comment">//更新下载进度</span></span><br><span class="line">                <span class="keyword">if</span> (total &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">const</span> percent = <span class="title class_">Math</span>.<span class="title function_">floor</span>((received / total) * <span class="number">100</span>);</span><br><span class="line">                progressBar.<span class="property">style</span>.<span class="property">width</span> = percent + <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">                progressBar.<span class="property">textContent</span> = percent + <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">                statusText.<span class="property">textContent</span> = <span class="string">`下载中 <span class="subst">$&#123;percent&#125;</span>%`</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                statusText.<span class="property">textContent</span> = <span class="string">`下载中（未知大小）`</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//递归调用 pump（继续读取下一段）</span></span><br><span class="line">                <span class="keyword">return</span> <span class="title function_">pump</span>();</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">pump</span>();</span><br><span class="line">            &#125;)</span><br><span class="line">            .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;下载出错：&#x27;</span>, error);</span><br><span class="line">            progressBar.<span class="property">style</span>.<span class="property">backgroundColor</span> = <span class="string">&#x27;red&#x27;</span>;</span><br><span class="line">            statusText.<span class="property">textContent</span> = <span class="string">&#x27;下载失败&#x27;</span>;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//类比</span></span><br><span class="line"><span class="comment">// 后端：用水龙头一点点把水流出来</span></span><br><span class="line"><span class="comment">// 前端：接水并灌到瓶子里（Blob）</span></span><br><span class="line"><span class="comment">// createObjectURL：给这瓶水贴个标签（blob URL）</span></span><br><span class="line"><span class="comment">// 点击下载：把瓶子交给你下载</span></span><br><span class="line"><span class="comment">// revokeObjectURL：把标签撕掉，清理内存</span></span><br></pre></td></tr></table></figure>
+<p>对于<code>pump</code>函数的理解，结合箭头函数和<code>promise</code></p>
+<ol>
+<li>reader.read()<br>  ○ 返回一个 Promise&lt;{ done: boolean, value: Uint8Array }&gt;。<br>  ○ done: true 表示读取完了；<br>  ○ value 是当前读取的一段数据（Uint8Array 格式）。</li>
+<li>箭头函数 () &#x3D;&gt; reader.read().then(…)<br>  ○  这是一个返回 Promise 的函数。<br>  ○ done: true 表示读取完了；<br>  ○ value 是当前读取的一段数据（Uint8Array 格式）。</li>
+<li>箭头函数 () &#x3D;&gt; reader.read().then(({ done, value }) &#x3D;&gt; { return dump()}<br> ■ ()&#x3D;&gt;reader.read(),无参数传入，执行reader.read()，返回reader.read()执行的结果{done,value}。<br> ■ .then({ done, value })通过上一步接收这两个数据，然后通过这两个执行相应内容；<br> ■ 如果done为false，表示还没执行完成，chunks.push(value)：把这一段加入缓存  ，更新进度条， 递归调用自身，继续下一段读取  （return pump()）。</li>
+</ol>
+<h3 id="后端响应"><a href="#后端响应" class="headerlink" title="后端响应"></a>后端响应</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function">FileUtil <span class="title">file</span><span class="params">(filePath)</span></span>; </span><br><span class="line"><span class="keyword">if</span> (!file.<span class="built_in">isValid</span>()) <span class="comment">//判断请求的文件是否有效</span></span><br><span class="line">&#123;</span><br><span class="line">    LOG_WARN &lt;&lt; filePath &lt;&lt; <span class="string">&quot;not exist.&quot;</span>;</span><br><span class="line">    resp-&gt;<span class="built_in">setStatusLine</span>(req.<span class="built_in">getVersion</span>(), http::HttpResponse::k404NotFound, <span class="string">&quot;Not Found&quot;</span>);</span><br><span class="line">    resp-&gt;<span class="built_in">setContentType</span>(<span class="string">&quot;text/plain&quot;</span>);</span><br><span class="line">    std::string resp_info=<span class="string">&quot;File not found&quot;</span>;</span><br><span class="line">    resp-&gt;<span class="built_in">setContentLength</span>(resp_info.<span class="built_in">size</span>());</span><br><span class="line">    resp-&gt;<span class="built_in">setBody</span>(resp_info);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置相应头</span></span><br><span class="line">resp-&gt;<span class="built_in">setStatusLine</span>(req.<span class="built_in">getVersion</span>(), http::HttpResponse::k200Ok, <span class="string">&quot;OK&quot;</span>);</span><br><span class="line">resp-&gt;<span class="built_in">setCloseConnection</span>(<span class="literal">false</span>);</span><br><span class="line">resp-&gt;<span class="built_in">setContentType</span>(<span class="string">&quot;application/octet-stream&quot;</span>);</span><br><span class="line"></span><br><span class="line">std::string filename = std::filesystem::<span class="built_in">path</span>(filePath).<span class="built_in">filename</span>().<span class="built_in">string</span>();</span><br><span class="line">LOG_INFO&lt;&lt;<span class="string">&quot;filename:&quot;</span>&lt;&lt;filename;</span><br><span class="line">resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Content-Disposition&quot;</span>, <span class="string">&quot;attachment; filename=\&quot;&quot;</span> + filename + <span class="string">&quot;\&quot;&quot;</span>);</span><br><span class="line"><span class="comment">//设置响应格式为文件类型，并添加文件的路径</span></span><br><span class="line">resp-&gt;<span class="built_in">setContentLength</span>(file.<span class="built_in">size</span>());</span><br><span class="line">resp-&gt;<span class="built_in">setisFileResponse</span>(filePath);</span><br></pre></td></tr></table></figure>
+<h3 id="设计亮点"><a href="#设计亮点" class="headerlink" title="设计亮点"></a>设计亮点</h3><p>在<code>HttpResponse.h</code>头文件中</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isFileResponse</span><span class="params">()</span> <span class="type">const</span> </span>&#123;<span class="keyword">return</span> isFileResponse_;&#125;</span><br><span class="line">    <span class="function">std::string <span class="title">getFilePath</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> filePath_;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setisFileResponse</span><span class="params">(<span class="type">const</span> std::string&amp; path)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">         isFileResponse_ = <span class="literal">true</span>;</span><br><span class="line">         filePath_ = path;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"><span class="type">bool</span>                               isFileResponse_; <span class="comment">//判断是否是文件，如果是，采用流式发送</span></span><br><span class="line">std::string                        filePath_;</span><br></pre></td></tr></table></figure>
+<p>在httpserver的请求函数中判断，如果是文件类型，就调用tcpconnection先将响应头发送出去，然后将消息体分小块发送，这里设置的是8kb；如果不是文件类型，直接将整个响应发送出去<br>在<code>HttpServer::onRequest</code>函数中</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给response设置一个成员，判断是否请求的是文件，如果是文件设置为true，并且存在文件位置在这里send出去。</span></span><br><span class="line"><span class="keyword">if</span> (!response.<span class="built_in">isFileResponse</span>())</span><br><span class="line">&#123;	</span><br><span class="line">    <span class="comment">//不是文件类型</span></span><br><span class="line">    muduo::net::Buffer buf;</span><br><span class="line">    response.<span class="built_in">appendToBuffer</span>(&amp;buf);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    conn-&gt;<span class="built_in">send</span>(&amp;buf);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">     <span class="comment">// 1. 构造响应头</span></span><br><span class="line">    muduo::net::Buffer headerBuf;</span><br><span class="line">    response.<span class="built_in">appendToBuffer</span>(&amp;headerBuf);  <span class="comment">// 只添加状态行和头部，不包含 body</span></span><br><span class="line">    conn-&gt;<span class="built_in">send</span>(&amp;headerBuf);  <span class="comment">// 先发 header</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 发送文件内容（分块）</span></span><br><span class="line">    <span class="type">const</span> std::string filePath = response.<span class="built_in">getFilePath</span>();</span><br><span class="line">    <span class="function">std::ifstream <span class="title">file</span><span class="params">(filePath, std::ios::binary)</span></span>;<span class="comment">// 以二进制模式打开文件</span></span><br><span class="line">    <span class="keyword">if</span> (file) &#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">size_t</span> bufferSize = <span class="number">8192</span>; 			<span class="comment">// 8KB 缓冲区</span></span><br><span class="line">        <span class="type">char</span> buffer[bufferSize];                  <span class="comment">// 栈上分配缓冲区</span></span><br><span class="line">        <span class="keyword">while</span> (file) &#123;                            <span class="comment">// 循环直到文件读取结束或出错</span></span><br><span class="line">            file.<span class="built_in">read</span>(buffer, bufferSize);        <span class="comment">// 读取最多 bufferSize 字节到 buffer</span></span><br><span class="line">            std::streamsize bytesRead = file.<span class="built_in">gcount</span>(); <span class="comment">// 实际读取的字节数</span></span><br><span class="line">            <span class="keyword">if</span> (bytesRead &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                conn-&gt;<span class="built_in">send</span>(muduo::<span class="built_in">StringPiece</span>(buffer, bytesRead));<span class="comment">// 发送数据块</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 文件打不开，补偿错误提示</span></span><br><span class="line">        muduo::net::Buffer errBuf;</span><br><span class="line">        errBuf.<span class="built_in">append</span>(<span class="string">&quot;HTTP/1.1 500 Internal Server Error\r\n\r\nFile open failed&quot;</span>);</span><br><span class="line">        conn-&gt;<span class="built_in">send</span>(&amp;errBuf);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之所以是在httpserver上分块发送数据流，是为了保证代码较好的层次性，httpserver负责管理多个tcp连接，包括发送消息和接收消息等。</p>
+<h1 id="视频播放"><a href="#视频播放" class="headerlink" title="视频播放"></a>视频播放</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 从请求中获取 Range 头，例如 &quot;bytes=1000-2000&quot;</span></span><br><span class="line">    std::string rangeHeader = req.<span class="built_in">getHeader</span>(<span class="string">&quot;Range&quot;</span>);</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">&quot;Range Header: &quot;</span> &lt;&lt; rangeHeader;</span><br><span class="line">    <span class="comment">// 默认起始字节 start=0，结束字节 end=文件大小-1，表示完整文件</span></span><br><span class="line">    std::streamsize start = <span class="number">0</span>, end = fileSize - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 标记是否是分块响应</span></span><br><span class="line">    <span class="type">bool</span> isPartial = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!rangeHeader.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="comment">// 如果客户端带了 Range，则标记为分块传输</span></span><br><span class="line">        isPartial = <span class="literal">true</span>;</span><br><span class="line">        <span class="type">long</span> s = <span class="number">0</span>, e = <span class="number">-1</span>;</span><br><span class="line">         <span class="comment">// 使用 sscanf 解析格式 bytes=&lt;start&gt;-&lt;end&gt;</span></span><br><span class="line">        <span class="comment">// 注意：用户可能只写了起始，没有写结束，所以要判断 sscanf 返回值</span></span><br><span class="line">        <span class="type">int</span> n = <span class="built_in">sscanf</span>(rangeHeader.<span class="built_in">c_str</span>(), <span class="string">&quot;bytes=%ld-%ld&quot;</span>, &amp;s, &amp;e);</span><br><span class="line">        start = s;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span> || e == <span class="number">-1</span>) &#123;<span class="comment">// 如果只解析到 1 个数，或者结束为 -1，则表示读到文件末尾</span></span><br><span class="line">            end = fileSize - <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 解析到两个数，且结束不能超过文件大小</span></span><br><span class="line">            end = std::<span class="built_in">min</span>((std::streamsize)e, fileSize - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">         <span class="comment">// 合法性检查：start 必须小于等于 end 且小于文件大小</span></span><br><span class="line">        <span class="keyword">if</span> (start &gt; end || start &gt;= fileSize) &#123;</span><br><span class="line">            <span class="comment">// 如果不合法，返回 416 状态码（Requested Range Not Satisfiable）</span></span><br><span class="line">            resp-&gt;<span class="built_in">setStatusLine</span>(req.<span class="built_in">getVersion</span>(), http::HttpResponse::k416RequestedRangeNotSatisfiable, <span class="string">&quot;Requested Range Not Satisfiable&quot;</span>);</span><br><span class="line">            <span class="type">char</span> rangeValue[<span class="number">64</span>];</span><br><span class="line">            <span class="comment">// Content-Range 必须带 &quot;*/总大小&quot;</span></span><br><span class="line">            <span class="built_in">snprintf</span>(rangeValue, <span class="built_in">sizeof</span>(rangeValue), <span class="string">&quot;bytes */%ld&quot;</span>, fileSize);</span><br><span class="line">            resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Content-Range&quot;</span>, rangeValue);</span><br><span class="line">            resp-&gt;<span class="built_in">setCloseConnection</span>(<span class="literal">true</span>);</span><br><span class="line">            resp-&gt;<span class="built_in">setContentType</span>(<span class="string">&quot;text/plain&quot;</span>);</span><br><span class="line">            resp-&gt;<span class="built_in">setBody</span>(<span class="string">&quot;Invalid Range&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算需要读取的 chunkSize</span></span><br><span class="line">    std::streamsize chunkSize = end - start + <span class="number">1</span>;</span><br><span class="line">    <span class="function">std::vector&lt;<span class="type">char</span>&gt; <span class="title">buffer</span><span class="params">(chunkSize)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果需要分块，最好这里限制一下 chunkSize，防止内存过大</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定位到要读的起始位置</span></span><br><span class="line">    file.<span class="built_in">seekg</span>(start, std::ios::beg);</span><br><span class="line">    <span class="comment">// 从文件读出 chunkSize 大小的数据到 buffer</span></span><br><span class="line">    file.<span class="built_in">read</span>(buffer.<span class="built_in">data</span>(), chunkSize);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// === 构造响应 ===</span></span><br><span class="line">    <span class="keyword">if</span> (isPartial) &#123;</span><br><span class="line">        resp-&gt;<span class="built_in">setStatusLine</span>(req.<span class="built_in">getVersion</span>(), http::HttpResponse::k206PartialContent, <span class="string">&quot;Partial Content&quot;</span>);</span><br><span class="line">        <span class="type">char</span> rangeHeaderValue[<span class="number">128</span>];</span><br><span class="line">        <span class="built_in">snprintf</span>(rangeHeaderValue, <span class="built_in">sizeof</span>(rangeHeaderValue),</span><br><span class="line">                <span class="string">&quot;bytes %ld-%ld/%ld&quot;</span>, start, end, fileSize);</span><br><span class="line">        resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Content-Range&quot;</span>, rangeHeaderValue);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        resp-&gt;<span class="built_in">setStatusLine</span>(req.<span class="built_in">getVersion</span>(), http::HttpResponse::k200Ok, <span class="string">&quot;OK&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Accept-Ranges&quot;</span>, <span class="string">&quot;bytes&quot;</span>);<span class="comment">// 无论是否分块，都要告知支持分块</span></span><br><span class="line">    resp-&gt;<span class="built_in">setContentType</span>(<span class="string">&quot;video/mp4&quot;</span>);         <span class="comment">// 设置内容类型为 mp4 视频</span></span><br><span class="line">    resp-&gt;<span class="built_in">setContentLength</span>(buffer.<span class="built_in">size</span>());     <span class="comment">// 设置 Content-Length</span></span><br><span class="line">    resp-&gt;<span class="built_in">setBody</span>(std::<span class="built_in">string</span>(buffer.<span class="built_in">begin</span>(), buffer.<span class="built_in">end</span>()));  <span class="comment">// 把读取的文件块设置到响应体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后端涉及对请求体中的range字段进行解析，判断range字段的合法性，随后根据range字段请求内容决定是返回部分内容还是全部内容。<br><strong>请求所有内容：</strong><br><img src="https://i-blog.csdnimg.cn/direct/ee7976fbdf5f41038547b48512e08171.png" alt="在这里插入图片描述"><br><img src="https://i-blog.csdnimg.cn/direct/7df5f3d2072d4f6aa8130d09a8d2e533.png" alt="在这里插入图片描述"><br><img src="https://i-blog.csdnimg.cn/direct/83a40f17377044c5a56c3d1d9dbcaaf4.png" alt="在这里插入图片描述"><br>依次拖动播放进度条，range字段发生改变，格式为<start>–<end>字段，这里是请求从某一时刻到视频结束。<br><strong>请求部分内容：</strong><br><img src="https://i-blog.csdnimg.cn/direct/4f0a75336d8b4506af21d2252f8401e1.png" alt="在这里插入图片描述"><br>这里请求的是从字节6000-18000大小的数据，返回的响应为<br><img src="https://i-blog.csdnimg.cn/direct/15b86b0e768f43098a4f93fe16619642.png" alt="在这里插入图片描述"><br>这里的响应头字段为<code>206 partial content</code>,表示响应返回的只是视频的一部分数据。</p>
+<hr>
+<p><strong>range的合法性校验</strong><br>这里我手动指定range的范围为<code>6000-18000000000000</code>，实际是超出了请求视频的最大范围，看看最后返回的什么。使用curl（这里因为是测试，所以去掉了权限的判定，实际上运行的时候使用curl是不可行的）<br><img src="https://i-blog.csdnimg.cn/direct/57982f440f6c48c88d496051ce9a7004.png" alt="在这里插入图片描述"><br>可以看到这里返回的是文件的最大大小。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/" data-id="cmcy7r5uj0003ysvbaf0zex4e" data-title="LiteHub之文件下载与视频播放.md" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/11/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/09/LiteHub%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LiteHub之数据库连接池</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/">LiteHub之文件下载与视频播放.md</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/09/LiteHub%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">LiteHub之数据库连接池</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/05/LiteHub%E4%B9%8Bgzip%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/">LiteHub之gzip压缩算法</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/04/LiteHub%E4%B9%8B%E4%B8%AD%E9%97%B4%E4%BB%B6%E9%99%90%E6%B5%81%E5%AE%9E%E7%8E%B0/">LiteHub之中间件限流实现</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

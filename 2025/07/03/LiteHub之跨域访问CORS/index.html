@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>LiteHub之跨域访问CORS | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="@TOC 原理基本概念在浏览器安全模型中，同源策略是最重要的安全基石。一个“域”是由3个要素组成的：  协议（如：http 或 https） 主机（Host，如 www.example.com 或 127.0.0.1） 端口（Port，如 80 或 8080）  只要这三个完全一致，就是同源的。例如：  http:&#x2F;&#x2F;example.com:80 和 http:&#x2F;&#x2F;example.com:8080">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LiteHub之跨域访问CORS">
+<meta property="og:url" content="http://example.com/2025/07/03/LiteHub%E4%B9%8B%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AECORS/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="@TOC 原理基本概念在浏览器安全模型中，同源策略是最重要的安全基石。一个“域”是由3个要素组成的：  协议（如：http 或 https） 主机（Host，如 www.example.com 或 127.0.0.1） 端口（Port，如 80 或 8080）  只要这三个完全一致，就是同源的。例如：  http:&#x2F;&#x2F;example.com:80 和 http:&#x2F;&#x2F;example.com:8080">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/75cbb0811c0344678ae998ab647cf543.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/e74a04417e2d40dbb540010d130aeaf4.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/61a6cca783da4a9887a2a849fe667172.png">
+<meta property="article:published_time" content="2025-07-03T02:39:39.000Z">
+<meta property="article:modified_time" content="2025-07-11T02:42:34.115Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/75cbb0811c0344678ae998ab647cf543.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="litehub/_posts-LiteHub之跨域访问CORS" class="h-entry article article-type-litehub/_posts" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/03/LiteHub%E4%B9%8B%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AECORS/" class="article-date">
+  <time class="dt-published" datetime="2025-07-03T02:39:39.000Z" itemprop="datePublished">2025-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      LiteHub之跨域访问CORS
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>@<a href="%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AECORS">TOC</a></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>在浏览器安全模型中，同源策略是最重要的安全基石。<br>一个“域”是由3个要素组成的：</p>
+<ul>
+<li><strong>协议</strong>（如：http 或 https）</li>
+<li><strong>主机</strong>（Host，如 <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> 或 127.0.0.1）</li>
+<li><strong>端口</strong>（Port，如 80 或 8080）</li>
+</ul>
+<p>只要这三个完全一致，就是同源的。<br><strong>例如</strong>：</p>
+<ul>
+<li><a href="http://example.com/">http://example.com:80</a> 和 <a href="http://example.com:8080/">http://example.com:8080</a> 是不同源</li>
+<li><a href="http://example.com/">http://example.com</a> 和 <a href="https://example.com/">https://example.com</a> 是不同源</li>
+</ul>
+<p>下面是官网解释跨域的图解：<br><img src="https://i-blog.csdnimg.cn/direct/75cbb0811c0344678ae998ab647cf543.png" alt="在这里插入图片描述"></p>
+<p><code>两种请求</code>：浏览器将 CORS 请求分成两类：简单请求（simple request）和非简单请求（not-so-simple request）。</p>
+<h3 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h3><p> 按照 W3C 的 CORS 规范，只有完全满足「安全要求」的跨域请求，浏览器才会把它直接当成简单请求，直接发送给服务端，不需要先发 OPTIONS。<br> 必须同时满足以下条件</p>
+<ol>
+<li>请求方法必须是（<code>GET/HEAD/POST</code>）三者之一</li>
+<li>请求头不能超出以下几个字段（<code>Accept、Accept-Language、Content-Language、Content-Type</code>）等</li>
+<li><code>Content-Type</code>（如果存在的话），其值只能是<code>application/x-www-form-urlencoded、multipart/form-data、text/plain</code></li>
+</ol>
+<h3 id="非简单请求（预检请求）"><a href="#非简单请求（预检请求）" class="headerlink" title="非简单请求（预检请求）"></a>非简单请求（预检请求）</h3><p>非简单请求是指那些对服务器有特殊要求的请求，例如：</p>
+<ul>
+<li>使用PUT或DELETE方法</li>
+<li>设置Content-Type为application&#x2F;json<br>即不满足简单请求的条件的都是预检请求（非简单请求）。</li>
+</ul>
+<p>对于这类请求，浏览器会在正式通信前额外发送一次HTTP查询请求（即预检请求），这个过程叫做预检<code>（Preflight）</code>。该请求会确认：</p>
+<ol>
+<li>当前网页域名是否在服务器的许可名单中</li>
+<li>允许使用的HTTP方法和头信息字段<br>只有在获得服务器肯定答复后，浏览器才会发出正式的XMLHttpRequest请求，否则将报错。</li>
+</ol>
+<p>“预检请求”用的请求方法是 <code>OPTIONS</code>，表示这个请求是用来询问的。头信息里面，关键字是 <code>Origin</code>，表示请求来自哪个源。<br>除了 Origin 字段，“预检请求”的头信息包括两个特殊字段。<br>• <code>Access-Control-Request-Method</code>：必须字段，列出浏览器的 CORS 请求会用到哪些 HTTP 方法；<br>• <code>Access-Control-Request-Headers</code>：这个字段是一个逗号 , 分隔的字符串，指定浏览器 CORS 请求会额外发送的头信息字段，上面示例是 X-Custom-Header。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p> <strong>CORS</strong>（Cross-Origin Resource Sharing，跨域资源共享）通过在响应头里加上一组特殊字段来告诉浏览器，这个资源允许被某些源访问。</p>
+<h3 id="服务器端Cors的关键配置"><a href="#服务器端Cors的关键配置" class="headerlink" title="服务器端Cors的关键配置"></a>服务器端Cors的关键配置</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">CorsConfig</span> </span><br><span class="line">&#123;</span><br><span class="line">    std::vector&lt;std::string&gt; allowedOrigins;<span class="comment">//允许哪些域名可以访问</span></span><br><span class="line">    std::vector&lt;std::string&gt; allowedMethods; <span class="comment">//允许哪些方法可以跨域调用</span></span><br><span class="line">    std::vector&lt;std::string&gt; allowedHeaders; <span class="comment">//允许前端请求里带哪些请求头</span></span><br><span class="line">    <span class="type">bool</span> allowCredentials = <span class="literal">false</span>; <span class="comment">//不允许携带Cookie/Authorization header/TLS client cert 这类凭证信息</span></span><br><span class="line">    <span class="type">int</span> maxAge = <span class="number">3600</span>;             <span class="comment">//浏览器缓存预检请求的最大时长, 1 小时内同样的跨域请求只会发送一次 OPTIONS，之后直接用缓存的结果</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">static</span> CorsConfig <span class="title">defaultConfig</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        CorsConfig config;</span><br><span class="line">        config.allowedOrigins = &#123;<span class="string">&quot;*&quot;</span>&#125;; <span class="comment">//这里允许的是所有域名</span></span><br><span class="line">        config.allowedMethods = &#123;<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>, <span class="string">&quot;PUT&quot;</span>, <span class="string">&quot;DELETE&quot;</span>, <span class="string">&quot;OPTIONS&quot;</span>&#125;; <span class="comment">//在预检请求（OPTIONS）的响应里告诉浏览器：后端接受哪些方法</span></span><br><span class="line">        config.allowedHeaders = &#123;<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;Authorization&quot;</span>&#125;; <span class="comment">//允许前端带Content-Type（比如 application/json）和Authorization（携带JWT Token等）</span></span><br><span class="line">        <span class="keyword">return</span> config;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="服务端解析预检请求"><a href="#服务端解析预检请求" class="headerlink" title="服务端解析预检请求"></a>服务端解析预检请求</h3><p>处理客户端发来的请求的流程如下：</p>
+<ol>
+<li>判断是否是预检请求，如果是，进入下一步；否则不做处理（正常的请求，继续后续的处理流程，响应）</li>
+<li>检查当前请求的源是否被允许，如果允许当前请求源则在响应头中添加该源字段，状态码为204 No content,响应体为空，进入下一步</li>
+<li>直接抛出特殊的响应对象（中断后续的处理流程）</li>
+</ol>
+<p><code>总结</code>：如果是预检请求，设置Cors的相关字段，直接返回；否则就进入正常的处理流程。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  @brief 请求前钩子，所有请求进来时都会先执行</span></span><br><span class="line"><span class="comment"> * 如果是跨域的 OPTIONS 预检请求，直接构造响应并抛出，跳过后续中间件/路由逻辑。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CorsMiddleware::before</span><span class="params">(HttpRequest&amp; request)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LOG_DEBUG &lt;&lt; <span class="string">&quot;CorsMiddleware::before - Processing request&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果是浏览器发起的预检请求（CORS Preflight）</span></span><br><span class="line">    <span class="keyword">if</span> (request.<span class="built_in">method</span>() == HttpRequest::Method::kOptions) </span><br><span class="line">    &#123;</span><br><span class="line">        LOG_INFO &lt;&lt; <span class="string">&quot;Processing CORS preflight request&quot;</span>;</span><br><span class="line">        HttpResponse response;  <span class="comment">// 创建预检响应</span></span><br><span class="line">        <span class="built_in">handlePreflightRequest</span>(request, response);</span><br><span class="line">        <span class="comment">// 直接中断后续处理流程，抛出特殊的响应对象</span></span><br><span class="line">        <span class="keyword">throw</span> response;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 处理 CORS 预检请求（OPTIONS）</span></span><br><span class="line"><span class="comment"> * 会校验 Origin，并返回允许的跨域头</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CorsMiddleware::handlePreflightRequest</span><span class="params">(<span class="type">const</span> HttpRequest&amp; request, </span></span></span><br><span class="line"><span class="params"><span class="function">                                          HttpResponse&amp; response)</span> </span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">     <span class="comment">// 从请求头获取 Origin</span></span><br><span class="line">    <span class="type">const</span> std::string&amp; origin = request.<span class="built_in">getHeader</span>(<span class="string">&quot;Origin&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 校验是否允许跨域</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">isOriginAllowed</span>(origin)) </span><br><span class="line">    &#123;</span><br><span class="line">        LOG_WARN &lt;&lt; <span class="string">&quot;Origin not allowed: &quot;</span> &lt;&lt; origin;</span><br><span class="line">        response.<span class="built_in">setStatusCode</span>(HttpResponse::k403Forbidden);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加允许的跨域头,对预检请求返回 204 No Content；</span></span><br><span class="line">    <span class="comment">//即响应体为空，对应返回的是options字段的预检请求的响应</span></span><br><span class="line">    <span class="built_in">addCorsHeaders</span>(response, origin);</span><br><span class="line">    response.<span class="built_in">setStatusCode</span>(HttpResponse::k204NoContent);</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">&quot;Preflight request processed successfully&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 检查给定 Origin 是否在允许列表里</span></span><br><span class="line"><span class="comment"> * @param origin 来自浏览器请求头的 Origin</span></span><br><span class="line"><span class="comment"> * @return true 如果允许跨域，否则 false</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">CorsMiddleware::isOriginAllowed</span><span class="params">(<span class="type">const</span> std::string&amp; origin)</span> <span class="type">const</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> config_.allowedOrigins.<span class="built_in">empty</span>() || </span><br><span class="line">           std::<span class="built_in">find</span>(config_.allowedOrigins.<span class="built_in">begin</span>(), </span><br><span class="line">                    config_.allowedOrigins.<span class="built_in">end</span>(), <span class="string">&quot;*&quot;</span>) != config_.allowedOrigins.<span class="built_in">end</span>() ||</span><br><span class="line">           std::<span class="built_in">find</span>(config_.allowedOrigins.<span class="built_in">begin</span>(), </span><br><span class="line">                    config_.allowedOrigins.<span class="built_in">end</span>(), origin) != config_.allowedOrigins.<span class="built_in">end</span>();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 给响应添加标准的 CORS 头信息</span></span><br><span class="line"><span class="comment"> * @param response 当前响应对象</span></span><br><span class="line"><span class="comment"> * @param origin 本次请求允许的 Origin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CorsMiddleware::addCorsHeaders</span><span class="params">(HttpResponse&amp; response, </span></span></span><br><span class="line"><span class="params"><span class="function">                                  <span class="type">const</span> std::string&amp; origin)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> </span><br><span class="line">    &#123;   </span><br><span class="line">        <span class="comment">// 设置允许的 Origin</span></span><br><span class="line">        response.<span class="built_in">addHeader</span>(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, origin);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 是否允许携带 cookie</span></span><br><span class="line">        <span class="keyword">if</span> (config_.allowCredentials) </span><br><span class="line">        &#123;</span><br><span class="line">            response.<span class="built_in">addHeader</span>(<span class="string">&quot;Access-Control-Allow-Credentials&quot;</span>, <span class="string">&quot;true&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置允许的方法列表,以，分割</span></span><br><span class="line">        <span class="keyword">if</span> (!config_.allowedMethods.<span class="built_in">empty</span>()) </span><br><span class="line">        &#123;</span><br><span class="line">            response.<span class="built_in">addHeader</span>(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, </span><br><span class="line">                             <span class="built_in">join</span>(config_.allowedMethods, <span class="string">&quot;, &quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置允许的自定义请求头列表</span></span><br><span class="line">        <span class="keyword">if</span> (!config_.allowedHeaders.<span class="built_in">empty</span>()) </span><br><span class="line">        &#123;</span><br><span class="line">            response.<span class="built_in">addHeader</span>(<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>, </span><br><span class="line">                             <span class="built_in">join</span>(config_.allowedHeaders, <span class="string">&quot;, &quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 设置预检结果的缓存时间（单位：秒）</span></span><br><span class="line">        response.<span class="built_in">addHeader</span>(<span class="string">&quot;Access-Control-Max-Age&quot;</span>, </span><br><span class="line">                          std::<span class="built_in">to_string</span>(config_.maxAge));</span><br><span class="line">        </span><br><span class="line">        LOG_DEBUG &lt;&lt; <span class="string">&quot;CORS headers added successfully&quot;</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">catch</span> (<span class="type">const</span> std::exception&amp; e) </span><br><span class="line">    &#123;</span><br><span class="line">        LOG_ERROR &lt;&lt; <span class="string">&quot;Error adding CORS headers: &quot;</span> &lt;&lt; e.<span class="built_in">what</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 工具函数：把字符串数组用指定分隔符拼接起来</span></span><br><span class="line"><span class="comment"> * @param strings 字符串列表</span></span><br><span class="line"><span class="comment"> * @param delimiter 分隔符，如 &quot;, &quot;</span></span><br><span class="line"><span class="comment"> * @return 拼接后的字符串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">std::string <span class="title">CorsMiddleware::join</span><span class="params">(<span class="type">const</span> std::vector&lt;std::string&gt;&amp; strings, <span class="type">const</span> std::string&amp; delimiter)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::ostringstream result;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; strings.<span class="built_in">size</span>(); ++i) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; <span class="number">0</span>) result &lt;&lt; delimiter;</span><br><span class="line">        result &lt;&lt; strings[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result.<span class="built_in">str</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="服务端填充响应"><a href="#服务端填充响应" class="headerlink" title="服务端填充响应"></a>服务端填充响应</h3><p>这里的响应指的是正常处理客户端发来的请求后，在最终的响应头中添加CORS的相关信息</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 请求后钩子，正常请求处理完毕后执行。</span></span><br><span class="line"><span class="comment"> * 不管是否跨域，都会在最终响应头里加上 CORS 相关头信息。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CorsMiddleware::after</span><span class="params">(HttpResponse&amp; response)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LOG_DEBUG &lt;&lt; <span class="string">&quot;CorsMiddleware::after - Processing response&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 直接添加CORS头，简化处理逻辑</span></span><br><span class="line">    <span class="keyword">if</span> (!config_.allowedOrigins.<span class="built_in">empty</span>()) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 如果允许所有源</span></span><br><span class="line">        <span class="keyword">if</span> (std::<span class="built_in">find</span>(config_.allowedOrigins.<span class="built_in">begin</span>(), config_.allowedOrigins.<span class="built_in">end</span>(), <span class="string">&quot;*&quot;</span>) </span><br><span class="line">            != config_.allowedOrigins.<span class="built_in">end</span>()) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">addCorsHeaders</span>(response, <span class="string">&quot;*&quot;</span>);</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 简单处理：只取第一个允许的来源（可以按需改成匹配实际请求来源）</span></span><br><span class="line">            <span class="built_in">addCorsHeaders</span>(response, config_.allowedOrigins[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="抓包分析"><a href="#抓包分析" class="headerlink" title="抓包分析"></a>抓包分析</h2><p><img src="https://i-blog.csdnimg.cn/direct/e74a04417e2d40dbb540010d130aeaf4.png" alt="在这里插入图片描述"><br><img src="https://i-blog.csdnimg.cn/direct/61a6cca783da4a9887a2a849fe667172.png" alt="在这里插入图片描述"><br>上图展示了请求与响应的抓包分析数据：当客户端向服务器请求加载登录页面时，服务器不仅会在响应体中返回HTML文件，还会在响应头中附带CORS配置信息供浏览器解析。<br><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/917300">CORS 详解，终于不用担心跨域问题了</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/03/LiteHub%E4%B9%8B%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AECORS/" data-id="cmcy7r5un0008ysvbg8ig599u" data-title="LiteHub之跨域访问CORS" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/04/LiteHub%E4%B9%8B%E4%B8%AD%E9%97%B4%E4%BB%B6%E9%99%90%E6%B5%81%E5%AE%9E%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LiteHub之中间件限流实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/26/LiteHub%E4%B9%8B%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LiteHub之会话管理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/10/LiteHub%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/">LiteHub之文件下载与视频播放.md</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/09/LiteHub%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">LiteHub之数据库连接池</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/05/LiteHub%E4%B9%8Bgzip%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/">LiteHub之gzip压缩算法</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/04/LiteHub%E4%B9%8B%E4%B8%AD%E9%97%B4%E4%BB%B6%E9%99%90%E6%B5%81%E5%AE%9E%E7%8E%B0/">LiteHub之中间件限流实现</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
