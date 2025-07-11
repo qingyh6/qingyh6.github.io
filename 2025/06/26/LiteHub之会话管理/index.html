@@ -44,74 +44,14 @@
 
 
 <body>
-.progress-bar-container {
-  position fixed
-  top 0
-  left 0
-  z-index $z-index-9
-  width 100%
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-  if (hexo-config('pjax') && hexo-config('pjax.enable') == true) {
+    
+</div>
 
-    .pjax-progress-bar {
-      position absolute
-      top 0
-      left 0
-      z-index $z-index-8
-      width 0
-      height 2px
-      background var(--pjax-progress-bar-color)
-      visibility hidden
-      opacity 0
-      transition-t("width, opacity", "0, 0", "0.1, 0.1", "linear")
-
-
-      &.show {
-        visibility visible
-        opacity 1
-      }
-    }
-
-
-    .pjax-progress-icon {
-      position absolute
-      top 0.4rem
-      right 0.3rem
-      z-index $z-index-8
-      color var(--text-color-3)
-      font-size 1.1rem
-      visibility hidden
-
-      +keep-tablet() {
-        top 0.3rem
-        right 0.2rem
-        font-size 1rem
-      }
-
-      &.show {
-        visibility visible
-      }
-    }
-  }
-
-  if (hexo-config('scroll') && hexo-config('scroll.progress_bar') == true) {
-    .scroll-progress-bar {
-      position absolute
-      top 0
-      left 0
-      z-index $z-index-7
-      width 0
-      height var(--header-scroll-progress-bar-height)
-      background var(--primary-color)
-      visibility hidden
-      transition-t("width", "0", "0.1", "linear")
-
-      &.hide {
-        display none !important
-      }
-    }
-  }
-}
 
 
 <main class="page-container border-box">
@@ -121,586 +61,135 @@
     <!-- page content -->
     <div class="page-main-content border-box">
         <div class="page-main-content-top">
-            $pc-search-icon-font-size = 1.5rem
-$menu-bar-line-height = 2.5px
-$menu-icon-gap = 0.1rem
-$pc-menu-item-gap = 1.8rem
-$mobile-menu-item-gap = 1.2rem
-$logo-image-box-width = 2.68rem
-$mobile-menu-icon-wrap-width = 1.6rem
-$mobile-menu-icon-wrap-margin = 0.4rem
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               阿寒的学习屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/%E5%BD%92%E6%A1%A3">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                LINKS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/litehub">
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/%E5%BD%92%E6%A1%A3">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            LINKS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/litehub">
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
 
-
-.header-wrapper {
-  display flex
-  align-items center
-  justify-content center
-  box-sizing border-box
-  width 100%
-  height 100%
-  padding-top var(--header-scroll-progress-bar-height)
-  background var(--background-color-1)
-  box-shadow 1px 2px 6px var(--shadow-color)
-
-  &:hover {
-    box-shadow 1px 2px 10px var(--shadow-hover-color)
-  }
-
-
-  .header-content {
-    z-index $z-index-5
-    display flex
-    flex-direction row
-    align-items center
-    justify-content space-between
-    width var(--page-content-width)
-    max-width var(--page-content-max-width)
-    height 100%
-    transition-t("max-width, width", "0, 0", "0.1, 0.1", "ease, ease")
-
-    &.has-first-screen {
-      max-width var(--page-content-max-width-2)
-    }
-
-
-    .has-toc & {
-      max-width var(--page-content-max-width-2)
-    }
-
-
-    +keep-tablet() {
-      width var(--page-content-width-tablet)
-    }
-
-
-    +keep-mobile() {
-      width var(--page-content-width-mobile)
-    }
-
-
-    .left {
-      height 100%
-      font-size 2rem
-
-      transition-t("transform, transform-origin", "0, 0", "0.2, 0.2", "linear, linear")
-
-      .header-shrink & {
-        transform scale(0.78)
-        transform-origin left
-      }
-
-
-      if (hexo-config('base_info') && hexo-config('base_info.logo')) {
-        .logo-image {
-          flex-shrink 0
-          width $logo-image-box-width
-          height $logo-image-box-width
-          margin-right 0.5rem
-
-
-          +keep-tablet() {
-            width $logo-image-box-width * 0.9
-            height $logo-image-box-width * 0.9
-          }
-
-
-          +keep-mobile() {
-            width $logo-image-box-width * 0.8
-            height $logo-image-box-width * 0.8
-          }
-
-
-          img {
-            width 100%
-            border-radius 0.4rem
-          }
-        }
-      }
-
-
-      .site-name {
-        color var(--text-color-1)
-        font-weight 600
-        font-size var(--header-title-font-size)
-        font-family var(--header-title-font-family)
-        line-height 1
-        letter-spacing 1px
-
-        +keep-tablet() {
-          font-size calc(var(--header-title-font-size) * 0.9)
-        }
-
-
-        +keep-mobile() {
-          font-size calc(var(--header-title-font-size) * 0.8)
-        }
-
-
-        .is-home & {
-          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
-            color var(--first-screen-header-font-color-light)
-            filter brightness(92%)
-
-            .dark-mode & {
-              color var(--first-screen-header-font-color-dark)
-              filter brightness(106%)
-            }
-          }
-        }
-
-
-        .show-header-drawer & {
-          color var(--text-color-1) !important
-        }
-      }
-    }
-
-
-    .right {
-      .pc {
-        .menu-list {
-          display flex
-          gap $pc-menu-item-gap
-          align-items center
-
-          +keep-tablet() {
-            display none
-          }
-
-
-          .menu-item {
-            font-size 1rem
-            cursor pointer
-
-            &.search {
-              font-size $pc-search-icon-font-size
-              &::before {
-                display none !important
-              }
-            }
-
-
-            .menu-text-color {
-              color var(--text-color-3)
-            }
-
-
-            &::before {
-              position absolute
-              bottom -10px
-              left 50%
-              box-sizing border-box
-              width 0
-              height 2.6px
-              background var(--primary-color)
-              border-radius 3px
-              transform translateX(-50%)
-              content ''
-              transition-t("transform, bottom, width", "0, 0, 0", "0.2, 0.2, 0.2", "linear, linear, ease")
-
-              .header-shrink & {
-                bottom calc(-1 * calc(var(--header-shrink-height) * 0.5 - 12px))
-              }
-            }
-
-
-            &:hover
-            &.active {
-              &::before {
-                width 100%
-              }
-            }
-
-
-            .menu-icon {
-              display var(--header-menu-icon)
-              margin-right $menu-icon-gap
-            }
-
-
-            .is-home & {
-              if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
-                .menu-text-color {
-                  color var(--first-screen-header-font-color-light)
-                }
-
-
-                .dark-mode & {
-                  .menu-text-color {
-                    color var(--first-screen-header-font-color-dark)
-                  }
-                }
-              }
-            }
-
-
-            &.has-sub-menu {
-              &::after {
-                position absolute
-                bottom 0
-                left 0
-                box-sizing border-box
-                width 100%
-                height 100%
-                content ''
-              }
-
-              &:hover {
-                &::after {
-                  bottom -100%
-                }
-
-                .collapse-icon {
-                  transform rotate(180deg)
-                }
-
-                .sub-menu-list {
-                  display flex
-                }
-              }
-            }
-
-
-            .collapse-icon {
-              margin-left $menu-icon-gap
-              transition-t("transform", "0", "0.3", "ease")
-            }
-          }
-
-
-          .sub-menu-list {
-            position absolute
-            bottom -280%
-            left 50%
-            display none
-            gap $pc-menu-item-gap
-            justify-content flex-start
-            box-sizing border-box
-            padding 0.8rem 1.6rem
-            background var(--background-color-1)
-            border-radius 0.6rem
-            box-shadow 0 0 8px var(--shadow-color)
-            transform translateX(-50%)
-
-            .sub-menu-item {
-              white-space nowrap
-
-              .menu-text-color {
-                color var(--text-color-3) !important
-              }
-
-              &:hover
-              &.active {
-                .menu-text-color {
-                  color var(--primary-color) !important
-                }
-              }
-
-              .sub-menu-icon {
-                display var(--header-menu-icon)
-                margin-right $menu-icon-gap * 4
-              }
-            }
-          }
-        }
-      }
-
-
-      .mobile {
-        gap 1rem
-
-        .icon-item {
-          position relative
-          display none
-          width 20px
-          height 20px
-          color var(--text-color-3)
-          font-size 1.2rem
-          cursor pointer
-
-          i {
-            color var(--text-color-3)
-
-            .show-header-drawer & {
-              color var(--text-color-3) !important
-            }
-
-            .reset-color & {
-              color var(--text-color-3) !important
-            }
-          }
-
-
-          +keep-tablet() {
-            display flex
-            align-items center
-            justify-content center
-          }
-        }
-
-
-        .menu-bar {
-          .menu-bar-middle {
-            position relative
-            width 18px
-            height $menu-bar-line-height
-            background var(--text-color-3)
-
-            &::before
-            &::after {
-              position absolute
-              left 0
-              width 100%
-              height $menu-bar-line-height
-              background var(--text-color-3)
-              content ''
-              transition-t("transform", "0", "0.38", "ease")
-            }
-
-
-            &::before {
-              top -6px
-
-              .show-header-drawer & {
-                transform translateY(6px) rotate(45deg)
-              }
-            }
-
-
-            &::after {
-              bottom -6px
-
-              .show-header-drawer & {
-                transform translateY(-6px) rotate(-45deg)
-              }
-            }
-
-
-            .reset-color & {
-              background var(--text-color-3) !important
-
-              &::before
-              &::after {
-                background var(--text-color-3) !important
-              }
-            }
-
-
-            .show-header-drawer & {
-              background transparent !important
-
-              &::before
-              &::after {
-                background var(--text-color-3) !important
-              }
-            }
-          }
-        }
-
-
-        .is-home & {
-          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
-            .icon-item i {
-              color var(--first-screen-header-font-color-light)
-            }
-
-            .menu-bar .menu-bar-middle {
-              background var(--first-screen-header-font-color-light)
-
-              &::before
-              &::after {
-                background var(--first-screen-header-font-color-light)
-              }
-            }
-
-            .dark-mode & {
-              .icon-item i {
-                color var(--first-screen-header-font-color-dark)
-              }
-
-              .menu-bar .menu-bar-middle {
-                background var(--first-screen-header-font-color-dark)
-
-                &::before
-                &::after {
-                  background var(--first-screen-header-font-color-dark)
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-
-  .header-drawer {
-    position absolute
-    top 0
-    left 0
-    z-index $z-index-2
-    display none
-    justify-content center
-    box-sizing border-box
-    width 100%
-    padding var(--header-height) 0 2rem 0
-    background var(--background-color-1)
-    transform scaleY(0)
-    transform-origin top
-    transition-t("transform", "0", "0.38", "ease")
-
-    +keep-tablet() {
-      display flex
-    }
-
-
-    .show-header-drawer & {
-      transform scaleY(1)
-    }
-
-
-    .drawer-menu-list {
-      display flex
-      flex-direction column
-      gap 1.2rem
-      align-items flex-start
-      justify-content flex-start
-      width var(--page-content-width)
-      max-width var(--page-content-max-width)
-      height 100%
-      margin-top 1rem
-
-      +keep-tablet() {
-        width var(--page-content-width-tablet)
-      }
-
-
-      +keep-mobile() {
-        width var(--page-content-width-mobile)
-      }
-
-
-      .drawer-menu-item {
-        width 100%
-        padding 0.6rem 0
-        font-size 1.06rem
-        border-bottom 0.1rem solid var(--background-color-3)
-
-        &.active {
-          .drawer-menu-label {
-            .drawer-menu-text-color {
-              color var(--primary-color)
-            }
-          }
-        }
-
-
-        &.show-sub-menu {
-          .collapse-icon {
-            transform rotate(-90deg)
-          }
-
-
-          .drawer-sub-menu-list {
-            display flex
-            height auto
-          }
-        }
-
-
-        .drawer-menu-label {
-          display flex
-          align-items center
-          justify-content space-between
-          width 100%
-
-          .left-side {
-            width 100%
-
-            .menu-icon-wrap {
-              display var(--header-menu-icon)
-              width $mobile-menu-icon-wrap-width
-              margin-right $mobile-menu-icon-wrap-margin
-            }
-          }
-
-
-          .right-side {
-            margin-left 0.4rem
-            cursor pointer
-            transition-t("transform", "0", "0.2", "ease")
-          }
-        }
-      }
-
-
-      .drawer-sub-menu-list {
-        position relative
-        display none
-        flex-direction column
-        justify-content flex-start
-        box-sizing border-box
-        width 100%
-        height 0
-        padding-top 0.6rem
-        padding-bottom 0.6rem
-        padding-left $mobile-menu-icon-wrap-width
-        transition-t("display, height", "0, 0", "0.2, 0.2", "linear, linear")
-        disable-user-select()
-
-        .sub-menu-item {
-          margin-top 1rem
-          padding 0.6rem 0
-
-          &.active {
-            a
-            a i {
-              color var(--primary-color)
-            }
-          }
-
-
-          .sub-menu-icon-wrap {
-            display var(--header-menu-icon)
-            width $mobile-menu-icon-wrap-width
-            margin-right $mobile-menu-icon-wrap-margin
-          }
-        }
-      }
-    }
-  }
-
-
-  .window-mask {
-    position absolute
-    top 0
-    left 0
-    z-index $z-index-1
-    display none
-    box-sizing border-box
-    width 100%
-    height 100vh
-    background rgba(0, 0, 0, 0.4)
-    visibility hidden
-    opacity 0
-    transition-t("transform, opacity", "0, 0", "0.38, 0.38", "ease, ease")
-
-    +keep-tablet() {
-      display block
-    }
-
-
-    .show-header-drawer & {
-      visibility visible
-      opacity 1
-    }
-  }
-}
-
-
-.show-header-drawer {
-  overflow hidden
-}
 
         </div>
 
@@ -752,7 +241,7 @@ $mobile-menu-icon-wrap-margin = 0.4rem
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Jul 11 2025 10:42:23 GMT+0800">2025-07-11 10:42:23</span>
+                    <span class="datetime" data-updated="Fri Jul 11 2025 11:52:59 GMT+0800">2025-07-11 11:52:59</span>
                 </span>
             
         
@@ -836,7 +325,7 @@ $mobile-menu-icon-wrap-margin = 0.4rem
 </ul>
 <p>注意：虽然 Cookie 是最主流的方式，但如果用户禁用 Cookie，服务器还可以通过其他方式传递 Session ID：<br><strong>URL 重写</strong>： 将 Session ID 作为查询参数附加到每个 URL 后面 (如 ?sessionid&#x3D;abc123xyz)。这种方式不太安全（容易泄露）且不美观。<br><strong>隐藏表单域</strong>： 将 Session ID 放在 HTML 表单的隐藏字段中。仅适用于表单提交。</p>
 <p>所以sessionid和cookie的更准确描述是：Session 机制通常利用 Cookie 用于在客户端存储和传递标识服务器端 Session 数据的 Session ID。Cookie 是 Session ID 的载体，而非 Session 生成了 Cookie。 服务器端的 Session 管理代码负责生成 Session ID 并指示浏览器（通过 Set-Cookie）存储它。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44627608/article/details/106277191">第六章 会话管理（Session）</a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44627608/article/details/106277191" >第六章 会话管理（Session）<i class="fas fa-external-link-alt"></i></a></p>
 <h1 id="会话管理代码实现"><a href="#会话管理代码实现" class="headerlink" title="会话管理代码实现"></a>会话管理代码实现</h1><p>会话管理中共实现了四个类实现：</p>
 <ul>
 <li>Session(会话)：表示一个会话。</li>
@@ -870,8 +359,8 @@ $mobile-menu-icon-wrap-margin = 0.4rem
 <li>load()函数，根据sessionId找到对应的会话，如果会话过期则删除会话；否则返回会话</li>
 <li>remove()函数，通过sessionId删除会话</li>
 </ul>
-<h1 id="会话管理抓包分析"><a href="#会话管理抓包分析" class="headerlink" title="会话管理抓包分析"></a>会话管理抓包分析</h1><h2 id="1-首次访问网页"><a href="#1-首次访问网页" class="headerlink" title="1.首次访问网页"></a>1.首次访问网页</h2><p>此时还没登录（此时还不需要维护用户的登录状态），这时的请求中还没有<code>cookie</code>字段。<br><img src="https://i-blog.csdnimg.cn/direct/08f8daca559f40ee8c83dd666ec080b5.png" alt="在这里插入图片描述"><br>这是发起的请求是为了请求网页，<br><img src="https://i-blog.csdnimg.cn/direct/71bba484dc7d4a6d98c6fb723fd6218b.png" alt="在这里插入图片描述"><br>服务器返回的响应，可以看到，此时服务器也没有set-cookie字段；此时服务器返回前端渲染需要的网页（响应体中）<br><img src="https://i-blog.csdnimg.cn/direct/550ea7ce108843f08c513b47d9b4c3a2.png" alt="在这里插入图片描述"></p>
-<h2 id="2-点击登录时"><a href="#2-点击登录时" class="headerlink" title="2.点击登录时"></a>2.点击登录时</h2><p><img src="https://i-blog.csdnimg.cn/direct/f6ef959b27ab4bbb8050a51b39312a21.png" alt="在这里插入图片描述"><br>这时可以看到请求的报文，是以POST方式将用户登录的<code>username</code>和<code>password</code>上传到服务器（这里是明文传输，这是HTTP的缺点，在网络传输中容易被抓包导致密码和账户泄露；后面这个项目看能不能扩展成HTTPS协议）<br><img src="https://i-blog.csdnimg.cn/direct/ac11c9437eb945ce8d031d021ad06438.png" alt="在这里插入图片描述"></p>
+<h1 id="会话管理抓包分析"><a href="#会话管理抓包分析" class="headerlink" title="会话管理抓包分析"></a>会话管理抓包分析</h1><h2 id="1-首次访问网页"><a href="#1-首次访问网页" class="headerlink" title="1.首次访问网页"></a>1.首次访问网页</h2><p>此时还没登录（此时还不需要维护用户的登录状态），这时的请求中还没有<code>cookie</code>字段。<br><img   src="/source/images/LiteHub/08f8daca559f40ee8c83dd666ec080b5.png"  alt="在这里插入图片描述"><br>这是发起的请求是为了请求网页，<br><img   src="/source/images/LiteHub/71bba484dc7d4a6d98c6fb723fd6218b.png"  alt="在这里插入图片描述"><br>服务器返回的响应，可以看到，此时服务器也没有set-cookie字段；此时服务器返回前端渲染需要的网页（响应体中）<br><img   src="/source/images/LiteHub/550ea7ce108843f08c513b47d9b4c3a2.png"  alt="在这里插入图片描述"></p>
+<h2 id="2-点击登录时"><a href="#2-点击登录时" class="headerlink" title="2.点击登录时"></a>2.点击登录时</h2><p><img   src="/source/images/LiteHub/f6ef959b27ab4bbb8050a51b39312a21.png"  alt="在这里插入图片描述"><br>这时可以看到请求的报文，是以POST方式将用户登录的<code>username</code>和<code>password</code>上传到服务器（这里是明文传输，这是HTTP的缺点，在网络传输中容易被抓包导致密码和账户泄露；后面这个项目看能不能扩展成HTTPS协议）<br><img   src="/source/images/LiteHub/ac11c9437eb945ce8d031d021ad06438.png"  alt="在这里插入图片描述"></p>
 <h2 id="3-服务器处理"><a href="#3-服务器处理" class="headerlink" title="3.服务器处理"></a>3.服务器处理</h2><p>此时通过点击登录按钮，将登录请求发送到服务器，服务器根据相应的路由，转发到专门用于登录处理的函数中</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据账号密码，查找数据库是否有该账号密码</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">LoginHandler::queryUserId</span><span class="params">(<span class="type">const</span> std::string &amp;username, <span class="type">const</span> std::string &amp;password)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 前端用户传来账号密码，查找数据库是否有该账号密码</span></span><br><span class="line">    <span class="comment">// 使用预处理语句, 防止sql注入</span></span><br><span class="line">    std::string sql = <span class="string">&quot;SELECT id FROM users WHERE username = ? AND password = ?&quot;</span>;</span><br><span class="line">    sql::ResultSet* res = mysqlUtil_.<span class="built_in">executeQuery</span>(sql, username, password);</span><br><span class="line">    <span class="keyword">if</span> (res-&gt;<span class="built_in">next</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> id = res-&gt;<span class="built_in">getInt</span>(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果查询结果为空，则返回-1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">LoginHandler::handle</span><span class="params">(<span class="type">const</span> http::HttpRequest &amp;req, http::HttpResponse *resp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...其他代码</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// JSON 解析使用 try catch 捕获异常</span></span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        json parsed = json::<span class="built_in">parse</span>(req.<span class="built_in">getBody</span>());</span><br><span class="line">        std::string username = parsed[<span class="string">&quot;username&quot;</span>];</span><br><span class="line">        std::string password = parsed[<span class="string">&quot;password&quot;</span>]; <span class="comment">//从请求体中解析得到username 和password </span></span><br><span class="line">        <span class="comment">// 验证用户是否存在，是否注册过</span></span><br><span class="line">        <span class="type">int</span> userId = <span class="built_in">queryUserId</span>(username, password);</span><br><span class="line">        <span class="keyword">if</span> (userId != <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 获取会话</span></span><br><span class="line">            <span class="keyword">auto</span> session = server_-&gt;<span class="built_in">getSessionManager</span>()-&gt;<span class="built_in">getSession</span>(req, resp);</span><br><span class="line">                     </span><br><span class="line">            <span class="comment">// 在会话中存储用户信息</span></span><br><span class="line">            session-&gt;<span class="built_in">setValue</span>(<span class="string">&quot;userId&quot;</span>, std::<span class="built_in">to_string</span>(userId));</span><br><span class="line">            session-&gt;<span class="built_in">setValue</span>(<span class="string">&quot;username&quot;</span>, username);</span><br><span class="line">            session-&gt;<span class="built_in">setValue</span>(<span class="string">&quot;isLoggedIn&quot;</span>, <span class="string">&quot;true&quot;</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//其他代码</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">// 账号密码错误，请重新登录</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 封装json数据，返回401未认证状态码</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (<span class="type">const</span> std::exception &amp;e)</span><br><span class="line">    &#123;</span><br><span class="line">       	<span class="comment">//...其他代码，返回错误信息</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述代码中的 server_-&gt;getSessionManager()-&gt;getSession(req, resp)负责返回会话，或者新建会话，具体为：</p>
@@ -882,8 +371,8 @@ $mobile-menu-icon-wrap-margin = 0.4rem
 <p> 并在会话中存储如<code>&quot;userId&quot;</code>，<code>&quot;username&quot;</code>，<code>&quot;isLoggedIn&quot;</code>字段。</p>
 <h2 id="4-服务器返回响应"><a href="#4-服务器返回响应" class="headerlink" title="4.服务器返回响应"></a>4.服务器返回响应</h2><p>在getSession(req, resp)—&gt;&gt;&gt;setSessionCookie(sessionId, resp);设置响应报文</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">SessionManager::setSessionCookie</span><span class="params">(<span class="type">const</span> std::string&amp; sessionId, HttpResponse* resp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 设置会话ID到响应头中，作为Cookie</span></span><br><span class="line">    std::string cookie = <span class="string">&quot;sessionId=&quot;</span> + sessionId + <span class="string">&quot;; Path=/; HttpOnly&quot;</span>;</span><br><span class="line">    resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Set-Cookie&quot;</span>, cookie);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i-blog.csdnimg.cn/direct/0ee73f6b2f5446bb8e45afc64683d174.png" alt="在这里插入图片描述"><br>服务器响应设置了cookie字段，以后的客户端的每次请求都将携带这个字段。</p>
-<h2 id="5-客户端的下一次请求"><a href="#5-客户端的下一次请求" class="headerlink" title="5.客户端的下一次请求"></a>5.客户端的下一次请求</h2><p><img src="https://i-blog.csdnimg.cn/direct/c604bf7fb5cb42809931475c02591467.png" alt="在这里插入图片描述"><br><img src="https://i-blog.csdnimg.cn/direct/40fc672056244281a431b3f46fb052a4.png" alt="在这里插入图片描述"><br>从上图可知，设置cookie之后的每一次请求，都会带上cookie这个字段。</p>
+<p><img   src="/source/images/LiteHub/0ee73f6b2f5446bb8e45afc64683d174.png"  alt="在这里插入图片描述"><br>服务器响应设置了cookie字段，以后的客户端的每次请求都将携带这个字段。</p>
+<h2 id="5-客户端的下一次请求"><a href="#5-客户端的下一次请求" class="headerlink" title="5.客户端的下一次请求"></a>5.客户端的下一次请求</h2><p><img   src="/source/images/LiteHub/c604bf7fb5cb42809931475c02591467.png"  alt="在这里插入图片描述"><br><img   src="/source/images/LiteHub/40fc672056244281a431b3f46fb052a4.png"  alt="在这里插入图片描述"><br>从上图可知，设置cookie之后的每一次请求，都会带上cookie这个字段。</p>
 
                     
                 </div>
@@ -941,91 +430,12 @@ $mobile-menu-icon-wrap-margin = 0.4rem
                 
 
                 
-                    if (hexo-config('comment') && hexo-config('comment.enable') == true && hexo-config('comment.use')) {
-  if (hexo-config('comment.use') == "valine") {
-    @import "./valine.styl"
-  }
-  else if (hexo-config('comment.use') == "gitalk") {
-    @import "./gitalk.styl"
-  }
-  else if (hexo-config('comment.use') == "twikoo") {
-    @import "./twikoo.styl"
-  }
-  else if (hexo-config('comment.use') == "waline") {
-    @import "./waline.styl"
-  }
-}
-
-.comments-container {
-  display inline-block
-  width 100%
-  margin-top var(--component-gap)
-
-  .comment-area-title {
-    width 100%
-    color var(--text-color-3)
-    font-size 1.38rem
-    line-height 2
-
-    i {
-      color var(--text-color-3)
-    }
-
-    +keep-tablet() {
-      font-size 1.2rem
-    }
-  }
+                    
 
 
-  .configuration-items-error-tip {
-    display flex
-    align-items center
-    margin-top 1rem
-    color var(--text-color-3)
-    font-size 1rem
 
-    i {
-      margin-right 0.3rem
-      color var(--text-color-3)
-      font-size 1.2rem
-    }
-  }
 
-  .comment-plugin-fail {
-    display none
-    flex-direction column
-    align-items center
-    justify-content space-around
-    width 100%
-    padding 2rem
 
-    .fail-tip {
-      color var(--text-color-3)
-      font-size 1.1rem
-    }
-
-    .reload {
-      margin-top 1rem
-    }
-  }
-
-  .comment-plugin-loading {
-    flex-direction column
-    padding 1rem
-    color var(--text-color-3)
-
-    .loading-icon {
-      color var(--text-color-4)
-      font-size 2rem
-    }
-
-    .load-tip {
-      margin-top 1rem
-      color var(--text-color-4)
-      font-size 1.1rem
-    }
-  }
-}
 
                 
             </div>
@@ -1041,108 +451,25 @@ $mobile-menu-icon-wrap-margin = 0.4rem
         </div>
 
         <div class="page-main-content-bottom border-box">
-            .footer {
-  display flex
-  flex-direction column
-  align-items center
-  justify-content center
-  padding 1rem 0
-  color var(--text-color-4)
-  font-size 1rem
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Qingyh</a>
+        
+    </div>
 
-  a {
-    color var(--text-color-4)
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
 
-    &:hover {
-      color var(--primary-color)
-    }
+    
 
-    &.no-pointer {
-      pointer-events none
-    }
-  }
+    
 
-
-  .info-item {
-    position relative
-    display flex
-    flex-wrap wrap
-    align-items center
-    justify-content center
-    box-sizing border-box
-    margin 0.2rem 0
-    color var(--text-color-4)
-
-    &.count-info {
-      display flex
-
-      .count-item {
-        &.uv
-        &.pv {
-          display none
-        }
-      }
-    }
-
-
-    &.deploy-info {
-
-      display flex
-
-      a
-      .tooltip {
-        display flex
-        align-items center
-      }
-
-      img {
-        height 1.08rem
-        margin 0 0.4rem
-      }
-    }
-
-
-    &.count-info
-    &.record-info {
-
-      .count-item
-      .record-item {
-        margin-right 15px
-
-        &::before {
-          position absolute
-          top 50%
-          left -10px
-          box-sizing border-box
-          transform translateY(-56%)
-          content '|'
-        }
-
-
-        &:first-child {
-          &::before {
-            display none
-          }
-        }
-
-
-        &:last-child {
-          margin-right 0
-        }
-
-
-        .item-type {
-          margin-right 4px
-        }
-      }
-    }
-  }
-
-
-  .icon-animate {
-    animation heartbeat-animate 1.2s ease-in-out infinite
-  }
-}
+    
+</footer>
 
         </div>
     </div>
@@ -1150,281 +477,77 @@ $mobile-menu-icon-wrap-margin = 0.4rem
     <!-- post tools -->
     
         <div class="post-tools right-toc">
-            $li-margin-bottom = 0.8rem
-$post-tool-button-width = 2.5rem
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
 
-.post-tools-container {
-  padding-top var(--component-gap)
+        <!-- PC TOC show toggle -->
+        
 
-  .post-tools-list {
-    li {
-      margin-bottom $li-margin-bottom
+        <!-- PC go comment -->
+        
 
-      &:last-child {
-        margin-bottom 0
-      }
-    }
-
-
-    li.tools-item {
-      position relative
-      box-sizing border-box
-      width $post-tool-button-width
-      height $post-tool-button-width
-      color var(--text-color-3)
-      font-size 1.2rem
-      background var(--background-color-1)
-      border-radius 50%
-      box-shadow 2px 2px 5px var(--shadow-color)
-      cursor pointer
-
-      &:hover {
-        box-shadow 2px 2px 8px var(--shadow-hover-color)
-      }
-
-      i {
-        color var(--text-color-3)
-      }
-
-
-      &:hover {
-        color var(--background-color-1)
-        background var(--primary-color)
-
-        i {
-          color var(--background-color-1) !important
-        }
-      }
-
-
-      &.toggle-show-toc {
-        display none
-      }
-
-
-      &.go-to-comments {
-        .post-comments-count {
-          position absolute
-          top 0
-          right -1rem
-          display none
-          align-items center
-          justify-content center
-          box-sizing border-box
-          min-width 1.1rem
-          height 1.1rem
-          padding 0 0.2rem
-          color var(--badge-color)
-          font-size 12px
-          background var(--badge-background-color)
-          border-radius 0.4rem
-
-          +keep-tablet() {
-            display none !important
-          }
-        }
-      }
-    }
-
-
-    li.status-item {
-      width $post-tool-button-width
-      height $post-tool-button-width
-      color var(--text-color-3)
-      font-size 1.6rem
-      cursor pointer
-
-
-      &.post-lock {
-        cursor default
-
-        .fa-lock-open {
-          display none
-          color var(--keep-success-color)
-        }
-
-        &.decrypt {
-          cursor pointer
-
-          .fa-lock-open {
-            display block
-          }
-
-          .fa-lock {
-            display none
-          }
-        }
-      }
-    }
-  }
-}
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
 
         </div>
     
 
     <!-- side tools -->
     <div class="side-tools">
-        $tools-item-width = 2.2rem
-$tools-item-font-size = 1.1rem
-$tools-item-border-radius = 0.2rem
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
 
-.side-tools-show-handle {
-  transform translateX(100%)
-  opacity 0
-  transition-t("transform, opacity", "0, 0", "0.26, 0.26", "linear, linear")
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
 
-  &.show {
-    transform translateX(0)
-    opacity 1
-  }
-}
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
 
-.side-tools-container {
-  .tools-item {
-    width $tools-item-width
-    height $tools-item-width
-    margin-bottom 0.25rem
-    color var(--text-color-3)
-    font-size $tools-item-font-size
-    background var(--background-color-1)
-    border-right none
-    border-radius $tools-item-border-radius
-    box-shadow 0.1rem 0.1rem 0.2rem var(--shadow-color)
-    cursor pointer
+        <!-- rss -->
+        
 
-    i {
-      color var(--text-color-3)
-    }
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
 
-    &:hover {
-      color var(--background-color-1)
-      background var(--primary-color)
-      box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
+    <ul class="exposed-tools-list border-box">
+        
 
-      i {
-        color var(--background-color-1)
-      }
-    }
+        
 
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
 
-    +keep-tablet() {
-      width $tools-item-width * 0.9
-      height $tools-item-width * 0.9
-      font-size $tools-item-font-size * 0.9
-
-      &.toggle-show-toc-tablet
-      &.go-to-comments-tablet {
-        display flex !important
-      }
-    }
-
-    &.rss {
-
-      a {
-        width 100%
-        height 100%
-        border-radius $tools-item-border-radius
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--primary-color)
-          box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
-        }
-      }
-    }
-
-    &.toggle-show-toc-tablet
-    &.go-to-comments-tablet {
-      display none
-    }
-  }
-
-
-  .exposed-tools-list {
-
-    .tool-scroll-to-top {
-      display none
-
-      &.show {
-        display flex
-      }
-
-
-      &.show-arrow {
-        .percent {
-          display none
-        }
-
-        .arrow {
-          display flex
-        }
-      }
-
-
-      &.show-percent {
-        .percent {
-          display flex
-        }
-
-        .arrow {
-          display none
-        }
-      }
-
-
-      &:hover {
-        .percent {
-          display none
-        }
-
-        .arrow {
-          display flex
-        }
-      }
-
-
-      .percent {
-        font-size 1rem
-      }
-    }
-  }
-}
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
 
     </div>
 
     <!-- image mask -->
-    .zoom-in-image-mask {
-  position fixed
-  top 0
-  right 0
-  bottom 0
-  left 0
-  z-index $z-index-8
-  display flex
-  align-items center
-  justify-content center
-  box-sizing border-box
-  background rgba(0, 0, 0, 0)
-  visibility hidden
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "linear, linear")
-
-  &.show {
-    background rgba(0, 0, 0, 0.5)
-    visibility visible
-
-    .zoom-in-image {
-      cursor zoom-out
-    }
-  }
-
-  .zoom-in-image {
-    position absolute
-    z-index $z-index-9
-    transform-origin center center
-    will-change transform
-    transition-t("transform", "0", "0.3", "linear")
-  }
-}
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
 
 
     <!-- local search -->
