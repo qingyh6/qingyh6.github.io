@@ -1,0 +1,40 @@
+/* your-hexo/source/css/custom.css */
+
+/* ===== 只改颜色、圆角、间距，完全用默认字体 ===== */
+:root {
+  /* 全局字号 & 圆角 */
+  --base-font-size: 17px;          /* 默认 16，略大更舒服 */
+  --box-border-radius: 14px;       /* 默认 8，卡片更柔和 */
+
+  /* Header */
+  --header-height: 99px;
+
+  /* 首屏 */
+  --first-screen-font-size: 34px;
+  --first-screen-icon-size: 30px;
+
+  /* 白昼莫兰迪配色 */
+  --first-screen-font-color-light: #4f5b66;     /* 标题文字 */
+  --first-screen-icon-color-light: #5e81ac;     /* 图标 */
+  --first-screen-header-font-color-light: #5e81ac;
+
+  /* 暗黑模式柔和冷色 */
+  --first-screen-font-color-dark: #d8dee9;
+  --first-screen-icon-color-dark: #88c0d0;
+  --first-screen-header-font-color-dark: #88c0d0;
+
+  /* 文章图片居中 */
+  --post-img-align: 0 auto;
+
+  /* 内容区宽度（默认 900，稍窄阅读更集中） */
+  --page-content-max-width: 840px;
+
+  /* 首页卡片 hover 微放大 */
+  --home-post-hover-scale: 1.015;
+
+  /* 隐藏头像/作者/时间（按需开启，想留可删掉） */
+  --post-author-avatar: none;
+  --post-author-name: none;
+  --post-create-datetime: none;
+  --post-update-datetime: none;
+}

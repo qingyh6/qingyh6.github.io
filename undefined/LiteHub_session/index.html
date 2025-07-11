@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Qingyh">
+    
+    <title>
+        
+            LiteHub之会话管理 |
+        
+        阿寒的学习屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"localhost","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"阿寒的学习屋","author":"Qingyh","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/                      || fa-solid fa-home","archives":"/archives          || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group","links":"/links                || fa-solid fa-link","tools":"/tools                || fa-solid fa-tools","about":"/about                || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"知识的学习在于点滴记录，坚持不懈；|| 知识的学习要有深度和广度，不仅要能够理解，更知道如何表达！！！","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/qingyh6","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":["One","Two","Three","炼气","筑基","结丹","元婴","化神"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY 年 MM 月 DD 日 HH:mm","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null]},"root":"","source_data":{"links":[{"title":"我的其他平台"},{"name":"github","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"CSDN","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}],"photos":[{"url":"https://xpoet.cn/images/logo.png","name":"XPoet"},{"url":"/images/photos/img-1.png","name":"img1"},{"url":"/images/photos/img-2.png","name":"img2"},"......","......","......"],"tools":[{"title":"我的常用工具"},{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk1"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"}]},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               阿寒的学习屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tools"></i>
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tools"></i>
+                                </span>
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        LiteHub之会话管理
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Qingyh</span>
+                                
+                                    <span class="author-badge">Two</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025 年 06 月 26 日 10:29</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Jul 11 2025 16:38:46 GMT+0800">2025 年 07 月 11 日 16:38</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/LiteHub/">LiteHub</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.6k 字</span>
+            </span>
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <meta name="referrer" content="no-referrer"/>
+
+
+
+<h1 id="会话管理理论"><a href="#会话管理理论" class="headerlink" title="会话管理理论"></a>会话管理理论</h1><h2 id="为什么进行会话管理"><a href="#为什么进行会话管理" class="headerlink" title="为什么进行会话管理"></a>为什么进行会话管理</h2><h3 id="HTTP协议的特性与局限性"><a href="#HTTP协议的特性与局限性" class="headerlink" title="HTTP协议的特性与局限性"></a>HTTP协议的特性与局限性</h3><p>Web应用程序的基础是HTTP（Hypertext Transfer Protocol）协议，该协议在设计时具有以下核心特点：</p>
+<ol>
+<li><p><strong>请求&#x2F;响应模式</strong>：</p>
+<ul>
+<li>每次HTTP交互都遵循”客户端发起请求→服务器返回响应”的固定模式</li>
+<li>例如：用户访问电商网站时，点击商品页、加入购物车、结算等都是独立的请求</li>
+<li>各请求之间没有内在关联，服务器无法自动识别这些请求是否来自同一用户</li>
+</ul>
+</li>
+<li><p><strong>无状态性（Stateless）</strong>：</p>
+<ul>
+<li>协议本身不保存任何历史交互信息</li>
+<li>每个请求都被视为全新的交互，服务器不会”记住”之前的请求</li>
+<li>实际案例：刷新网页后，登录状态、表单填写内容等都将丢失</li>
+</ul>
+</li>
+<li><p><strong>无连接特性</strong>：</p>
+<ul>
+<li>每次TCP连接只处理一个请求&#x2F;响应</li>
+<li>请求完成后立即断开连接以节省资源</li>
+<li>导致的问题：无法维持长期对话，如在线聊天、多步骤表单等场景难以实现</li>
+</ul>
+</li>
+</ol>
+<h3 id="现实应用的需求矛盾"><a href="#现实应用的需求矛盾" class="headerlink" title="现实应用的需求矛盾"></a>现实应用的需求矛盾</h3><p>虽然HTTP的这些特性使其简单高效，但现代Web应用需要：</p>
+<ul>
+<li>用户登录状态保持（如保持7天免登录）</li>
+<li>购物车商品跨页面保存</li>
+<li>多步骤表单数据暂存</li>
+<li>个性化内容推荐（基于历史浏览）</li>
+</ul>
+<p>因此需要引入<strong>会话管理机制</strong>来：</p>
+<ol>
+<li>识别同一用户的连续请求</li>
+<li>在服务器端存储用户特定数据</li>
+<li>维持应用的状态连续性</li>
+</ol>
+<p>常见解决方案包括：</p>
+<ul>
+<li>Cookie技术</li>
+<li>Session会话</li>
+<li>Token令牌（如JWT）</li>
+<li>URL重写技术</li>
+</ul>
+<p>在这个项目中，我们使用的就是Session会话和Cookie技术结合使用来记录用户登录状态。</p>
+<h2 id="什么是Session"><a href="#什么是Session" class="headerlink" title="什么是Session"></a>什么是Session</h2><ul>
+<li>服务器为每个用户浏览器创建一个会话对象（session对象），一个浏览器只能产生一个session</li>
+<li>当新建一个窗口访问服务器时，还是原来的那个session。session中默认保存的是当前用户的信息。因此，在需要保存其他用户数据时，我们可以自己给session添加属性。</li>
+<li>session（会话）可以看为是一种标识，通过带session的请求，可以让服务器知道是谁在请求数据。</li>
+</ul>
+<h2 id="Session与cookie的区别与联系"><a href="#Session与cookie的区别与联系" class="headerlink" title="Session与cookie的区别与联系"></a>Session与cookie的区别与联系</h2><ul>
+<li>session是由服务器创建的，并保存在服务器上的。在session创建好之后，会把sessionId（会话的唯一标识符）放在cookie中返回（response）给客户端。客户端将cookie是保存在客户端的。</li>
+<li>以后的每次请求都携带cookie，cookie中的内容是sessionId值。</li>
+<li>session的过期和超时与cookie的过期无直接联系，都是可以分别进行设置的。当session或cookie中任意一方过期，那么用户就需要重新登录了</li>
+</ul>
+<p>注意：虽然 Cookie 是最主流的方式，但如果用户禁用 Cookie，服务器还可以通过其他方式传递 Session ID：<br><strong>URL 重写</strong>： 将 Session ID 作为查询参数附加到每个 URL 后面 (如 ?sessionid&#x3D;abc123xyz)。这种方式不太安全（容易泄露）且不美观。<br><strong>隐藏表单域</strong>： 将 Session ID 放在 HTML 表单的隐藏字段中。仅适用于表单提交。</p>
+<p>所以sessionid和cookie的更准确描述是：Session 机制通常利用 Cookie 用于在客户端存储和传递标识服务器端 Session 数据的 Session ID。Cookie 是 Session ID 的载体，而非 Session 生成了 Cookie。 服务器端的 Session 管理代码负责生成 Session ID 并指示浏览器（通过 Set-Cookie）存储它。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44627608/article/details/106277191" >第六章 会话管理（Session）<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="会话管理代码实现"><a href="#会话管理代码实现" class="headerlink" title="会话管理代码实现"></a>会话管理代码实现</h1><p>会话管理中共实现了四个类实现：</p>
+<ul>
+<li>Session(会话)：表示一个会话。</li>
+<li>SessionManager(会话管理器)：用于管理多个会话的声明周期。</li>
+<li>SessionStorage(会话存储)：会话存储实现的抽象类。</li>
+<li>MemorySessionStorage(内存会话存储)：继承SessionStorage，具体的会话存储实现类。</li>
+</ul>
+<h2 id="Session类实现"><a href="#Session类实现" class="headerlink" title="Session类实现"></a>Session类实现</h2><ul>
+<li>Session 构造函数，用于初始化会话实例，记录 sessionId、设置最长有效时间（默认值为 1 小时）并关联会话管理器。</li>
+<li>isExpired（），判断当前会话是否过期</li>
+<li>refresh（），刷新过期时间，当前时间加上最长有效时间（默认为一小时）</li>
+<li>setValue（），以键值对形式存储会话数据</li>
+<li>getValue（），根据传入key获取相应的会话数据（value）</li>
+<li>remove(),根据传入key删除相应的会话数据（value）</li>
+<li>clear()，清空所有会话数据</li>
+</ul>
+<p> 总结，session类实现了记录会话唯一标识符，维持会话过期时间，更新会话数据功能。</p>
+<h2 id="SessionManager类实现"><a href="#SessionManager类实现" class="headerlink" title="SessionManager类实现"></a>SessionManager类实现</h2><ul>
+<li>SessionManager 构造函数，用于配置会话存储对象（负责会话存储）和随机数生成器（用于生成随机的会话ID）</li>
+<li>getSession（）函数会从请求中提取cookie字段以获取sessionid，并返回相应的会话；若cookie不存在或者会话已过期，则创建一个新会话。</li>
+<li>generateSessionId（），生成一个唯一的会话标识符</li>
+<li>destroySession（），从存储中移除会话</li>
+<li>getSessionIdFromCookie（），从请求中的cookie字段获取sessionId</li>
+<li>setSessionCookie（），在响应中设置cookie</li>
+</ul>
+<p>这几个函数比较重要，放这里注释一下，便于理解</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//从req请求中解析出sessionId</span></span><br><span class="line"><span class="function">std::string <span class="title">SessionManager::getSessionIdFromCookie</span><span class="params">(<span class="type">const</span> HttpRequest&amp; req)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::string sessionId;</span><br><span class="line">    std::string cookie = req.<span class="built_in">getHeader</span>(<span class="string">&quot;Cookie&quot;</span>);<span class="comment">//找到Cookie字段</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!cookie.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;	</span><br><span class="line">    	<span class="comment">//格式一般为</span></span><br><span class="line">    	<span class="comment">//Cookie: sessionId=1dd3ce798f86bf092595840ac8ecadc8\r\n</span></span><br><span class="line">        <span class="type">size_t</span> pos = cookie.<span class="built_in">find</span>(<span class="string">&quot;sessionId=&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (pos != std::string::npos)</span><br><span class="line">        &#123;</span><br><span class="line">            pos += <span class="number">10</span>; <span class="comment">// 跳过&quot;sessionId=&quot;</span></span><br><span class="line">            <span class="type">size_t</span> end = cookie.<span class="built_in">find</span>(<span class="string">&#x27;;&#x27;</span>, pos);</span><br><span class="line">            <span class="keyword">if</span> (end != std::string::npos)</span><br><span class="line">            &#123;</span><br><span class="line">                sessionId = cookie.<span class="built_in">substr</span>(pos, end - pos);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;	</span><br><span class="line">            	<span class="comment">//从pos开始截取到字符串结束</span></span><br><span class="line">                sessionId = cookie.<span class="built_in">substr</span>(pos);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> sessionId;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成唯一的会话标识符，确保会话的唯一性和安全性</span></span><br><span class="line"><span class="function">std::string <span class="title">SessionManager::generateSessionId</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::stringstream ss;</span><br><span class="line">    std::uniform_int_distribution&lt;&gt; <span class="built_in">dist</span>(<span class="number">0</span>, <span class="number">15</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成32个字符的会话ID，每个字符是一个十六进制数字</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        ss &lt;&lt; std::hex &lt;&lt; <span class="built_in">dist</span>(rng_);<span class="comment">//生成一个0~15之间的随机数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ss.<span class="built_in">str</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在响应中添加cookie字段</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">SessionManager::setSessionCookie</span><span class="params">(<span class="type">const</span> std::string&amp; sessionId, HttpResponse* resp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 设置会话ID到响应头中，作为Cookie</span></span><br><span class="line">    std::string cookie = <span class="string">&quot;sessionId=&quot;</span> + sessionId + <span class="string">&quot;; Path=/; HttpOnly&quot;</span>;</span><br><span class="line">    resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Set-Cookie&quot;</span>, cookie);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">std::shared_ptr&lt;Session&gt; <span class="title">SessionManager::getSession</span><span class="params">(<span class="type">const</span> HttpRequest&amp; req, HttpResponse* resp)</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">	<span class="comment">//从请求中的cookie字段中取出sessionid</span></span><br><span class="line">    std::string sessionId = <span class="built_in">getSessionIdFromCookie</span>(req);</span><br><span class="line">    </span><br><span class="line">    std::shared_ptr&lt;Session&gt; session;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (!sessionId.<span class="built_in">empty</span>())<span class="comment">//如果sessionId存在</span></span><br><span class="line">    &#123;</span><br><span class="line">        session = storage_-&gt;<span class="built_in">load</span>(sessionId); <span class="comment">//根据sessionId获取对应会话</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!session || session-&gt;<span class="built_in">isExpired</span>())<span class="comment">//如果sesseion不存在或者说session过期，重新创建一个</span></span><br><span class="line">    &#123;</span><br><span class="line">        sessionId = <span class="built_in">generateSessionId</span>();<span class="comment">//生成唯一的sessionId</span></span><br><span class="line">        session = std::<span class="built_in">make_shared</span>&lt;Session&gt;(sessionId, <span class="keyword">this</span>);<span class="comment">//传入sessionid和SessionManager构建一个会话</span></span><br><span class="line">        <span class="built_in">setSessionCookie</span>(sessionId, resp);<span class="comment">//在响应resp中setCookie中添加sessionId</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">    &#123;</span><br><span class="line">        session-&gt;<span class="built_in">setManager</span>(<span class="keyword">this</span>); <span class="comment">// 为现有会话设置管理器</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    session-&gt;<span class="built_in">refresh</span>();	<span class="comment">//刷新会话的过期时间，因为当前有新的访问，过期时间需要重新被设置</span></span><br><span class="line">    storage_-&gt;<span class="built_in">save</span>(session);  <span class="comment">// 保存会话</span></span><br><span class="line">    <span class="keyword">return</span> session;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="MemorySessionStorage类实现"><a href="#MemorySessionStorage类实现" class="headerlink" title="MemorySessionStorage类实现"></a>MemorySessionStorage类实现</h2><p><code>SessionStorage</code>定义了抽象类提供了<code>save()</code>、<code>load()</code>、<code>remove()</code>接口，而<code>MemorySessionStorage</code>对重写了这些函数。<br><code>MemorySessionStorage</code>是以&lt;<code>std::string, std::shared_ptr&lt;Session&gt;</code>&gt;构造的无序键值对保存的。</p>
+<ul>
+<li>save()函数，保存会话</li>
+<li>load()函数，根据sessionId找到对应的会话，如果会话过期则删除会话；否则返回会话</li>
+<li>remove()函数，通过sessionId删除会话</li>
+</ul>
+<h1 id="会话管理抓包分析"><a href="#会话管理抓包分析" class="headerlink" title="会话管理抓包分析"></a>会话管理抓包分析</h1><h2 id="1-首次访问网页"><a href="#1-首次访问网页" class="headerlink" title="1.首次访问网页"></a>1.首次访问网页</h2><p>此时还没登录（此时还不需要维护用户的登录状态），这时的请求中还没有<code>cookie</code>字段。<br><img   src="https://i-blog.csdnimg.cn/direct/08f8daca559f40ee8c83dd666ec080b5.png"  alt="在这里插入图片描述"><br>这是发起的请求是为了请求网页，<br><img   src="https://i-blog.csdnimg.cn/direct/71bba484dc7d4a6d98c6fb723fd6218b.png"  alt="在这里插入图片描述"><br>服务器返回的响应，可以看到，此时服务器也没有set-cookie字段；此时服务器返回前端渲染需要的网页（响应体中）<br><img   src="https://i-blog.csdnimg.cn/direct/550ea7ce108843f08c513b47d9b4c3a2.png"  alt="在这里插入图片描述"></p>
+<h2 id="2-点击登录时"><a href="#2-点击登录时" class="headerlink" title="2.点击登录时"></a>2.点击登录时</h2><p><img   src="https://i-blog.csdnimg.cn/direct/f6ef959b27ab4bbb8050a51b39312a21.png"  alt="在这里插入图片描述"><br>这时可以看到请求的报文，是以POST方式将用户登录的<code>username</code>和<code>password</code>上传到服务器（这里是明文传输，这是HTTP的缺点，在网络传输中容易被抓包导致密码和账户泄露；后面这个项目看能不能扩展成HTTPS协议）<br><img   src="https://i-blog.csdnimg.cn/direct/ac11c9437eb945ce8d031d021ad06438.png"  alt="在这里插入图片描述"></p>
+<h2 id="3-服务器处理"><a href="#3-服务器处理" class="headerlink" title="3.服务器处理"></a>3.服务器处理</h2><p>此时通过点击登录按钮，将登录请求发送到服务器，服务器根据相应的路由，转发到专门用于登录处理的函数中</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据账号密码，查找数据库是否有该账号密码</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">LoginHandler::queryUserId</span><span class="params">(<span class="type">const</span> std::string &amp;username, <span class="type">const</span> std::string &amp;password)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 前端用户传来账号密码，查找数据库是否有该账号密码</span></span><br><span class="line">    <span class="comment">// 使用预处理语句, 防止sql注入</span></span><br><span class="line">    std::string sql = <span class="string">&quot;SELECT id FROM users WHERE username = ? AND password = ?&quot;</span>;</span><br><span class="line">    sql::ResultSet* res = mysqlUtil_.<span class="built_in">executeQuery</span>(sql, username, password);</span><br><span class="line">    <span class="keyword">if</span> (res-&gt;<span class="built_in">next</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> id = res-&gt;<span class="built_in">getInt</span>(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果查询结果为空，则返回-1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">LoginHandler::handle</span><span class="params">(<span class="type">const</span> http::HttpRequest &amp;req, http::HttpResponse *resp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...其他代码</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// JSON 解析使用 try catch 捕获异常</span></span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        json parsed = json::<span class="built_in">parse</span>(req.<span class="built_in">getBody</span>());</span><br><span class="line">        std::string username = parsed[<span class="string">&quot;username&quot;</span>];</span><br><span class="line">        std::string password = parsed[<span class="string">&quot;password&quot;</span>]; <span class="comment">//从请求体中解析得到username 和password </span></span><br><span class="line">        <span class="comment">// 验证用户是否存在，是否注册过</span></span><br><span class="line">        <span class="type">int</span> userId = <span class="built_in">queryUserId</span>(username, password);</span><br><span class="line">        <span class="keyword">if</span> (userId != <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 获取会话</span></span><br><span class="line">            <span class="keyword">auto</span> session = server_-&gt;<span class="built_in">getSessionManager</span>()-&gt;<span class="built_in">getSession</span>(req, resp);</span><br><span class="line">                     </span><br><span class="line">            <span class="comment">// 在会话中存储用户信息</span></span><br><span class="line">            session-&gt;<span class="built_in">setValue</span>(<span class="string">&quot;userId&quot;</span>, std::<span class="built_in">to_string</span>(userId));</span><br><span class="line">            session-&gt;<span class="built_in">setValue</span>(<span class="string">&quot;username&quot;</span>, username);</span><br><span class="line">            session-&gt;<span class="built_in">setValue</span>(<span class="string">&quot;isLoggedIn&quot;</span>, <span class="string">&quot;true&quot;</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//其他代码</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">// 账号密码错误，请重新登录</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 封装json数据，返回401未认证状态码</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (<span class="type">const</span> std::exception &amp;e)</span><br><span class="line">    &#123;</span><br><span class="line">       	<span class="comment">//...其他代码，返回错误信息</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码中的 server_-&gt;getSessionManager()-&gt;getSession(req, resp)负责返回会话，或者新建会话，具体为：</p>
+<ol>
+<li>如果当前用户存在会话并且会话有效，则直接返回会话</li>
+<li>否则创建新的会话（这里是首次登录，所以默认就是这种情况）</li>
+</ol>
+<p> 并在会话中存储如<code>&quot;userId&quot;</code>，<code>&quot;username&quot;</code>，<code>&quot;isLoggedIn&quot;</code>字段。</p>
+<h2 id="4-服务器返回响应"><a href="#4-服务器返回响应" class="headerlink" title="4.服务器返回响应"></a>4.服务器返回响应</h2><p>在getSession(req, resp)—&gt;&gt;&gt;setSessionCookie(sessionId, resp);设置响应报文</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">SessionManager::setSessionCookie</span><span class="params">(<span class="type">const</span> std::string&amp; sessionId, HttpResponse* resp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 设置会话ID到响应头中，作为Cookie</span></span><br><span class="line">    std::string cookie = <span class="string">&quot;sessionId=&quot;</span> + sessionId + <span class="string">&quot;; Path=/; HttpOnly&quot;</span>;</span><br><span class="line">    resp-&gt;<span class="built_in">addHeader</span>(<span class="string">&quot;Set-Cookie&quot;</span>, cookie);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img   src="https://i-blog.csdnimg.cn/direct/0ee73f6b2f5446bb8e45afc64683d174.png"  alt="在这里插入图片描述"><br>服务器响应设置了cookie字段，以后的客户端的每次请求都将携带这个字段。</p>
+<h2 id="5-客户端的下一次请求"><a href="#5-客户端的下一次请求" class="headerlink" title="5.客户端的下一次请求"></a>5.客户端的下一次请求</h2><p><img   src="https://i-blog.csdnimg.cn/direct/c604bf7fb5cb42809931475c02591467.png"  alt="在这里插入图片描述"><br><img   src="https://i-blog.csdnimg.cn/direct/40fc672056244281a431b3f46fb052a4.png"  alt="在这里插入图片描述"><br>从上图可知，设置cookie之后的每一次请求，都会带上cookie这个字段。</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/undefined/LiteHub_CORS/"
+                                   title="LiteHub之跨域访问CORS"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LiteHub之跨域访问CORS</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/undefined/LiteHub_req_res/"
+                                   title="LiteHub之请求与响应报文分析"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LiteHub之请求与响应报文分析</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E7%90%86%E8%AE%BA"><span class="nav-text">会话管理理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%9B%E8%A1%8C%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="nav-text">为什么进行会话管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E4%B8%8E%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">HTTP协议的特性与局限性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E5%AE%9E%E5%BA%94%E7%94%A8%E7%9A%84%E9%9C%80%E6%B1%82%E7%9F%9B%E7%9B%BE"><span class="nav-text">现实应用的需求矛盾</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSession"><span class="nav-text">什么是Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session%E4%B8%8Ecookie%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB"><span class="nav-text">Session与cookie的区别与联系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">会话管理代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Session%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">Session类实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SessionManager%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">SessionManager类实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MemorySessionStorage%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">MemorySessionStorage类实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="nav-text">会话管理抓包分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A6%96%E6%AC%A1%E8%AE%BF%E9%97%AE%E7%BD%91%E9%A1%B5"><span class="nav-text">1.首次访问网页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%82%B9%E5%87%BB%E7%99%BB%E5%BD%95%E6%97%B6"><span class="nav-text">2.点击登录时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%84%E7%90%86"><span class="nav-text">3.服务器处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%94%E5%9B%9E%E5%93%8D%E5%BA%94"><span class="nav-text">4.服务器返回响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E4%B8%8B%E4%B8%80%E6%AC%A1%E8%AF%B7%E6%B1%82"><span class="nav-text">5.客户端的下一次请求</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Qingyh</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">20.6k</span>
+                </span>
+            
+
+            
+
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E7%90%86%E8%AE%BA"><span class="nav-text">会话管理理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%9B%E8%A1%8C%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="nav-text">为什么进行会话管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E4%B8%8E%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-text">HTTP协议的特性与局限性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E5%AE%9E%E5%BA%94%E7%94%A8%E7%9A%84%E9%9C%80%E6%B1%82%E7%9F%9B%E7%9B%BE"><span class="nav-text">现实应用的需求矛盾</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSession"><span class="nav-text">什么是Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session%E4%B8%8Ecookie%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB"><span class="nav-text">Session与cookie的区别与联系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">会话管理代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Session%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">Session类实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SessionManager%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">SessionManager类实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MemorySessionStorage%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">MemorySessionStorage类实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="nav-text">会话管理抓包分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A6%96%E6%AC%A1%E8%AE%BF%E9%97%AE%E7%BD%91%E9%A1%B5"><span class="nav-text">1.首次访问网页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%82%B9%E5%87%BB%E7%99%BB%E5%BD%95%E6%97%B6"><span class="nav-text">2.点击登录时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%84%E7%90%86"><span class="nav-text">3.服务器处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%94%E5%9B%9E%E5%93%8D%E5%BA%94"><span class="nav-text">4.服务器返回响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E4%B8%8B%E4%B8%80%E6%AC%A1%E8%AF%B7%E6%B1%82"><span class="nav-text">5.客户端的下一次请求</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>

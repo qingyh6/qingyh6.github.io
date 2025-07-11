@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Qingyh">
+    
+    <title>
+        
+            LiteHub之数据库连接池 |
+        
+        阿寒的学习屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"localhost","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"阿寒的学习屋","author":"Qingyh","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/                      || fa-solid fa-home","archives":"/archives          || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group","links":"/links                || fa-solid fa-link","tools":"/tools                || fa-solid fa-tools","about":"/about                || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"知识的学习在于点滴记录，坚持不懈；|| 知识的学习要有深度和广度，不仅要能够理解，更知道如何表达！！！","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/qingyh6","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":["One","Two","Three","炼气","筑基","结丹","元婴","化神"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY 年 MM 月 DD 日 HH:mm","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null]},"root":"","source_data":{"links":[{"title":"我的其他平台"},{"name":"github","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"CSDN","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}],"photos":[{"url":"https://xpoet.cn/images/logo.png","name":"XPoet"},{"url":"/images/photos/img-1.png","name":"img1"},{"url":"/images/photos/img-2.png","name":"img2"},"......","......","......"],"tools":[{"title":"我的常用工具"},{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk1"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"}]},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               阿寒的学习屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tools"></i>
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tools"></i>
+                                </span>
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        LiteHub之数据库连接池
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Qingyh</span>
+                                
+                                    <span class="author-badge">Two</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025 年 07 月 09 日 10:27</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Jul 11 2025 16:37:40 GMT+0800">2025 年 07 月 11 日 16:37</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/LiteHub/">LiteHub</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.2k 字</span>
+            </span>
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <meta name="referrer" content="no-referrer"/>
+
+
+<h2 id="理论部分"><a href="#理论部分" class="headerlink" title="理论部分"></a>理论部分</h2><h3 id="不使用数据库连接池"><a href="#不使用数据库连接池" class="headerlink" title="不使用数据库连接池"></a>不使用数据库连接池</h3><p>我们先来看看普通的Mysql的连接过程，下图是我抓包分析的在端口3306的数据包：<br><img   src="https://i-blog.csdnimg.cn/direct/00ccb843634f426f8d9e626e21862ef5.png"  alt="在这里插入图片描述"><br>在执行Mysql命令之前，需要先经过Tcp的三次握手、Mysql的认证服务，TLS加密服务等操作；<br>下图来自<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/CrankZ/article/details/82874158" >数据库连接池学习笔记（一）：原理介绍+常用连接池介绍<i class="fas fa-external-link-alt"></i></a><br><img   src="https://i-blog.csdnimg.cn/direct/89e3aedfb8d74ed0a7c3df83cd79c296.png"  alt="在这里插入图片描述"><br>经过上述分析，我们知道，如果不使用数据库连接池，执行单条Mysql命令会多了非常多我们不关心的网络交互。<br>如果执行的Mysql查询命令比较多，就会严重影响性能。</p>
+<blockquote>
+<p>不使用数据库连接池：<br><strong>优点</strong>： 实现简单<br><strong>缺点</strong>： 网络IO较多<br>数据库的负载较高<br>响应时间较长及QPS较低<br>应用频繁的创建连接和关闭连接，导致临时对象较多<br>在关闭连接后，会出现大量TIME_WAIT 的TCP状态（在2个MSL之后关闭）</p>
+</blockquote>
+<h3 id="使用数据库连接池"><a href="#使用数据库连接池" class="headerlink" title="使用数据库连接池"></a>使用数据库连接池</h3><p><img   src="https://i-blog.csdnimg.cn/direct/0e89367c1d894d8bb9f18c93dfb68773.png"  alt="在这里插入图片描述"></p>
+<p><strong>初始连接建立</strong><br>当应用程序第一次访问数据库时，需要完成以下步骤：</p>
+<ol>
+<li>系统会创建一个新的数据库连接</li>
+<li>这个连接需要经过身份验证(用户名&#x2F;密码验证)</li>
+<li>建立TCP&#x2F;IP网络连接</li>
+<li>初始化会话参数和设置</li>
+</ol>
+<p><strong>连接复用机制</strong><br>在后续访问中：</p>
+<ol>
+<li>系统会从连接池中获取先前建立的可用连接</li>
+<li>直接使用该连接执行SQL语句(如SELECT, INSERT, UPDATE等)</li>
+<li>执行过程中无需重新进行身份验证和连接建立</li>
+<li>典型的复用场景包括：<ul>
+<li>用户多次查询同一数据表</li>
+<li>处理事务中的多个SQL操作</li>
+<li>执行批量数据处理任务</li>
+</ul>
+</li>
+</ol>
+<p><strong>连接回收过程</strong></p>
+<p>每次查询完成后：</p>
+<ol>
+<li>系统会将连接标记为”空闲”状态</li>
+<li>连接会被归还到连接池中</li>
+<li>连接保持开启状态，等待下次请求</li>
+<li>如果连接空闲时间超过配置的阈值(如30分钟)，可能会被自动关闭</li>
+</ol>
+<p>这种机制显著提高了性能，减少了频繁创建和销毁连接的开销。</p>
+<h3 id="常见的几种资源池"><a href="#常见的几种资源池" class="headerlink" title="常见的几种资源池"></a>常见的几种资源池</h3><p>在实际应用中，由于创建和销毁系统资源（如连接、内存块、线程等）的成本往往远高于使用资源的成本，因此通常会引入资源池的概念来提高系统性能。这种技术通过预先创建并维护一组可重用资源，避免了频繁的资源初始化和销毁操作，从而显著提升系统效率。</p>
+<p>常见的资源池包括以下几种类型：</p>
+<ol>
+<li><p><strong>内存池</strong>：</p>
+<ul>
+<li>在C++程序开发中，malloc通过brk()系统调用向操作系统申请内存时，会一次性申请较大的内存块（只是通过brk方式申请的内存会维护内存池，小块内存；通过nmap方式申请的大块内存（默认是大于128k）没有内存池，是直接归还给操作系统了）</li>
+<li>当使用free释放内存时，这些内存并不会立即归还给操作系统，而是被缓存在malloc维护的内存池中</li>
+<li>当下次程序再次申请内存时，malloc会优先从内存池中分配可用内存块</li>
+<li>例如：当程序频繁进行小内存块的分配和释放时，内存池可以避免频繁的系统调用，提高内存分配效率</li>
+</ul>
+</li>
+<li><p><strong>线程池</strong>：</p>
+<ul>
+<li>传统的线程创建和销毁涉及操作系统层面的资源分配和回收，开销较大</li>
+<li>线程池通过预先创建一组线程并保持活跃状态，等待任务分配</li>
+<li>主要优势包括：<ul>
+<li>线程复用：避免频繁创建销毁线程的开销</li>
+<li>任务解耦：将任务提交与执行分离，提高系统灵活性</li>
+<li>资源管理：可以限制并发线程数量，防止系统过载</li>
+</ul>
+</li>
+<li>应用场景：Web服务器处理请求、批量数据处理等需要高并发的场景</li>
+</ul>
+</li>
+<li><p><strong>数据库连接池</strong>：</p>
+<ul>
+<li>建立数据库连接涉及网络通信、身份验证等耗时操作</li>
+<li>连接池维护一组已建立的数据库连接，应用程序使用时直接从池中获取</li>
+<li>使用完毕后连接归还池中而非关闭，供其他请求复用</li>
+<li>典型配置参数包括：最小连接数、最大连接数、连接超时时间等</li>
+<li>优势：显著降低连接建立开销，提高数据库访问效率</li>
+</ul>
+</li>
+</ol>
+<p>这些资源池技术在现代软件系统中被广泛应用，特别是在高并发、高性能要求的场景下，合理配置资源池可以大幅提升系统整体性能。在实际应用中，由于创建和销毁系统资源（如连接、内存块、线程等）的成本往往远高于使用资源的成本，因此通常会引入资源池的概念来提高系统性能。这种技术通过预先创建并维护一组可重用资源，避免了频繁的资源初始化和销毁操作，从而显著提升系统效率。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>本项目数据库连接池实现了三个核心类：</p>
+<ul>
+<li><code>DbConnection</code>：管理单个数据库连接</li>
+<li><code>DbConnectionPool</code>：管理数据库连接池</li>
+<li><code>MysqlUtil</code>：提供便捷的数据库操作接口</li>
+</ul>
+<p>以下就分别来了解一下这几个类的实现。</p>
+<h3 id="DbConnection类实现"><a href="#DbConnection类实现" class="headerlink" title="DbConnection类实现"></a>DbConnection类实现</h3><p><strong>成员变量</strong>：</p>
+<ul>
+<li><code>std::shared_ptr&lt;sql::Connection&gt; conn_</code> 数据库连接</li>
+<li><code>std::string    host_</code>   数据库主机地址，如tcp:&#x2F;&#x2F;127.0.0.1:3306</li>
+<li><code>std::string    user_</code>    用户名</li>
+<li><code>std::string  password_</code>  密码</li>
+<li><code>std::string database_</code>  使用数据库</li>
+<li><code>std::mutex  mutex_</code>    互斥锁</li>
+</ul>
+<p><strong>成员方法</strong>：</p>
+<ul>
+<li><code>DbConnection()</code>构造函数, 创建并初始化数据库连接，设置连接属性（这里是设置的单语句执行，防止SQL的注入）</li>
+<li><code>~DbConnection()</code>析构函数，自动清理连接资源，调用cleanup()函数</li>
+<li><code>ping()</code>函数，使用简单的<code>SELECT 1</code>语句检测与数据库的通信是否正常</li>
+<li><code>isValid()</code>函数，与ping函数类似，区别在于不在意查询结果，遇到异常返回false</li>
+<li><code>reconnect()</code> 函数，尝试重新建立数据库连接</li>
+<li><code>cleanup()</code>函数，清理连接状态，需要确保所有事务以及完成，并且消费完所有查询结果</li>
+<li><code>bindParams()</code>,绑定参数</li>
+<li><code>executeQuery()</code>函数，执行sql语句的查询，并返回查询结果</li>
+<li><code>executeUpdate()</code>函数，执行sql语句的更新操作</li>
+</ul>
+<p>在上述函数中比较重要的就是<code>executeQuery()</code>和<code>executeUpdate()</code>函数，以下是其代码定义与注释</p>
+<p><strong>executeQuery()函数</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt; <span class="comment">//可变参数模板，接受任意数量、任意类型的参数</span></span><br><span class="line"><span class="function">sql::ResultSet* <span class="title">executeQuery</span><span class="params">(<span class="type">const</span> std::string&amp; sql, Args&amp;&amp;... args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(mutex_)</span></span>;  <span class="comment">// 确保线程安全</span></span><br><span class="line">    <span class="keyword">try</span> </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 直接创建新的预处理语句，不使用缓存</span></span><br><span class="line">        <span class="function">std::unique_ptr&lt;sql::PreparedStatement&gt; <span class="title">stmt</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">            conn_-&gt;prepareStatement(sql)</span></span></span><br><span class="line"><span class="params"><span class="function">        )</span></span>;</span><br><span class="line">        <span class="built_in">bindParams</span>(stmt.<span class="built_in">get</span>(), <span class="number">1</span>, std::forward&lt;Args&gt;(args)...); <span class="comment">// 绑定参数,std::forward 确保完美转发</span></span><br><span class="line">        <span class="keyword">return</span> stmt-&gt;<span class="built_in">executeQuery</span>(); <span class="comment">//执行后返回 sql::ResultSet*</span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">catch</span> (<span class="type">const</span> sql::SQLException&amp; e) </span><br><span class="line">    &#123;</span><br><span class="line">        LOG_ERROR &lt;&lt; <span class="string">&quot;Query failed: &quot;</span> &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; <span class="string">&quot;, SQL: &quot;</span> &lt;&lt; sql;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">DbException</span>(e.<span class="built_in">what</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个是执行Sql查询的操作，在上层，通过代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::string sql = <span class="string">&quot;SELECT id FROM users WHERE username = ? AND password = ?&quot;</span>;</span><br><span class="line">sql::ResultSet* res = mysqlUtil_.<span class="built_in">executeQuery</span>(sql, username, password);</span><br></pre></td></tr></table></figure>
+<p>传入了sql语句：”SELECT id FROM users WHERE username &#x3D; ? AND password &#x3D; ?”<br>以及两个参数：username&#x3D;”<code>user1</code>“和password&#x3D;”<code>123456</code>“；<br>通过参数绑定后，完整的sql语句就是<br>“SELECT id FROM users WHERE username &#x3D; user1 AND password &#x3D;123456”<br>随后执行Mysql的语句查询，返回查询到的结果。</p>
+<p><strong>executeUpdate函数</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</span></span><br><span class="line"><span class="function">    <span class="type">int</span> <span class="title">executeUpdate</span><span class="params">(<span class="type">const</span> std::string&amp; sql, Args&amp;&amp;... args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(mutex_)</span></span>;</span><br><span class="line">        <span class="keyword">try</span> </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 直接创建新的预处理语句，不使用缓存</span></span><br><span class="line">            <span class="function">std::unique_ptr&lt;sql::PreparedStatement&gt; <span class="title">stmt</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">                conn_-&gt;prepareStatement(sql)</span></span></span><br><span class="line"><span class="params"><span class="function">            )</span></span>;</span><br><span class="line">            <span class="built_in">bindParams</span>(stmt.<span class="built_in">get</span>(), <span class="number">1</span>, std::forward&lt;Args&gt;(args)...);</span><br><span class="line">            <span class="keyword">return</span> stmt-&gt;<span class="built_in">executeUpdate</span>();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="built_in">catch</span> (<span class="type">const</span> sql::SQLException&amp; e) </span><br><span class="line">        &#123;</span><br><span class="line">            LOG_ERROR &lt;&lt; <span class="string">&quot;Update failed: &quot;</span> &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; <span class="string">&quot;, SQL: &quot;</span> &lt;&lt; sql;</span><br><span class="line">            <span class="keyword">throw</span> <span class="built_in">DbException</span>(e.<span class="built_in">what</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>示例语句：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> std::string sql = <span class="string">&quot;INSERT INTO video_stats (video_name, view_count, like_count) VALUES (?, 0, 0) ON DUPLICATE KEY UPDATE video_name=video_name&quot;</span>;</span><br><span class="line"><span class="type">int</span> affected = mysqlUtil_.<span class="built_in">executeUpdate</span>(sql, video_name);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>SQL注入的理解</strong>：<br>当用户登录网站时，通常会输入用户名和密码。<br>以下是一段正常的 SQL 查询代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE username = <span class="string">&#x27;user1&#x27;</span> AND password = <span class="string">&#x27;password1&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>如果攻击者输入：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名： admin<span class="string">&#x27; --</span></span><br><span class="line"><span class="string">密码： anything</span></span><br></pre></td></tr></table></figure>
+
+<p>SQL查询变成：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE username = <span class="string">&#x27;admin&#x27;</span> --<span class="string">&#x27; AND password = &#x27;</span>anything<span class="string">&#x27;;</span></span><br></pre></td></tr></table></figure>
+<p>其中 – 是 SQL 的注释符号，忽略了密码条件，直接绕过了身份验证。<br>更多可以参考<br><a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/sql/sql-injection.html" >SQL 注入<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="DbConnectionPool类实现"><a href="#DbConnectionPool类实现" class="headerlink" title="DbConnectionPool类实现"></a>DbConnectionPool类实现</h3><p>成员变量：</p>
+<ul>
+<li><code>std::string     host_</code>; 连接数据库的主机名</li>
+<li><code>std::string     user_;</code> 用户名</li>
+<li><code>std::string     password_;</code> 密码</li>
+<li><code>std::string    database_;</code> 指定使用的数据库</li>
+<li><code>std::queue&lt;std::shared_ptr&lt;DbConnection&gt;&gt; connections_;</code> 数据库连接池</li>
+<li><code>std::mutex    mutex_;</code> 互斥锁</li>
+<li><code>std::condition_variable   cv_;</code> 条件变量</li>
+<li><code>bool       initialized_ = false;</code>   初始化标识,确保仅初始化一次</li>
+<li><code>std::thread    checkThread_;</code> &#x2F;&#x2F; 添加检查线程，检测数据库连接池的连接健康状况</li>
+</ul>
+<p>成员方法：<br>使用单例模式，</p>
+<ul>
+<li><code>init()</code>函数，初始化线程池，创建 poolSize 个 DbConnection 对象，放入队列</li>
+<li><code>DbConnectionPool()</code>构造函数，创建并分离后台线程，定期检查连接可用性</li>
+<li><code>~DbConnectionPool()</code>析构函数，清空连接队列，释放所有连接资源</li>
+<li><code>getConnection()</code> 函数，从连接池获取一个可用连接</li>
+<li><code>createConnection()</code> 函数，创建一个新的数据库连接</li>
+<li><code>checkConnections()</code> ，后台线程，定期检查所有连接是否可用。</li>
+</ul>
+<p>这里比较重要的就是<code>getConnection()</code> 函数，我贴出来代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::shared_ptr&lt;DbConnection&gt; <span class="title">DbConnectionPool::getConnection</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::shared_ptr&lt;DbConnection&gt; conn;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">std::unique_lock&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(mutex_)</span></span>;</span><br><span class="line">        <span class="comment">// 如果连接池为空，则阻塞等待其他线程释放连接</span></span><br><span class="line">        <span class="keyword">while</span> (connections_.<span class="built_in">empty</span>()) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!initialized_) </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="built_in">DbException</span>(<span class="string">&quot;Connection pool not initialized&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">&quot;Waiting for available connection...&quot;</span>;</span><br><span class="line">            cv_.<span class="built_in">wait</span>(lock);  <span class="comment">// 等待条件变量通知</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 从队列中取一个连接</span></span><br><span class="line">        conn = connections_.<span class="built_in">front</span>();</span><br><span class="line">        connections_.<span class="built_in">pop</span>();</span><br><span class="line">    &#125; <span class="comment">// 释放锁</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span> </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 在锁外检查连接</span></span><br><span class="line">        <span class="keyword">if</span> (!conn-&gt;<span class="built_in">ping</span>()) </span><br><span class="line">        &#123;</span><br><span class="line">            LOG_WARN &lt;&lt; <span class="string">&quot;Connection lost, attempting to reconnect...&quot;</span>;</span><br><span class="line">            conn-&gt;<span class="built_in">reconnect</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使用自定义 deleter：</span></span><br><span class="line">        <span class="comment">// 当外部 shared_ptr 被释放时，把连接放回连接池并通知等待线程</span></span><br><span class="line">        <span class="keyword">return</span> std::<span class="built_in">shared_ptr</span>&lt;DbConnection&gt;(conn.<span class="built_in">get</span>(), </span><br><span class="line">            [<span class="keyword">this</span>, conn](DbConnection*) &#123;</span><br><span class="line">                std::lock_guard&lt;std::mutex&gt; <span class="built_in">lock</span>(mutex_);</span><br><span class="line">                connections_.<span class="built_in">push</span>(conn);</span><br><span class="line">                cv_.<span class="built_in">notify_one</span>();</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">catch</span> (<span class="type">const</span> std::exception&amp; e) </span><br><span class="line">    &#123;   </span><br><span class="line">        <span class="comment">// 如果重连失败，则把连接放回队列并通知等待线程</span></span><br><span class="line">        LOG_ERROR &lt;&lt; <span class="string">&quot;Failed to get connection: &quot;</span> &lt;&lt; e.<span class="built_in">what</span>();</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(mutex_)</span></span>;</span><br><span class="line">            connections_.<span class="built_in">push</span>(conn);</span><br><span class="line">            cv_.<span class="built_in">notify_one</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>函数的核心逻辑为：</p>
+<ul>
+<li>如果连接池为空，则阻塞等待（使用条件变量）</li>
+<li>连接池始终返回 <code>std::shared_ptr&lt;DbConnection&gt;</code></li>
+<li>通过自定义的deleter在用户使用完数据库某条连接后自动归还给池<br>使用lambda表达式，当conn使用完成后，将其归还到connections_池中去。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用自定义 deleter：</span></span><br><span class="line"> <span class="comment">// 当外部 shared_ptr 被释放时，把连接放回连接池并通知等待线程</span></span><br><span class="line"> <span class="keyword">return</span> std::<span class="built_in">shared_ptr</span>&lt;DbConnection&gt;(conn.<span class="built_in">get</span>(), </span><br><span class="line">     [<span class="keyword">this</span>, conn](DbConnection*) &#123;</span><br><span class="line">         std::lock_guard&lt;std::mutex&gt; <span class="built_in">lock</span>(mutex_);</span><br><span class="line">         connections_.<span class="built_in">push</span>(conn);</span><br><span class="line">         cv_.<span class="built_in">notify_one</span>();</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="MysqlUtil类实现"><a href="#MysqlUtil类实现" class="headerlink" title="MysqlUtil类实现"></a>MysqlUtil类实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">const</span> std::string&amp; host, <span class="type">const</span> std::string&amp; user,</span></span></span><br><span class="line"><span class="params"><span class="function">                <span class="type">const</span> std::string&amp; password, <span class="type">const</span> std::string&amp; database,</span></span></span><br><span class="line"><span class="params"><span class="function">                <span class="type">size_t</span> poolSize = <span class="number">10</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="comment">//调用了 DbConnectionPool 的单例模式，保证全局唯一</span></span><br><span class="line">    http::db::DbConnectionPool::<span class="built_in">getInstance</span>().<span class="built_in">init</span>(</span><br><span class="line">        host, user, password, database, poolSize);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</span></span><br><span class="line"><span class="function">sql::ResultSet* <span class="title">executeQuery</span><span class="params">(<span class="type">const</span> std::string&amp; sql, Args&amp;&amp;... args)</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="comment">//对外提供 执行查询（SELECT） 的接口</span></span><br><span class="line">    <span class="comment">//使用者不需要显式创建 DbConnection，也不用关心 getConnection 和归还连接的逻辑</span></span><br><span class="line">    <span class="keyword">auto</span> conn = http::db::DbConnectionPool::<span class="built_in">getInstance</span>().<span class="built_in">getConnection</span>();</span><br><span class="line">    <span class="keyword">return</span> conn-&gt;<span class="built_in">executeQuery</span>(sql, std::forward&lt;Args&gt;(args)...);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">executeUpdate</span><span class="params">(<span class="type">const</span> std::string&amp; sql, Args&amp;&amp;... args)</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="comment">//对外提供 执行更新（INSERT / UPDATE / DELETE） 的接口</span></span><br><span class="line">    <span class="keyword">auto</span> conn = http::db::DbConnectionPool::<span class="built_in">getInstance</span>().<span class="built_in">getConnection</span>();</span><br><span class="line">    <span class="keyword">return</span> conn-&gt;<span class="built_in">executeUpdate</span>(sql, std::forward&lt;Args&gt;(args)...);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MysqlUtil类的实现比较简单，提供了对数据库的简单接口，隐藏了底层连接池的复杂性。主要是提供了三个方法，分别是数据库连接池的初始化、从连接池中获取连接以执行查询操作和更新（增删改）操作。MysqlUtil作为一个便捷的工具类，简化了调用接口，让业务层可以更轻松的使用连接池进行增删改查的工作。</p>
+<p>以上就是我对数据库连接池的一些理解，如有不当之处，敬请指出。</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/undefined/LiteHub_filedownload&&videoplay/"
+                                   title="LiteHub之文件下载与视频播放"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LiteHub之文件下载与视频播放</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/undefined/LiteHub_gzip/"
+                                   title="LiteHub之gzip压缩算法"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LiteHub之gzip压缩算法</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E9%83%A8%E5%88%86"><span class="nav-text">理论部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-text">不使用数据库连接池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-text">使用数据库连接池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E7%A7%8D%E8%B5%84%E6%BA%90%E6%B1%A0"><span class="nav-text">常见的几种资源池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DbConnection%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">DbConnection类实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DbConnectionPool%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">DbConnectionPool类实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MysqlUtil%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">MysqlUtil类实现</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Qingyh</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">20.6k</span>
+                </span>
+            
+
+            
+
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E9%83%A8%E5%88%86"><span class="nav-text">理论部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-text">不使用数据库连接池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-text">使用数据库连接池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E7%A7%8D%E8%B5%84%E6%BA%90%E6%B1%A0"><span class="nav-text">常见的几种资源池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DbConnection%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">DbConnection类实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DbConnectionPool%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">DbConnectionPool类实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MysqlUtil%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="nav-text">MysqlUtil类实现</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>
