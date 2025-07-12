@@ -3,15 +3,16 @@
 /* ===== 只改颜色、圆角、间距，完全用默认字体 ===== */
 :root {
   /* 全局字号 & 圆角 */
-  --base-font-size: 17px;          /* 默认 16，略大更舒服 */
-  --box-border-radius: 14px;       /* 默认 8，卡片更柔和 */
+  --base-font-size: 15px;          /* 默认 16，略大更舒服 */
+  --base-font-family: STSong;
+  --box-border-radius: 20px;       /* 默认 8，卡片更柔和 */
 
   /* Header */
-  --header-height: 99px;
+  --header-height: 80px;
 
   /* 首屏 */
-  --first-screen-font-size: 34px;
-  --first-screen-icon-size: 30px;
+  --first-screen-font-size: 32px;
+  --first-screen-icon-size: 26px;
 
   /* 白昼莫兰迪配色 */
   --first-screen-font-color-light: #4f5b66;     /* 标题文字 */
@@ -27,7 +28,7 @@
   --post-img-align: 0 auto;
 
   /* 内容区宽度（默认 900，稍窄阅读更集中） */
-  --page-content-max-width: 840px;
+  --page-content-max-width: 900px;
 
   /* 首页卡片 hover 微放大 */
   --home-post-hover-scale: 1.015;
@@ -38,3 +39,15 @@
   --post-create-datetime: none;
   --post-update-datetime: none;
 }
+
+.first-screen-container {
+  margin: 100px auto 0; 
+  width: 66%;
+  height: 50vh !important;
+  /* margin: 10 auto; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+

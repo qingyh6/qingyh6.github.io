@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Qingyh">
+    
+    <title>
+        
+            分类: STL |
+        
+        阿寒的学习笔记
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/blog.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"localhost","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"阿寒的学习笔记","author":"Qingyh","avatar":"/images/profile.svg","logo":"/images/blog.svg","favicon":"/images/blog.svg"},"menu":{"home":"/                      || fa-solid fa-home","archives":"/archives          || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group","links":"/links                || fa-solid fa-link","tools":"/tools                || fa-solid fa-tools","about":"/about                || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.png","background_img_dark":"/images/bg.png","description":"知识的学习在于点滴记录，坚持不懈 || 要有深度和广度，不仅要能够理解，更知道如何表达！！！","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/qingyh6","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null,"csdn":"https://blog.csdn.net/weixin_52288941?type=blog"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY 年 MM 月 DD 日 HH:mm","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null]},"root":"","source_data":{"links":[{"title":"我的其他平台"},{"name":"github","link":"https://github.com/qingyh6","description":"懒惰是程序员第一生产力","avatar":"/images/github.svg"},{"name":"CSDN","link":"https://blog.csdn.net/weixin_52288941?type=blog","description":"善于思考；勤于记录","avatar":"/images/csdn.svg"}],"icons":{"csdn":{"svg":"<svg t=\"1752285352594\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4369\" width=\"16\" height=\"16\"><path d=\"M512 1024C229.222 1024 0 794.778 0 512S229.222 0 512 0s512 229.222 512 512-229.222 512-512 512z m17.067-413.525c34.85 4.352 68.778 5.12 102.741 2.099 23.04-2.048 44.817-8.363 64.17-21.914 38.213-26.794 49.784-85.197 24.252-123.05-14.626-21.71-36.812-30.345-60.757-35.5-35.055-7.543-70.451-5.75-105.847-3.412-5.667 0.358-6.759 3.072-7.237 8.209-3.072 32.682-6.536 65.314-9.813 97.962-2.509 24.815-4.932 49.63-7.51 75.606z m53.401-33.929c1.963-20.907 3.635-39.339 5.427-57.77 1.554-15.907 3.414-31.779 4.728-47.702 0.358-4.284 1.553-6.656 5.956-6.383 15.616 1.041 31.71 0.034 46.729 3.652 36.488 8.824 48.725 54.307 23.347 83.03-15.82 17.903-36.762 23.586-59.256 25.088-8.465 0.546-17.015 0.085-26.93 0.085zM512 434.296c-2.185-0.65-3.533-1.178-4.932-1.434-37.718-6.878-75.69-8.329-113.647-2.816-20.975 3.038-41.011 9.489-57.48 23.33-22.99 19.32-21.641 46.848 4.402 62.003 13.056 7.595 28.024 12.51 42.599 17.289 14.08 4.608 28.996 6.826 43.144 11.264 12.596 3.925 14.012 14.319 3.584 22.306-3.345 2.56-7.44 5.086-11.537 5.751-11.195 1.826-22.698 4.386-33.826 3.567-24.098-1.775-48.042-5.461-72.55-8.43-1.366 10.615-2.936 23.09-4.557 35.942 4.181 1.365 7.68 2.73 11.264 3.618 33.946 8.5 68.386 9.608 102.912 5.12 20.087-2.611 39.475-7.902 56.695-19.03 28.604-18.483 36.694-57.19-4.676-75.383-14.506-6.383-30.19-10.41-45.482-15.087-11.418-3.481-23.314-5.615-34.526-9.523-9.78-3.413-11.145-12.203-3.038-18.398 4.659-3.55 10.718-6.997 16.384-7.373a480.853 480.853 0 0 1 53.384-0.853c15.377 0.7 30.652 3.55 46.49 5.53L512 434.295z m257.143 2.047l-18.21 177.955h54.153c4.779-45.637 9.71-90.727 14.063-135.885 0.614-6.366 2.355-8.84 8.687-9.011 11.434-0.273 22.886-1.98 34.287-1.57 23.722 0.853 42.393 9.727 38.4 43.263-2.902 24.27-5.598 48.572-8.244 72.875-1.092 10.07-1.826 20.19-2.73 30.413h55.33c3.584-35.26 7.987-70.059 10.496-104.994 3.413-47.463-17.766-73.319-64.683-80.214-40.96-6.007-81.34-0.34-121.549 7.134zM285.645 570.948c-8.738 1.297-16.384 2.8-24.098 3.482-25.652 2.236-51.32 3.942-76.305-4.267-13.91-4.59-24.679-12.578-29.799-25.958-7.902-20.702 0.888-47.104 19.832-60.314 17.374-12.117 37.717-15.923 58.453-15.923 22.545-0.017 45.09 2.423 68.233 3.84l5.239-39.51c-15.07-1.723-29.491-3.925-43.998-4.915-41.011-2.798-80.64 2.612-117.47 20.463-30.02 14.558-52.053 36.011-58.675 68.13-7.85 38.145 11.537 69.496 51.763 85.846 19.15 7.765 39.288 12.51 60.007 12.595 24.746 0.102 49.493-1.57 74.206-2.952 3.106-0.171 8.311-2.902 8.67-5.035 1.98-11.554 2.73-23.28 3.942-35.465z\" fill=\"#2c2c2c\" p-id=\"4370\"></path></svg>","link":"https://blog.csdn.net/weixin_52288941?type=blog"}},"photos":[{"url":"https://xpoet.cn/images/logo.png","name":"XPoet"},{"url":"/images/photos/img-1.png","name":"img1"},{"url":"/images/photos/img-2.png","name":"img2"},"......","......","......"],"tools":[{"title":"我的常用工具"},{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk1"},{"name":"deepseek","link":"https://www.deepseek.com/","description":"国产大模型","image":"/images/deepseek.svg"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/chatgpt.svg"},{"name":"kimi","link":"https://www.kimi.com/","description":"会推理解析，能深度思考的深度助手","image":"/images/kimi.svg"},{"category":"编程助手","anchorId":"JUU3JUJDJTk2JUU3JUE4JThCJUU1JThBJUE5JUU2JTg5JThC5"},{"name":"豆包","link":"https://www.trae.cn/plugin","description":"清理灵活，你的AI编程助手","image":"/images/doubao.svg"},{"name":"cursor","link":"https://cursor.com/cn","description":"AI代码编辑器","image":"/images/cursor.svg"}]},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/blog.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               阿寒的学习笔记
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tools"></i>
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tools"></i>
+                                </span>
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        对STL容器的理解
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/profile.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Qingyh</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025 年 07 月 10 日 15:52</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sat Jul 12 2025 13:51:03 GMT+0800">2025 年 07 月 12 日 13:51</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/STL%E6%A8%A1%E6%9D%BF%E5%BA%93/">STL模板库</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/c/">c++</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>4.7k 字</span>
+            </span>
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <meta name="referrer" content="no-referrer"/>
+
+<h1 id="顺序容器"><a href="#顺序容器" class="headerlink" title="顺序容器"></a>顺序容器</h1><h2 id="vector（向量容器）"><a href="#vector（向量容器）" class="headerlink" title="vector（向量容器）"></a>vector（向量容器）</h2><blockquote>
+<p>vector是STL容器中的一种常用的容器，和数组类似，由于其大小(size)可变，常用于数组大小不可知的情况下来替代数组。vector也是一种顺序容器，在内存中连续排列，因此可以通过下标快速访问，时间复杂度为O(1)。然而，连续排列也意味着大小固定，数据超过vector的预定值时vector将自动扩容。</p>
+</blockquote>
+<p>以下代码是创建<code>vector</code>，插入元素(<code>push_back</code>)，删除元素(<code>pop_back</code>)等的用法。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"></span><br><span class="line">vec.<span class="built_in">push_back</span>(<span class="number">20</span>);<span class="comment">//末尾添加元素，时间复杂度o(1)</span></span><br><span class="line">vec.<span class="built_in">pop_back</span>();<span class="comment">//删除末尾元素,时间复杂度o(1)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">	vec.<span class="built_in">push_back</span>(i<span class="number">+1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; vec[i] &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">//使用[]遍历数组</span></span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，定义了<code>vector&lt;int&gt; vec;</code>这个时候vec的大小是多少呢？这里没有指定开辟多大空间，那么这个vec的大小默认就是0了；那么在上述代码中，频繁的指向插入操作，就会频繁的扩容，涉及到内存中数据的频繁拷贝，效率低；所以一般在定义vector时会预留vector的大小，请看下面代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* reserve(20),开辟20大小的内存，但是不初始化</span></span><br><span class="line"><span class="comment">* resize(20),扩容为20大小，初始化为0</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; vec1;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; vec2;</span><br><span class="line">vec<span class="number">1.</span><span class="built_in">reserve</span>(<span class="number">20</span>);</span><br><span class="line">vec<span class="number">2.</span><span class="built_in">resize</span>(<span class="number">20</span>);</span><br><span class="line">cout &lt;&lt; vec<span class="number">1.</span><span class="built_in">empty</span>() &lt;&lt; vec<span class="number">2.</span><span class="built_in">empty</span>() &lt;&lt; endl;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> it = vec<span class="number">2.</span><span class="built_in">begin</span>(); it != vec<span class="number">2.</span><span class="built_in">end</span>(); ++it)</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">//这里打印全为零</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>tips:</code>这里reserve函数在内存中给vec1预留了20大小的内存，但是需要注意的是现在vec1实际的大小为0；如果想访问vec1[0]会报数组越界错误。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/4104dda585e24653a6365fa20975b7a9.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<p>使用迭代器删除和插入元素，这里要防止迭代器失效。关于迭代器失效，可以参考我的<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_52288941/article/details/149098124?spm=1011.2415.3001.5331" >另一篇文章<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除所有偶数，erase()的时间复杂度为o(n)</span></span><br><span class="line">	<span class="keyword">auto</span> it = vec.<span class="built_in">begin</span>();</span><br><span class="line">	<span class="keyword">while</span> (it != vec.<span class="built_in">end</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*it % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">		&#123;	</span><br><span class="line">			<span class="comment">//这里的it需要接收erase函数返回的迭代器，不然会迭代器失效</span></span><br><span class="line">			it=vec.<span class="built_in">erase</span>(it); <span class="comment">//erase函数删除指定位置的迭代器，并且返回下一个元素的迭代器</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			it++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it = vec.<span class="built_in">begin</span>(); it != vec.<span class="built_in">end</span>(); ++it)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//在所有数中插入比原来数字小1的数，insert()的时间复杂度为o(n)</span></span><br><span class="line">	it = vec.<span class="built_in">begin</span>();</span><br><span class="line">	<span class="keyword">for</span> (; it != vec.<span class="built_in">end</span>(); ++it)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*it%<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//这里的it需要接收erase函数返回的迭代器，不然会迭代器失效</span></span><br><span class="line">			it = vec.<span class="built_in">insert</span>(it, *it - <span class="number">1</span>);<span class="comment">//insert函数插入在指定位置之前，并且返回新插入元素的迭代器</span></span><br><span class="line">			++it;<span class="comment">//这里的it必须加1，不然会一直在遇到的第一个奇数中一直插入（死循环）</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it = vec.<span class="built_in">begin</span>(); it != vec.<span class="built_in">end</span>(); ++it)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<p><strong>vector的扩容原理</strong><br>在学习过程中，遇到地关于vector扩容有两种说法，一是按照1.5倍扩容，一是按照2倍扩容，下面就通过代码验证一下。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line">	<span class="type">int</span> count = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span>* init_addr = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">128</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		vec.<span class="built_in">push_back</span>(i);</span><br><span class="line">		<span class="keyword">if</span> (init_addr != &amp;(vec[<span class="number">0</span>]))</span><br><span class="line">		&#123;	</span><br><span class="line">			cout &lt;&lt;<span class="string">&quot;第&quot;</span>&lt;&lt;count&lt;&lt;<span class="string">&quot;次扩容&quot;</span>&lt;&lt; <span class="string">&quot;扩容后大小为：&quot;</span> &lt;&lt; vec.<span class="built_in">capacity</span>() &lt;&lt;<span class="string">&quot;扩容后的地址为：&quot;</span> &lt;&lt;init_addr&lt;&lt; endl;</span><br><span class="line">			init_addr = &amp;(vec[<span class="number">0</span>]);</span><br><span class="line">			count++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>windows平台</code>下执行，打印结果为<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/ff5308d9057943378f03993619a10dac.png"
+                        alt="在这里插入图片描述"
+                 ><br>可以看到，在该平台下，是按照<br>1 → 2 (1<em>1.5&#x3D;1.5，取2)<br>2 → 3 (2</em>1.5&#x3D;3，取3)<br>3 → 4 (3<em>1.5&#x3D;4.5，取4)<br>4 → 6 (4</em>1.5&#x3D;6，取6)<br>6 → 9 (6<em>1.5&#x3D;9，取9)<br>9 → 13 (9</em>1.5&#x3D;13.5，取13)<br>13 → 19 (13<em>1.5&#x3D;19.5，取19)<br>19 → 28 (19</em>1.5&#x3D;28.5，取28)<br>28 → 42 (28<em>1.5&#x3D;42，取42)<br>42 → 63 (42</em>1.5&#x3D;63，取63)<br>63 → 94 (63<em>1.5&#x3D;94.5，取94)<br>94 → 141 (94</em>1.5&#x3D;141，取141)<br>可以看到，如果采用的是1.5倍扩容方法，在这里我们需要申请128大小的空间，而最后申请的空间是141；并且前几次申请的空间<code>1+2+3+4+6+9+13+19+28+42+63+94=284&gt;128</code>,如果前面申请的空间是连续的，也就可以直接复用前面的内存了<br>比如说，在上图中，第9次扩容和第11次扩容的地址就是一样的（表明旧内存块在扩容后被释放，新分配的内存可能重新利用之前的地址。这说明1.5倍扩容在内存回收和复用上有优势。）<br>采用1.5倍扩容的缺点也比较明显，也就是涉及到多次的扩容操作，申请128大小的需要扩容13次；而采用2倍扩容方法只需要。。。</p>
+<p>在<code>linux平台</code>下执行，打印结果为<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/5d8a75f7534b437aad2a42fd7b7c037b.png"
+                        alt="在这里插入图片描述"
+                 ><br>并且前几次申请的空间<code>1+2+4+8+16+32+64=127&lt;128</code>,不可以完整的复用前面申请的内存空间<br>（但是这里第2次和第4次扩容后的起始地址是一样的，暂时还没了解清楚）<br><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/642358957" >【C++ Primer】 erase和insert返回的迭代器位置总结<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/aruewds/article/details/117375364" >详解C++STL容器系列（一）—— vector的详细用法和底层原理<i class="fas fa-external-link-alt"></i></a>这篇关于vector的讲解还挺不错的，大家可以参考</p>
+<h2 id="deque（双端队列容器）"><a href="#deque（双端队列容器）" class="headerlink" title="deque（双端队列容器）"></a>deque（双端队列容器）</h2><p>deque即（double-ended queue）双端队列容器，支持o(1)时间复杂度内在头部和尾部插入和删除元素；deque没有容量的概念，而是动态地以分段连续空间组合而成，随时可以增加一段新的空间并连接起来。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/aecda8cdeea046909ec5c80eddf3333c.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<p>初始时，first和last指针位于二维数组的中间位置（感觉这里类似两个vector拼接而成的结构）。当从尾部插入元素时，last指针向后移动；当从头部插入元素时，first指针向前移动。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/cb05a182261d4553a3c9e157cd8211f9.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<blockquote>
+<p>增加元素操作：<br>deq.push_back(20);从末尾添加元素，时间复杂度o(1)<br>deq.push_front(10);从首部添加元素，时间复杂度o(1)<br>deq.insert(it,30);it指向的位置添加元素</p>
+</blockquote>
+<blockquote>
+<p>删除操作：<br>deq.pop_back(20);从末尾删除元素，时间复杂度o(1)<br>deq.pop_front(10);从首部删除元素，时间复杂度o(1)<br>deq.erase(it);it指向的位置删除元素</p>
+</blockquote>
+<blockquote>
+<p>查询操作：<br>iterator（连续的insert和erase一定要考虑迭代器失效问题）</p>
+</blockquote>
+<p>更多关于deque的理解，请参考<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/345798683" >详解STL中的deque<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="list（链表容器）"><a href="#list（链表容器）" class="headerlink" title="list（链表容器）"></a>list（链表容器）</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/f6e9d1e8135b445d8149ae57cc381838.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<blockquote>
+<p>模板类list是一个容器，list是由双向链表来实现的，每个节点存储1个元素。list支持前后两种移动方向。</p>
+</blockquote>
+<p> <strong>优势</strong> ：任何位置执行插入和删除动作都非常快。<br> <strong>缺点</strong> ：不支持随机存取，查找某个元素的效率较低。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>deque和list，比vector容器多出来的增加删除的接口为：push_front()和pop_front()。<br><strong>vector特点</strong>：动态数组，内存是连续的，以2倍的方式进行扩容（linux平台下是2倍，在windoes平台下是1.5倍）<br><strong>deque特点</strong>：动态开辟的二维数组空间，第二维是固定长度的数组空间，扩容的时候（第一维的数组进行2倍扩容，再把原来的第二维数组放到新扩容的第一维数组的中间部分，便于支持deque前后的插入与删除）</p>
+<p><strong>deque底层是否是连续的</strong>？<br>答：并不是，deque的每一个第二维数组都是连续的，整体来看是分段连续的。第一维指向不同的二维连续区域（deque是动态开辟的二维数组）</p>
+<p><strong>vector和deque的区别</strong></p>
+<ul>
+<li>底层数据结构：vector是动态数组，deque是动态二维数组</li>
+<li>vector的中间和首部插入元素时间复杂度为o(n),末尾插入时间复杂度为o(1);deque的首部和末尾插入时间复杂度为o(1)，中间插入的时间复杂度为o（n）</li>
+<li>内存的使用效率：vector的内存使用效率低，原因是vector需要一片连续的内存空间，当发生扩容时，原来内存上的已存在的数据需要复制到新开辟的内存空间中去；而deque不要求整片连续的空间，只要求分段连续就可以，当发生扩容的时候，也只是第一维发生扩容，（在第二维不会发生复制，应该还是保留在原来的内存去，只需要开辟额外需要的内存就行？不如说第一维度从2扩容到4，第二维只需要新开辟2个连续的内存空间就好，加上原来的两个内存空间上的数据，尚未实验验证）</li>
+<li>在中间进行insert和erase,vector的效率会更高一些。虽然两者的时间复杂度都为o(n)，但是由于vector是一整片连续的内存空间，由于cpu的缓存机制，即时间局部性和空间局部性原理，vector的效率必然会更高一些。</li>
+</ul>
+<blockquote>
+<p>空间局部性（Spatial Locality）：<br>如果程序访问了某个内存地址，很可能很快会访问其附近的内存。<br>vector 的优势：元素在内存中是连续的，CPU 会预加载相邻元素到缓存（缓存行通常为 64 字节），后续访问命中缓存，速度极快。</p>
+<p>时间局部性（Temporal Locality）： 最近访问的数据很可能被再次访问。<br>vector的优势：移动元素时，被操作的元素在内存中是连续的，缓存命中率高。</p>
+</blockquote>
+<p><strong>vector和list的区别</strong><br>类比数组和链表的区别</p>
+<ul>
+<li><p>底层数据结构：数组、双向循环链表</p>
+</li>
+<li><p>时间复杂度</p>
+<p>  1.vector的增加、删除时间复杂度为o(n)，下标随机访问o(1)，查找特定元素复杂度o(n);<br>  2.list的增加、删除(不考虑查找待删除元素)时间复杂度为o(1),查询操作为o(n);</p>
+</li>
+</ul>
+<h1 id="容器适配器"><a href="#容器适配器" class="headerlink" title="容器适配器"></a>容器适配器</h1><p>容器适配器包括statck、queue、priority_queue。<br>1.适配器底层没有自己的数据结构，它是另外一个容器的封装，它的方法全由底层依赖的容器实现的。<br>2.没有实现自己的迭代器（不可通过迭代器访问）</p>
+<p>statck的源码截图如下：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/e79fd4a0530e4a88b483743273b86cc1.png"
+                        alt="在这里插入图片描述"
+                 ><br>stack的简单框架如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span> Container=deque&lt;T&gt;&gt;</span><br><span class="line"><span class="keyword">class</span> Stack</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="type">void</span> <span class="built_in">push</span>(<span class="type">const</span> T&amp; val) &#123; con.<span class="built_in">push_back</span>(val); &#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123; con.<span class="built_in">pop_back</span>(); &#125;</span><br><span class="line">	<span class="function">T <span class="title">top</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> con.<span class="built_in">back</span>(); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	Container con;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="容器适配器的操作方法"><a href="#容器适配器的操作方法" class="headerlink" title="容器适配器的操作方法"></a>容器适配器的操作方法</h2><p><strong>statck</strong>:</p>
+<ul>
+<li>push入栈  </li>
+<li>pop出栈  </li>
+<li>top查看栈顶元素  </li>
+<li>empty判断栈空  </li>
+<li>size返回元素个数</li>
+</ul>
+<p><strong>queue</strong>:</p>
+<ul>
+<li>push入队 </li>
+<li>pop出队 </li>
+<li>front查看队头元素 </li>
+<li>back查看队尾元素  </li>
+<li>empty判断队空 </li>
+<li>size返回元素个数</li>
+</ul>
+<p><strong>priority_queue</strong>:</p>
+<ul>
+<li>push入队 </li>
+<li>pop出队 </li>
+<li>top查看队头元素   </li>
+<li>empty判断对空 </li>
+<li>size返回元素个数</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="comment">/*************以stack为例********************/</span></span><br><span class="line">	stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">20</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		st.<span class="built_in">push</span>(i);</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; st.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">while</span> (!st.<span class="built_in">empty</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; st.<span class="built_in">top</span>() &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		st.<span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**************以priority_queue为例*******************/</span></span><br><span class="line">	priority_queue&lt;<span class="type">int</span>&gt; pque;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">20</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		pque.<span class="built_in">push</span>(<span class="built_in">rand</span>()%<span class="number">100</span><span class="number">+1</span>); <span class="comment">//默认大根堆，乱序输入</span></span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; pque.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">while</span> (!pque.<span class="built_in">empty</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; pque.<span class="built_in">top</span>() &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">//顺序输出</span></span><br><span class="line">		pque.<span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="底层容器"><a href="#底层容器" class="headerlink" title="底层容器"></a>底层容器</h2><p>statck依赖deque、queue也依赖deque容器、priority_queue依赖vector容器。</p>
+<p><strong>stack和queue为什么依赖deque容器</strong>？</p>
+<ul>
+<li>vector的初始内存使用效率太低了，需要从1-2-4-8频繁扩容；而deque的第二维度默认开辟空间<code>4096/sizeof(int)=1024</code>字节大小内存</li>
+<li>对于queue来说，需要实现先进先出，即需要实现头删尾插，而deque的首尾操作的时间复杂度为o(1)</li>
+<li>vector需要大片的连续内存，而deque只需要分段连续的内存；对于大量数据存储，deque的内存利用率更好一些（随着程序的运行，会产生大量的内存碎片，此时要找一块连续且空间较大的内存相对较复杂）。</li>
+</ul>
+<p><strong>priority_queue为什么依赖vector容器</strong>？</p>
+<p>priority_queue采用堆的存储，底层默认把数据组织成大根堆结构（也存在小根堆），要求在一片连续的内存空间。</p>
+<blockquote>
+<p><strong>核心概念</strong>：堆是一颗完全二叉树，它的特点是可以用一维数组来储存。</p>
+</blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/dakingffo/article/details/142285574" >「数组」堆排序 &#x2F; 大根堆优化（C++）<i class="fas fa-external-link-alt"></i></a></p>
+<p>对于一个序号从0开始的堆结构</p>
+<blockquote>
+<p>对于第idx个节点<br>父节点序号：（idx-1）&#x2F;2<br>左子节点顺序： idx* 2+1<br>右子节点顺序： idx* 2+2</p>
+</blockquote>
+<p>对于堆结构来说，采用数组存储方式是因为父子节点与其下标之间存在联系。根据存储元素在数组中的下标，可以计算得到父节点，左子节点，右子节点的下标，然后分别得到对应的值。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/2be5cbed148a4232aa4d254a020ab08f.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<p>如确定节点2的父节点、左子节点、右字节点的值步骤如下：</p>
+<blockquote>
+<p>idx&#x3D;2<br>父节点值：vec[(idx-1)&#x2F;2]&#x3D;vec[0]&#x3D;10<br>左子节点：vec[idx<em>2+1]&#x3D;vec[5]&#x3D;40<br>右子节点：vec[idx</em>2+1]&#x3D;vec[6]&#x3D;50</p>
+</blockquote>
+<p><code>总结</code>：由于 std::vector 将元素存储在连续的内存块中，使得通过下标 i 访问元素 vec[i] 变得极其高效。vec[i] 的地址只需起始地址加上 i 乘以元素大小的偏移量 (start_address + i * sizeof(element))。这种 O(1) 复杂度的随机访问能力，是堆能够利用简单的下标计算（如 父节点&#x3D;(i-1)&#x2F;2, 左孩子&#x3D;2<em>i+1, 右孩子&#x3D;2</em>i+2) 在数组中高效模拟树形结构并快速定位父子节点的根本前提。非连续存储的数据结构（如链表）无法进行这种直接的下标计算和访问。</p>
+<h1 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h1><p>有序关联容器，底层为红黑树，增删查的时间复杂度为o(log2(n)),2为底数</p>
+<ul>
+<li>set  （集合 key）</li>
+<li>multiset (多重集合)</li>
+<li>map  (映射表 [key,value])</li>
+<li>multimap  (多重映射表)</li>
+</ul>
+<p>无序关联容器，底层为链式哈希表  增删查的时间复杂度为o(1)</p>
+<ul>
+<li>unordered_set  </li>
+<li>unordered_multiset </li>
+<li>unordered_map</li>
+<li>unordered_multimap</li>
+</ul>
+<p>常用方法：<br>增加：insert(val)<br>遍历：iterator搜索，调用find成员方法<br>删除：erase(key) 、erase(iterator)</p>
+<h2 id="无序容器"><a href="#无序容器" class="headerlink" title="无序容器"></a>无序容器</h2><p><strong>unordered_set的常见方法</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">unordered_set&lt;<span class="type">int</span>&gt; set1;<span class="comment">//元素不可重复</span></span><br><span class="line">unordered_multiset&lt;<span class="type">int</span>&gt; set2;<span class="comment">//元素可重复</span></span><br><span class="line">set<span class="number">1.</span><span class="built_in">insert</span>(<span class="number">15</span>);</span><br><span class="line">set<span class="number">1.</span><span class="built_in">insert</span>(<span class="number">20</span>);</span><br><span class="line">set<span class="number">1.</span><span class="built_in">insert</span>(<span class="number">30</span>);</span><br><span class="line">set<span class="number">1.</span><span class="built_in">count</span>(<span class="number">15</span>); <span class="comment">//判断15是否存在于set1中，只能存在1个或0个</span></span><br><span class="line">set<span class="number">2.</span><span class="built_in">count</span>(<span class="number">15</span>);<span class="comment">//计算15在set2中个数，可存在多个</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> it = set<span class="number">1.</span><span class="built_in">begin</span>();</span><br><span class="line"><span class="comment">/*可以迭代器遍历	*/</span></span><br><span class="line"> <span class="keyword">for</span>(;it!=set<span class="number">1.</span><span class="built_in">end</span>();++it)</span><br><span class="line"> &#123;</span><br><span class="line">	 cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> set<span class="number">1.</span><span class="built_in">erase</span>(<span class="number">20</span>); <span class="comment">//按key值删除元素</span></span><br><span class="line"> <span class="keyword">for</span> (it = set<span class="number">1.</span><span class="built_in">begin</span>(); it != set<span class="number">1.</span><span class="built_in">end</span>();)</span><br><span class="line"> &#123;</span><br><span class="line">	<span class="keyword">if</span> (*it == <span class="number">30</span>)</span><br><span class="line">	 &#123;</span><br><span class="line">		 it = set<span class="number">1.</span><span class="built_in">erase</span>(it); <span class="comment">//迭代器遍历删除指定元素</span></span><br><span class="line">	 &#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		++it;</span><br><span class="line">	&#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//在set1中找20，如果存在返回迭代器；不存在访问容器末尾的迭代器</span></span><br><span class="line"> it = set<span class="number">1.f</span>ind(<span class="number">20</span>); </span><br><span class="line"> <span class="keyword">if</span> (it != set<span class="number">1.</span><span class="built_in">end</span>())</span><br><span class="line"> &#123;</span><br><span class="line">	 cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>unordered_map的常见方法</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;<span class="type">int</span>, string &gt; map1; <span class="comment">//不允许key重复</span></span><br><span class="line"><span class="comment">//三种插入方式</span></span><br><span class="line">map<span class="number">1.</span><span class="built_in">insert</span>(&#123; <span class="number">1</span>, <span class="string">&quot;excelent&quot;</span> &#125;);</span><br><span class="line">map<span class="number">1.</span><span class="built_in">insert</span>(<span class="built_in">make_pair</span>(<span class="number">100</span>, <span class="string">&quot;寒&quot;</span>));<span class="comment">//打包成pair对</span></span><br><span class="line"><span class="comment">//这里也可以通过emplace()函数，传入参数，直接调用构造函数加入map中</span></span><br><span class="line">map<span class="number">1.</span><span class="built_in">emplace</span>(<span class="number">66</span>, <span class="string">&quot;lucky&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//map的operator []</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 1.查询</span></span><br><span class="line"><span class="comment">* 2.如果key不存在，会插入一对数据[key,string(&quot; &quot;)],因为这里定义的是unordered_map&lt;int, string &gt; map1</span></span><br><span class="line"><span class="comment">* 3.如果给定值，map1[10]=&quot;good&quot;;，会插入一对数据[10,string(&quot;good&quot;)]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">map1[<span class="number">10</span>] = <span class="string">&quot;good&quot;</span>;</span><br><span class="line">cout&lt;&lt;map1[<span class="number">20</span>]&lt;&lt;endl; </span><br><span class="line">cout &lt;&lt; map<span class="number">1.</span><span class="built_in">size</span>() &lt;&lt; endl;<span class="comment">//打印map的大小</span></span><br><span class="line">cout &lt;&lt; map1[<span class="number">10</span>] &lt;&lt; endl; <span class="comment">//访问元素</span></span><br><span class="line"></span><br><span class="line">map<span class="number">1.</span><span class="built_in">erase</span>(<span class="number">10</span>); <span class="comment">//删除指定key的pair对</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> it = map<span class="number">1.f</span>ind(<span class="number">100</span>);</span><br><span class="line"><span class="keyword">if</span> (it != map<span class="number">1.</span><span class="built_in">end</span>())</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;key:  &quot;</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="string">&quot;  value:  &quot;</span> &lt;&lt; it-&gt;second&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*两种遍历方式*/</span></span><br><span class="line"><span class="comment">//这里需要返回常引用，普通引用会报错(普通引用可以间接修改容器内部的值，不安全)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">const</span> pair&lt;<span class="type">int</span>, string &gt;&amp; m : map1)</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; m.first &lt;&lt;<span class="string">&quot;  &quot;</span> &lt;&lt; m.second &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> it = map<span class="number">1.</span><span class="built_in">begin</span>(); it != map<span class="number">1.</span><span class="built_in">end</span>(); ++it)</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; it-&gt;first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; it-&gt;second&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>场景应用</strong>：<br>统计所有数据的出现次数，打印出现频次大于1的数的值及其出现频次：一般使用unordered_map<br>将给定的大量数据进行去重，仅打印出现1次的数：一般使用unordered_set</p>
+<h2 id="有序容器"><a href="#有序容器" class="headerlink" title="有序容器"></a>有序容器</h2><p>有序容器的基本操作与无序容器的基本操作一致，略有不同的是，有序容器内部会保持元素的顺序（默认是升序）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">student</span>(<span class="type">int</span> id, string name) :<span class="built_in">id_</span>(id), <span class="built_in">name_</span>(name) &#123;&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> id_;</span><br><span class="line">	string name_;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	set&lt;student&gt; set1;</span><br><span class="line">	set<span class="number">1.</span><span class="built_in">insert</span>(<span class="built_in">student</span>(<span class="number">1</span>, <span class="string">&quot;寒&quot;</span>));</span><br><span class="line">	set<span class="number">1.</span><span class="built_in">insert</span>(<span class="built_in">student</span>(<span class="number">2</span>, <span class="string">&quot;宇&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们自定义了一个学生类容器放到set有序集合容器中，报错了</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/8aaa3a39458e44b1bef6e3646e83bab0.png"
+                        alt="在这里插入图片描述"
+                 ><br>这是因为在自定义的student类中并没有实现小于运算符重载,代码修改如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">student</span>(<span class="type">int</span> id, string name) :<span class="built_in">id_</span>(id), <span class="built_in">name_</span>(name) &#123;&#125;</span><br><span class="line">	<span class="type">bool</span> <span class="keyword">operator</span> &lt;(<span class="type">const</span> student&amp; stu) <span class="type">const</span><span class="comment">//定义的&lt;运算符重载</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> id_ &lt; stu.id_;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> id_;</span><br><span class="line">	string name_; </span><br><span class="line">	<span class="keyword">friend</span> ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="type">const</span> student&amp; stu);</span><br><span class="line">&#125;;</span><br><span class="line">ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="type">const</span> student&amp; stu)</span><br><span class="line">&#123;</span><br><span class="line">	out &lt;&lt; <span class="string">&quot;id:&quot;</span> &lt;&lt; stu.id_ &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; <span class="string">&quot;name: &quot;</span> &lt;&lt; stu.name_ ;</span><br><span class="line">	<span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	set&lt;student&gt; set1;</span><br><span class="line">	set<span class="number">1.</span><span class="built_in">insert</span>(<span class="built_in">student</span>(<span class="number">1</span>, <span class="string">&quot;寒&quot;</span>));</span><br><span class="line">	set<span class="number">1.</span><span class="built_in">insert</span>(<span class="built_in">student</span>(<span class="number">2</span>, <span class="string">&quot;宇&quot;</span>));</span><br><span class="line">	set<span class="number">1.</span><span class="built_in">insert</span>(<span class="built_in">student</span>(<span class="number">3</span>, <span class="string">&quot;哈哈&quot;</span>));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it = set<span class="number">1.</span><span class="built_in">begin</span>(); it != set<span class="number">1.</span><span class="built_in">end</span>(); ++it)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印结果为：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/2f0844ccc8874450b3929f3f974edcfd.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<p><strong>map容器</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">map&lt;<span class="type">int</span>,student&gt; stuMap;<span class="comment">//如果要使用自定义的类student定义map，要求自定义的类存在默认构造函数</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">student</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//student(int id, string name) :id_(id), name_(name) &#123;&#125;  这个不行</span></span><br><span class="line">	<span class="built_in">student</span>(<span class="type">int</span> id=<span class="number">0</span>, string name=<span class="string">&quot;&quot;</span>) :<span class="built_in">id_</span>(id), <span class="built_in">name_</span>(name) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>这里对应STL容器的总结还不够全面，主要是在我学习过程中遇到的一些知识点进行记录。后序学习过程中遇到了会继续更新。</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/c/">c++</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/undefined/disk/"
+                                   title="文件系统的理解"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">文件系统的理解</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/undefined/LiteHub_filedownload&&videoplay/"
+                                   title="LiteHub之文件下载与视频播放"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LiteHub之文件下载与视频播放</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8"><span class="nav-text">顺序容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vector%EF%BC%88%E5%90%91%E9%87%8F%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="nav-text">vector（向量容器）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deque%EF%BC%88%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="nav-text">deque（双端队列容器）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list%EF%BC%88%E9%93%BE%E8%A1%A8%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="nav-text">list（链表容器）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-text">容器适配器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="nav-text">容器适配器的操作方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%AE%B9%E5%99%A8"><span class="nav-text">底层容器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8"><span class="nav-text">关联容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8"><span class="nav-text">无序容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E5%AE%B9%E5%99%A8"><span class="nav-text">有序容器</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Qingyh</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">31k</span>
+                </span>
+            
+
+            
+
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8"><span class="nav-text">顺序容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vector%EF%BC%88%E5%90%91%E9%87%8F%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="nav-text">vector（向量容器）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deque%EF%BC%88%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="nav-text">deque（双端队列容器）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list%EF%BC%88%E9%93%BE%E8%A1%A8%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="nav-text">list（链表容器）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-text">容器适配器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="nav-text">容器适配器的操作方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%AE%B9%E5%99%A8"><span class="nav-text">底层容器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8"><span class="nav-text">关联容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8"><span class="nav-text">无序容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E5%AE%B9%E5%99%A8"><span class="nav-text">有序容器</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/lazyload.min.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>

@@ -9,28 +9,20 @@
     
     <title>
         
-            LiteHub之请求与响应报文分析 |
+            分类: LiteHub |
         
-        阿寒的学习屋
+        阿寒的学习笔记
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
 
     
-        <link rel="shortcut icon" href="/images/logo.svg">
+        <link rel="shortcut icon" href="/images/blog.svg">
     
-    
-<link rel="stylesheet" href="/font/css/fontawesome.min.css">
-
-    
-<link rel="stylesheet" href="/font/css/regular.min.css">
-
-    
-<link rel="stylesheet" href="/font/css/solid.min.css">
-
-    
-<link rel="stylesheet" href="/font/css/brands.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
     
         
             
@@ -45,7 +37,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"localhost","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"阿寒的学习屋","author":"Qingyh","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/                      || fa-solid fa-home","archives":"/archives          || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group","links":"/links                || fa-solid fa-link","tools":"/tools                || fa-solid fa-tools","about":"/about                || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"知识的学习在于点滴记录，坚持不懈；|| 知识的学习要有深度和广度，不仅要能够理解，更知道如何表达！！！","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/qingyh6","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":["One","Two","Three","炼气","筑基","结丹","元婴","化神"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY 年 MM 月 DD 日 HH:mm","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null]},"root":"","source_data":{"links":[{"title":"我的其他平台"},{"name":"github","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"CSDN","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}],"photos":[{"url":"https://xpoet.cn/images/logo.png","name":"XPoet"},{"url":"/images/photos/img-1.png","name":"img1"},{"url":"/images/photos/img-2.png","name":"img2"},"......","......","......"],"tools":[{"title":"我的常用工具"},{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk1"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"}]},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"阿寒的学习笔记","author":"Qingyh","avatar":"/images/profile.svg","logo":"/images/blog.svg","favicon":"/images/blog.svg"},"menu":{"home":"/                      || fa-solid fa-home","archives":"/archives          || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group","links":"/links                || fa-solid fa-link","tools":"/tools                || fa-solid fa-tools","about":"/about                || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.png","background_img_dark":"/images/bg.png","description":"知识的学习在于点滴记录，坚持不懈 || 要有深度和广度，不仅要能够理解，更知道如何表达！！！","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/qingyh6","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null,"csdn":"https://blog.csdn.net/weixin_52288941?type=blog"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY 年 MM 月 DD 日 HH:mm","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null]},"root":"","source_data":{"links":[{"title":"我的其他平台"},{"name":"github","link":"https://github.com/qingyh6","description":"懒惰是程序员第一生产力","avatar":"/images/github.svg"},{"name":"CSDN","link":"https://blog.csdn.net/weixin_52288941?type=blog","description":"善于思考；勤于记录","avatar":"/images/csdn.svg"}],"icons":{"csdn":{"svg":"<svg t=\"1752285352594\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4369\" width=\"16\" height=\"16\"><path d=\"M512 1024C229.222 1024 0 794.778 0 512S229.222 0 512 0s512 229.222 512 512-229.222 512-512 512z m17.067-413.525c34.85 4.352 68.778 5.12 102.741 2.099 23.04-2.048 44.817-8.363 64.17-21.914 38.213-26.794 49.784-85.197 24.252-123.05-14.626-21.71-36.812-30.345-60.757-35.5-35.055-7.543-70.451-5.75-105.847-3.412-5.667 0.358-6.759 3.072-7.237 8.209-3.072 32.682-6.536 65.314-9.813 97.962-2.509 24.815-4.932 49.63-7.51 75.606z m53.401-33.929c1.963-20.907 3.635-39.339 5.427-57.77 1.554-15.907 3.414-31.779 4.728-47.702 0.358-4.284 1.553-6.656 5.956-6.383 15.616 1.041 31.71 0.034 46.729 3.652 36.488 8.824 48.725 54.307 23.347 83.03-15.82 17.903-36.762 23.586-59.256 25.088-8.465 0.546-17.015 0.085-26.93 0.085zM512 434.296c-2.185-0.65-3.533-1.178-4.932-1.434-37.718-6.878-75.69-8.329-113.647-2.816-20.975 3.038-41.011 9.489-57.48 23.33-22.99 19.32-21.641 46.848 4.402 62.003 13.056 7.595 28.024 12.51 42.599 17.289 14.08 4.608 28.996 6.826 43.144 11.264 12.596 3.925 14.012 14.319 3.584 22.306-3.345 2.56-7.44 5.086-11.537 5.751-11.195 1.826-22.698 4.386-33.826 3.567-24.098-1.775-48.042-5.461-72.55-8.43-1.366 10.615-2.936 23.09-4.557 35.942 4.181 1.365 7.68 2.73 11.264 3.618 33.946 8.5 68.386 9.608 102.912 5.12 20.087-2.611 39.475-7.902 56.695-19.03 28.604-18.483 36.694-57.19-4.676-75.383-14.506-6.383-30.19-10.41-45.482-15.087-11.418-3.481-23.314-5.615-34.526-9.523-9.78-3.413-11.145-12.203-3.038-18.398 4.659-3.55 10.718-6.997 16.384-7.373a480.853 480.853 0 0 1 53.384-0.853c15.377 0.7 30.652 3.55 46.49 5.53L512 434.295z m257.143 2.047l-18.21 177.955h54.153c4.779-45.637 9.71-90.727 14.063-135.885 0.614-6.366 2.355-8.84 8.687-9.011 11.434-0.273 22.886-1.98 34.287-1.57 23.722 0.853 42.393 9.727 38.4 43.263-2.902 24.27-5.598 48.572-8.244 72.875-1.092 10.07-1.826 20.19-2.73 30.413h55.33c3.584-35.26 7.987-70.059 10.496-104.994 3.413-47.463-17.766-73.319-64.683-80.214-40.96-6.007-81.34-0.34-121.549 7.134zM285.645 570.948c-8.738 1.297-16.384 2.8-24.098 3.482-25.652 2.236-51.32 3.942-76.305-4.267-13.91-4.59-24.679-12.578-29.799-25.958-7.902-20.702 0.888-47.104 19.832-60.314 17.374-12.117 37.717-15.923 58.453-15.923 22.545-0.017 45.09 2.423 68.233 3.84l5.239-39.51c-15.07-1.723-29.491-3.925-43.998-4.915-41.011-2.798-80.64 2.612-117.47 20.463-30.02 14.558-52.053 36.011-58.675 68.13-7.85 38.145 11.537 69.496 51.763 85.846 19.15 7.765 39.288 12.51 60.007 12.595 24.746 0.102 49.493-1.57 74.206-2.952 3.106-0.171 8.311-2.902 8.67-5.035 1.98-11.554 2.73-23.28 3.942-35.465z\" fill=\"#2c2c2c\" p-id=\"4370\"></path></svg>","link":"https://blog.csdn.net/weixin_52288941?type=blog"}},"photos":[{"url":"https://xpoet.cn/images/logo.png","name":"XPoet"},{"url":"/images/photos/img-1.png","name":"img1"},{"url":"/images/photos/img-2.png","name":"img2"},"......","......","......"],"tools":[{"title":"我的常用工具"},{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk1"},{"name":"deepseek","link":"https://www.deepseek.com/","description":"国产大模型","image":"/images/deepseek.svg"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/chatgpt.svg"},{"name":"kimi","link":"https://www.kimi.com/","description":"会推理解析，能深度思考的深度助手","image":"/images/kimi.svg"},{"category":"编程助手","anchorId":"JUU3JUJDJTk2JUU3JUE4JThCJUU1JThBJUE5JUU2JTg5JThC5"},{"name":"豆包","link":"https://www.trae.cn/plugin","description":"清理灵活，你的AI编程助手","image":"/images/doubao.svg"},{"name":"cursor","link":"https://cursor.com/cn","description":"AI代码编辑器","image":"/images/cursor.svg"}]},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -79,11 +71,11 @@
         <div class="left flex-start border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/logo.svg">
+                    <img src="/images/blog.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               阿寒的学习屋
+               阿寒的学习笔记
             </a>
         </div>
 
@@ -340,14 +332,14 @@
                     <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/avatar.svg">
+                                <img src="/images/profile.svg">
                             </div>
                         
                         <div class="info-box">
                             <div class="author border-box">
                                 <span class="name">Qingyh</span>
                                 
-                                    <span class="author-badge">Two</span>
+                                    <span class="author-badge">Lv2</span>
                                 
                             </div>
                             <div class="meta-info border-box">
@@ -366,7 +358,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Jul 11 2025 16:38:36 GMT+0800">2025 年 07 月 11 日 16:38</span>
+                    <span class="datetime" data-updated="Sat Jul 12 2025 13:50:23 GMT+0800">2025 年 07 月 12 日 13:50</span>
                 </span>
             
         
@@ -375,7 +367,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/LiteHub/">LiteHub</a></li>
+                            <li class="category-item"><a href="/categories/Http%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8/">Http后端服务器</a></li>
                         
                     
                 </ul>
@@ -421,10 +413,25 @@
                          <meta name="referrer" content="no-referrer"/>
 
 
-<p>这一篇文章是基于项目LITEHUB分析的关于HTTP的请求和响应篇章，后续将仔细分析这个项目所涉及到的知识点。<br><img   src="https://i-blog.csdnimg.cn/direct/49c726370aa54794af9a8023297f7a72.png"  alt="在这里插入图片描述"><br>上图是使用wireshark抓包分析的HTTP刷新网页的请求以及返回的响应报文格式。接下来我们就详细分析：</p>
-<h1 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h1><h2 id="理论部分"><a href="#理论部分" class="headerlink" title="理论部分"></a>理论部分</h2><p>请求报文主要由请求行、请求头、空行、请求头构成。<br>  <img   src="https://i-blog.csdnimg.cn/direct/29d71662fbe745d689994e83ac0a9858.png"  alt="在这里插入图片描述"><br>请求行包括一下字段：常见的方法包括GET（请求信息）、POST（提交数据，表单）方法等，资源路径（请求资源的URI路径）、HTTP的版本（HTTP1.1&#x2F;HTTP2.0）<br>请求头的字段较多，常使用的包含以下几个：<br>● Host：请求的服务器的域名。<br>● Accept：客户端能够处理的媒体类型。<br>● Accept-Encoding：客户端能够解码的内容编码。<br>● Authorization：用于认证的凭证信息，比如token数据。<br>● Content-Length：请求体的长度。<br>● Content-Type：请求体的媒体类型。<br>● Cookie：存储在客户端的cookie数据，在我的项目中，也是通过存在cookie字段来区别不同用户。</p>
+<p>这一篇文章是基于项目LITEHUB分析的关于HTTP的请求和响应篇章，后续将仔细分析这个项目所涉及到的知识点。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/49c726370aa54794af9a8023297f7a72.png"
+                        alt="在这里插入图片描述"
+                 ><br>上图是使用wireshark抓包分析的HTTP刷新网页的请求以及返回的响应报文格式。接下来我们就详细分析：</p>
+<h1 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h1><h2 id="理论部分"><a href="#理论部分" class="headerlink" title="理论部分"></a>理论部分</h2><p>请求报文主要由请求行、请求头、空行、请求头构成。<br>  <img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/29d71662fbe745d689994e83ac0a9858.png"
+                        alt="在这里插入图片描述"
+                 ><br>请求行包括一下字段：常见的方法包括GET（请求信息）、POST（提交数据，表单）方法等，资源路径（请求资源的URI路径）、HTTP的版本（HTTP1.1&#x2F;HTTP2.0）<br>请求头的字段较多，常使用的包含以下几个：<br>● Host：请求的服务器的域名。<br>● Accept：客户端能够处理的媒体类型。<br>● Accept-Encoding：客户端能够解码的内容编码。<br>● Authorization：用于认证的凭证信息，比如token数据。<br>● Content-Length：请求体的长度。<br>● Content-Type：请求体的媒体类型。<br>● Cookie：存储在客户端的cookie数据，在我的项目中，也是通过存在cookie字段来区别不同用户。</p>
 <p>空行是请求头部和请求主体之间的空行，用于分隔请求头部和请求主体。<br>而请求体通常用于 POST 和 PUT 请求，包含发送给服务器的数据。</p>
-<h2 id="wireshark抓包分析"><a href="#wireshark抓包分析" class="headerlink" title="wireshark抓包分析"></a>wireshark抓包分析</h2><p><img   src="https://i-blog.csdnimg.cn/direct/54936fec86004e329ee8fb88432d460b.png"  alt="在这里插入图片描述"></p>
+<h2 id="wireshark抓包分析"><a href="#wireshark抓包分析" class="headerlink" title="wireshark抓包分析"></a>wireshark抓包分析</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/54936fec86004e329ee8fb88432d460b.png"
+                        alt="在这里插入图片描述"
+                 ></p>
 <ul>
 <li>请求行：这里使用请求方法为<code>GET</code>,请求的路径为<code>/resource/list</code>（服务器通过路由转发确定其实际请求的路径资源，后面会分析），并且使用的版本号是<code>HTTP/1.1</code>.</li>
 <li>请求头：是以一系列的键值对组成的。如上图包括<code>Host:192.168.83.128</code>(表示请求的服务器的域名，这个字段是为了区分在一个服务器上存在多个地址的问题，如百度和edge都在一台服务器的不同网卡上服务，通过这个字段可以区分)；<code>Cookie: sessionId=ef4130be9ef3c2b7264455b2a201a1b1</code>（保持访问的一个状态），其余字段感兴趣的话可以自己去了解</li>
@@ -445,20 +452,50 @@
 <p>在找到空行后，需要根据请求方法(判断是否是POST或者PUT方法)和Content-Length判断是否需要继续读取body；如果不需要，则直接退出解析；如果请求体有数据，开始解析请求体。</p>
 <h3 id="3-请求体的解析"><a href="#3-请求体的解析" class="headerlink" title="3.请求体的解析"></a>3.请求体的解析</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (state_ == kExpectBody)</span><br><span class="line">        &#123;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">// 检查缓冲区中是否有足够的数据</span></span><br><span class="line">            <span class="keyword">if</span> (buf-&gt;readableBytes() &lt; request_.contentLength())</span><br><span class="line">            &#123;</span><br><span class="line">                hasMore = <span class="literal">false</span>; <span class="comment">// 数据不完整，等待更多数据</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">const</span> std::<span class="built_in">string</span> &amp;contentType = request_.getHeader(<span class="string">&quot;Content-Type&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (contentType.find(<span class="string">&quot;multipart/form-data&quot;</span>) != std::<span class="built_in">string</span>::npos) <span class="comment">//multipart/form-data表示支持多种复制格式的数据上传，如txt文件，mp4,rar等；这也是实现各种数据格式上传文件的解析</span></span><br><span class="line">            &#123;</span><br><span class="line">               </span><br><span class="line">                ok=parseMultipartData(buf);</span><br><span class="line">                request_.set_parseMultipartData_state(ok);</span><br><span class="line">                LOG_INFO&lt;&lt;<span class="string">&quot;multipart/form-data解析&quot;</span>&lt;&lt;((ok)?<span class="string">&quot;成功&quot;</span>:<span class="string">&quot;失败&quot;</span>);</span><br><span class="line"></span><br><span class="line">                state_ = kGotAll;</span><br><span class="line">                hasMore = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">            	<span class="comment">//如果只是普通的数据，直接根据contentLength读入到body中即可。</span></span><br><span class="line">                <span class="comment">// 只读取 Content-Length 指定的长度</span></span><br><span class="line">                std::<span class="function"><span class="built_in">string</span> <span class="title">body</span>(<span class="params">buf-&gt;peek(</span>), buf-&gt;<span class="title">peek</span>() + request_.<span class="title">contentLength</span>())</span>;</span><br><span class="line">                request_.setBody(body);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 准确移动读指针</span></span><br><span class="line">                buf-&gt;retrieve(request_.contentLength());</span><br><span class="line"></span><br><span class="line">                state_ = kGotAll;</span><br><span class="line">                hasMore = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> HttpContext::parseMultipartData(Buffer *buf)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 1. 找到并跳过第一个 boundary（如 ------WebKitFormBoundaryxxxx）</span></span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">char</span>* crlf = buf-&gt;findCRLF();</span><br><span class="line">    <span class="keyword">if</span> (!crlf) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 不完整</span></span><br><span class="line">    std::<span class="function"><span class="built_in">string</span> <span class="title">boundary</span>(<span class="params">buf-&gt;peek(</span>),crlf)</span>;</span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;boundary:&quot;</span>&lt;&lt;boundary;</span><br><span class="line">    buf-&gt;retrieveUntil(crlf + <span class="number">2</span>); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// // 2. 解析 Content-Disposition 行</span></span><br><span class="line">    crlf = buf-&gt;findCRLF();</span><br><span class="line">    <span class="keyword">if</span> (!crlf) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 不完整</span></span><br><span class="line">    std::<span class="function"><span class="built_in">string</span> <span class="title">dispositionLine</span>(<span class="params">buf-&gt;peek(</span>), crlf)</span>;</span><br><span class="line">    buf-&gt;retrieveUntil(crlf + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    std::<span class="built_in">string</span> Content_Disposition;</span><br><span class="line">    std::<span class="built_in">string</span> name;</span><br><span class="line">    std::<span class="built_in">string</span> filename;</span><br><span class="line">     </span><br><span class="line">    size_t Content_Pos = dispositionLine.find(<span class="string">&quot;Content-Disposition:&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (Content_Pos != std::<span class="built_in">string</span>::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        Content_Pos += <span class="number">20</span>;</span><br><span class="line">        size_t ContentEnd = dispositionLine.find(<span class="string">&#x27;&quot;&#x27;</span>, Content_Pos);</span><br><span class="line">        <span class="keyword">if</span> (ContentEnd != std::<span class="built_in">string</span>::npos)</span><br><span class="line">            Content_Disposition.assign(dispositionLine.data() + Content_Pos, ContentEnd - Content_Pos);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;Content_Disposition:&quot;</span>&lt;&lt;Content_Disposition;</span><br><span class="line">    size_t namePos = dispositionLine.find(<span class="string">&quot;name=\&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (namePos != std::<span class="built_in">string</span>::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        namePos += <span class="number">6</span>;</span><br><span class="line">        size_t nameEnd = dispositionLine.find(<span class="string">&#x27;&quot;&#x27;</span>, namePos);</span><br><span class="line">        <span class="keyword">if</span> (nameEnd != std::<span class="built_in">string</span>::npos)</span><br><span class="line">            name.assign(dispositionLine.data() + namePos, nameEnd - namePos);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name;</span><br><span class="line">    size_t filePos = dispositionLine.find(<span class="string">&quot;filename=\&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (filePos != std::<span class="built_in">string</span>::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        filePos += <span class="number">10</span>;</span><br><span class="line">        size_t fileEnd = dispositionLine.find(<span class="string">&#x27;&quot;&#x27;</span>, filePos);</span><br><span class="line">        <span class="keyword">if</span> (fileEnd != std::<span class="built_in">string</span>::npos)</span><br><span class="line">            filename.assign(dispositionLine.data() + filePos, fileEnd - filePos);</span><br><span class="line">    &#125;</span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;filename:&quot;</span>&lt;&lt;filename;</span><br><span class="line">     <span class="comment">// 3. 跳过 Content-Type 行</span></span><br><span class="line">    crlf = buf-&gt;findCRLF();</span><br><span class="line">    <span class="keyword">if</span> (!crlf) <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">    buf-&gt;retrieveUntil(crlf + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. 跳过空行（说明下一个就是正文）</span></span><br><span class="line">    crlf = buf-&gt;findCRLF();</span><br><span class="line">    <span class="keyword">if</span> (!crlf) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    buf-&gt;retrieveUntil(crlf + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 5. 写入文件，直到遇到下一次 boundary</span></span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">char</span>* fileStart = buf-&gt;peek(); <span class="comment">// 文件内容起点</span></span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">char</span>* fileEnd = std::search(</span><br><span class="line">        fileStart, buf-&gt;peek()+ buf-&gt;readableBytes(),</span><br><span class="line">        boundary.c_str(), boundary.c_str() + boundary.size()</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fileEnd == buf-&gt;beginWrite()) &#123;</span><br><span class="line">    <span class="comment">// 未找到结束 boundary，暂时数据不足</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;开始创建文件咯&quot;</span>; </span><br><span class="line">    request_.set_filename(filename);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (filename.find(<span class="string">&quot;.avi&quot;</span>)!= std::<span class="built_in">string</span>::npos ||filename.find(<span class="string">&quot;.mp4&quot;</span>)!= std::<span class="built_in">string</span>::npos||filename.find(<span class="string">&quot;.mkv&quot;</span>)!= std::<span class="built_in">string</span>::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">FileUtil <span class="title">writer</span>(<span class="params"><span class="string">&quot;/root/uploads/videos/&quot;</span> + filename</span>)</span>;</span><br><span class="line">        writer.writeBinary(fileStart, fileEnd - fileStart);</span><br><span class="line">        LOG_INFO&lt;&lt;<span class="string">&quot;这是一个视频&quot;</span>&lt;&lt;filename;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">FileUtil <span class="title">writer</span>(<span class="params"><span class="string">&quot;/root/uploads/&quot;</span> + filename</span>)</span>;</span><br><span class="line">        writer.writeBinary(fileStart, fileEnd - fileStart);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    LOG_INFO&lt;&lt;<span class="string">&quot;创建完成&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 6. 移动 buffer 指针，跳过文件数据和 boundary和\r\n</span></span><br><span class="line">    buf-&gt;retrieveUntil(fileEnd+<span class="number">2</span>); <span class="comment">// 跳过文件数据</span></span><br><span class="line">    <span class="comment">//这里移动了，但是貌似还剩下一点东西，我测试了并没有发现问题，就不管啦！！！</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>上面的抓包过程中没有文件上传的解析，这里我上传了一个txt文件，并抓包分析。</p>
-<p><img   src="https://i-blog.csdnimg.cn/direct/6b502683b4b6436988f5ddc1b2a7af64.png"  alt="在这里插入图片描述"><br>上图的红框部分就是我此次上传的txt文件的请求体部分的抓包。以下是分析：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/6b502683b4b6436988f5ddc1b2a7af64.png"
+                        alt="在这里插入图片描述"
+                 ><br>上图的红框部分就是我此次上传的txt文件的请求体部分的抓包。以下是分析：</p>
 <ol>
 <li>边界值：——WebKitFormBoundaryLkDgzlyaqa0LgduN（细心的同学看到了，在请求体中的最开始部分和结尾部分都是以这个值作为分界线的，而在这直接的就是具体的内容）</li>
 <li>Content-Disposition: form-data; name&#x3D;”file”; filename&#x3D;”test.txt”；form-data表示是一个表单数据；name字段对应表单中的字段名；filename是客户端上传的一个原始文件名。这个字段是用于告知服务器如何处理这部分数据。</li>
-<li>Content-Type: text&#x2F;plain\r\n\r\n。这个是声明这部分数据的媒体类型。（text&#x2F;plain表示内容是无格式的纯文本）<br><img   src="https://i-blog.csdnimg.cn/direct/a0cc64898b4e4e03bddfd2d99992ea22.png"  alt="在这里插入图片描述"><br>这部分就是实际的传输内容。<br>传输如视频或者压缩文件为01二进制流。所以对于上传不同媒体数据的思想是，通过Content-Disposition中的filename字段，获取原数据的文件名，保存为相应的文件类型，并将实际的内容放到对应的文件中。</li>
+<li>Content-Type: text&#x2F;plain\r\n\r\n。这个是声明这部分数据的媒体类型。（text&#x2F;plain表示内容是无格式的纯文本）<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/a0cc64898b4e4e03bddfd2d99992ea22.png"
+                        alt="在这里插入图片描述"
+                 ><br>这部分就是实际的传输内容。<br>传输如视频或者压缩文件为01二进制流。所以对于上传不同媒体数据的思想是，通过Content-Disposition中的filename字段，获取原数据的文件名，保存为相应的文件类型，并将实际的内容放到对应的文件中。</li>
 </ol>
-<p>视频上传的抓包截图：<br><img   src="https://i-blog.csdnimg.cn/direct/1313fde68bcd4e3a81d1965c957cf539.png"  alt="在这里插入图片描述"></p>
-<h1 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h1><h2 id="理论部分-1"><a href="#理论部分-1" class="headerlink" title="理论部分"></a>理论部分</h2><p><img   src="https://i-blog.csdnimg.cn/direct/deb4587859e6471ab9b0383ef7d2d985.png"  alt="在这里插入图片描述"><br>HTTP响应报文是服务器向客户端返回的数据格式，用于传达服务器对客户端请求的处理结果以及相关的数据。一个标准的HTTP响应报文通常包含状态行、响应头、空行、响应体。<br>状态行包含HTTP版本、状态码和状态消息。例如：HTTP&#x2F;1.1 200 OK，404表示没有找到，429表示请求连接过多，我的羡慕中使用令牌桶进行限流的时候，如果某一时候请求连接过多，就返回429状态码<br>响应头部也是以键值对的形式提供的额外信息，类似于请求头部，用于告知客户端有关响应的详细信息。一些常见的响应头部字段包括：<br>● Content-Type：指定响应主体的媒体类型。<br>● Access-Control-Allow-Origin: 跨源资源共享（CORS）策略，指示哪些域可以访问资源。<br>● Content-Length：指定响应主体的长度（字节数）。<br>● Expires: 响应的过期时间。<br>● ETag: 响应体的实体标签，用于缓存和条件请求。<br>● Last-Modified： 资源最后被修改的日期和时间。<br>● Location：在重定向时指定新的资源位置。<br>● Set-Cookie：在响应中设置Cookie。</p>
+<p>视频上传的抓包截图：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/1313fde68bcd4e3a81d1965c957cf539.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<h1 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h1><h2 id="理论部分-1"><a href="#理论部分-1" class="headerlink" title="理论部分"></a>理论部分</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/deb4587859e6471ab9b0383ef7d2d985.png"
+                        alt="在这里插入图片描述"
+                 ><br>HTTP响应报文是服务器向客户端返回的数据格式，用于传达服务器对客户端请求的处理结果以及相关的数据。一个标准的HTTP响应报文通常包含状态行、响应头、空行、响应体。<br>状态行包含HTTP版本、状态码和状态消息。例如：HTTP&#x2F;1.1 200 OK，404表示没有找到，429表示请求连接过多，我的羡慕中使用令牌桶进行限流的时候，如果某一时候请求连接过多，就返回429状态码<br>响应头部也是以键值对的形式提供的额外信息，类似于请求头部，用于告知客户端有关响应的详细信息。一些常见的响应头部字段包括：<br>● Content-Type：指定响应主体的媒体类型。<br>● Access-Control-Allow-Origin: 跨源资源共享（CORS）策略，指示哪些域可以访问资源。<br>● Content-Length：指定响应主体的长度（字节数）。<br>● Expires: 响应的过期时间。<br>● ETag: 响应体的实体标签，用于缓存和条件请求。<br>● Last-Modified： 资源最后被修改的日期和时间。<br>● Location：在重定向时指定新的资源位置。<br>● Set-Cookie：在响应中设置Cookie。</p>
 <p>空行（Empty Line）在响应头和响应体之间，表示响应头的结束。而响应体是服务端实际传输的数据，可以是文本、HTML页面、图片、视频等，也可能为空。</p>
-<h2 id="wireshark抓包分析-1"><a href="#wireshark抓包分析-1" class="headerlink" title="wireshark抓包分析"></a>wireshark抓包分析</h2><p><img   src="https://i-blog.csdnimg.cn/direct/3fde8e82358c45669324345c88902475.png"  alt="在这里插入图片描述"></p>
+<h2 id="wireshark抓包分析-1"><a href="#wireshark抓包分析-1" class="headerlink" title="wireshark抓包分析"></a>wireshark抓包分析</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/3fde8e82358c45669324345c88902475.png"
+                        alt="在这里插入图片描述"
+                 ></p>
 <ol>
 <li>状态行返回 HTTP&#x2F;1.1(协议版本)，200（状态码），ok(状态码对于的短语)</li>
 <li>响应头部，也是以键值对形式保存值的。<code>Connection: Keep-Alive</code>（表示这是一个长连接，即可以在这个连接上多次请求与响应）；<code>Access-Control-Allow-Origin: *</code>（支持跨域访问源，这里的‘*’表示所有源都可访问）；<code>Content-Encoding: gzip</code>（表示使用了gzip编码）；Content-Length: 325（这个字段表示响应体的数据大小为325字节）；Content-Type: application&#x2F;json（表示响应体的格式为json）</li>
-<li>响应体可以是多种格式，在这里是json格式，见下图<br><img   src="https://i-blog.csdnimg.cn/direct/47ddc71bd9864f408025ab5973071fcb.png"  alt="在这里插入图片描述"><br>这里的一个json文件中有3个值，filename,uploadtime,username；多个json文件构成了一个Array。</li>
+<li>响应体可以是多种格式，在这里是json格式，见下图<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://i-blog.csdnimg.cn/direct/47ddc71bd9864f408025ab5973071fcb.png"
+                        alt="在这里插入图片描述"
+                 ><br>这里的一个json文件中有3个值，filename,uploadtime,username；多个json文件构成了一个Array。</li>
 </ol>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>响应字段是由浏览器解析的，这里我们不需要实现解析的部分。响应是由服务器生成并返回的，所以在这里需要实现HTTP响应报文的生成。<br>请看代码：</p>
 <h3 id="1-设置状态行"><a href="#1-设置状态行" class="headerlink" title="1.设置状态行"></a>1.设置状态行</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> HttpResponse::setStatusLine(<span class="keyword">const</span> std::<span class="built_in">string</span>&amp; version,</span><br><span class="line">                                 HttpStatusCode statusCode,</span><br><span class="line">                                 <span class="keyword">const</span> std::<span class="built_in">string</span>&amp; statusMessage)</span><br><span class="line">&#123;</span><br><span class="line">    httpVersion_ = version; <span class="comment">//设置HTTP的版本号</span></span><br><span class="line">    statusCode_ = statusCode;<span class="comment">//设置响应状态码</span></span><br><span class="line">    statusMessage_ = statusMessage;<span class="comment">//设置响应消息</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -540,11 +577,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/undefined/LiteHub_env_conf/"
-                                   title="LiteHub之环境配置"
+                                   href="/undefined/cpp_pointer/"
+                                   title="C++指针的深入解析"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">LiteHub之环境配置</span>
+                                        <span class="post-nav-title-item text-ellipsis">C++指针的深入解析</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -614,7 +651,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">20.6k</span>
+                    <span class="item-value border-box word">31k</span>
                 </span>
             
 
@@ -775,30 +812,16 @@
 
 
 <!-- common js -->
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/header-shrink.js"></script>
-
-<script src="/js/back2top.js"></script>
-
-<script src="/js/toggle-theme.js"></script>
-
-<script src="/js/code-block.js"></script>
-
-<script src="/js/main.js"></script>
-
-<script src="/js/libs/anime.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
 
 <!-- local search -->
 
-    
-<script src="/js/local-search.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
 
 
 <!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/lazyload.min.js"></script>
 
 
 <div class="">
@@ -808,15 +831,11 @@
     <!-- post page -->
     
         <!-- post-helper -->
-        
-<script src="/js/post/post-helper.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
         
 
         <!-- copyright-info -->
@@ -824,9 +843,7 @@
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/share.min.js"></script>
         
     
 
